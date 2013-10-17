@@ -4,6 +4,7 @@ Sistema desenvolvido pela equipe de Tecnologia da Informação do Instituto Fede
 e modificado pela CTI do Instituto Federal de Educação, Ciência e Tecnologia de São Paulo - Campus Guarulhos.
 
 Para utilizar o Sistema:
+
 1º Você deve colocar o sistema em seu servidor web;
 2º Criar Usuário e Banco no MySQL;
 3º Renomear configuration-dist.php dentro da pasta includes para configuration.php;
