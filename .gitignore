@@ -1,0 +1,14 @@
+includes/configuration.php
+/nbproject/private/
+/nbproject/
+Thumbs.db
+thumbs.dbincludes/css/sansation_bold.woff
+includes/css/sansation_light.woff
+arquivos/anais2012.zip
+arquivos/artigos2012.zip
+noticias
+includes/css/fonts.css
+includes/css/sansation_bold.woff
+includes/css/sansation_light.woff
+
+templates/2SemCiTec/db/submissao/submissao.nodb
