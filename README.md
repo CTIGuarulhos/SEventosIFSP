@@ -15,7 +15,9 @@ OBS.: Recomendamos você criar seu próprio usuário no sistema, altere as permi
 
 
 Modificações e novas funcionalidades:
+
 	* CTI Guarulhos
+
 		* Bruno Brito de Oliveira - Técnico de Tecnologia da Informação
 		* Douglas Andrade de Paula - Técnico de Laboratório de Informática
 		* Douglas Mendes Brites Pastura Diaz - Técnico de Tecnologia da Informação
