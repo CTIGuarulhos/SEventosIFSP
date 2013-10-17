@@ -5,12 +5,12 @@ e modificado pela CTI do Instituto Federal de Educação, Ciência e Tecnologia 
 
 Para utilizar o Sistema:
 
-1º Você deve colocar o sistema em seu servidor web;
-2º Criar Usuário e Banco no MySQL;
-3º Renomear configuration-dist.php dentro da pasta includes para configuration.php;
-4º Editar arquivo configuration.php de acordo com seu ambiente;
-5º Importar o arquivo BD.sql para o Banco de Dados;
-6º Logar com usuário admin e senha admin e fazer ultimos ajustes em Configurar Sistema.
+* 1º Você deve colocar o sistema em seu servidor web;
+* 2º Criar Usuário e Banco no MySQL;
+* 3º Renomear configuration-dist.php dentro da pasta includes para configuration.php;
+* 4º Editar arquivo configuration.php de acordo com seu ambiente;
+* 5º Importar o arquivo BD.sql para o Banco de Dados;
+* 6º Logar com usuário admin e senha admin e fazer ultimos ajustes em Configurar Sistema.
 
 OBS.: Recomendamos você criar seu próprio usuário no sistema, altere as permissões em Gerenciar Usuários e deletar o usuário admin.
 
