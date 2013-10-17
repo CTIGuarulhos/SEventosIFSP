@@ -1,4 +1,5 @@
 Sistema de Controle de Eventos
+=======================
 
 Sistema desenvolvido pela equipe de Tecnologia da Informação do Instituto Federal de Educação, Ciência e Tecnologia de São Paulo - Campus São Carlos
 e modificado pela CTI do Instituto Federal de Educação, Ciência e Tecnologia de São Paulo - Campus Guarulhos.
