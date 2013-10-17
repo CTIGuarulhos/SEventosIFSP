@@ -27,17 +27,14 @@ Modificações e novas funcionalidades:
 		* Robson Ferreira Lopes - Coordenador de Tecnologia da Informação
 
 
-
 Designer e layout:
 
     * André Luis Tardelli Magalhães - Coordenador de Informática e Pesquisa
 
 
-
 Programação:
 
     * Mateus Santana - Técnico em Tecnologia da Informação
-
 
 
 Banco de dados:
