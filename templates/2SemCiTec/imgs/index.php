@@ -1,1 +1,1 @@
-../../../../semcitec2/templates/2SemCiTec/imgs/index.php
+<? header("Location: http://" . $_SERVER[HTTP_HOST]); ?>

@@ -1,1 +1,1 @@
-../../../semcitec2/templates/3SemCiTec/rodape.php
+<div class="imagem"></div>
