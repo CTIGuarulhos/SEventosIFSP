@@ -10,5 +10,5 @@ noticias
 includes/css/fonts.css
 includes/css/sansation_bold.woff
 includes/css/sansation_light.woff
-
 templates/2SemCiTec/db/submissao/submissao.nodb
+templates/3SemCiTec/db/submissao/submissao.nodb
