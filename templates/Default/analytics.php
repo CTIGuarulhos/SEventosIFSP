@@ -1,1 +1,0 @@
-<!-- Aqui vem o código do Analytics! -->

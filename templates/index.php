@@ -1,1 +1,1 @@
-<? header("Location: http://" . $_SERVER[HTTP_HOST]); ?>
+../../semcitec2/templates/index.php
