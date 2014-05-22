@@ -1,0 +1,532 @@
+@CHARSET "ISO-8859-1";
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    background: url("../imgs/bg.png") repeat scroll 0 0 white;
+    font-family: 'Roboto', sans-serif;
+    overflow-x: hidden !important;
+    margin-top: 20px;
+}
+/*
+body {
+    background: url('../imgs/bg.jpg') top left repeat-x, url("../imgs/bg.gif") repeat fixed transparent;
+    background-color: #000000;
+    font-family: 'Roboto', sans-serif;
+    margin-top: 20px;
+}
+*/
+
+a { text-decoration: none; }
+img { border: 0; }
+.right { float: right; }
+*.clear { clear: both; }
+
+
+/*********************************************************/
+/* PAGINA: DIV que envolve todas as outras               */
+/*********************************************************/
+#pagina {
+    width: 960px;
+    height: auto;
+    margin: auto;
+    background: transparent;
+    word-wrap: break-word; 
+}
+
+
+/*********************************************************/
+/* BANNER                                                */
+/*********************************************************/
+#banner {
+    background: url('../imgs/banner-horizontal.png');
+    width: 960px;
+    height: 173px;
+}
+
+
+/*********************************************************/
+/* MENU: Menu superior horizontal                        */
+/*********************************************************/
+#menu {
+    /*border: 1px #3C4318 solid;*/
+    background: url('../imgs/bg-menu.png');
+    width: 960px;
+    height: 40px;
+    display: table-cell;
+
+}
+
+#menu ul {
+    /*border: 1px #f00 solid;*/
+    list-style: none;
+}
+
+#menu ul li {
+    /*border: 1px #f00 solid;*/
+    height: 40px;
+    float: left;
+}
+
+#menu ul li a {
+    /*border: 1px #f00 solid;*/
+    display: block;
+    padding: 10px 15px 0 15px;
+    height: 30px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #fff;
+    float: left;
+    font-family: 'Roboto', sans-serif;
+}
+
+#menu ul li a:hover, #menu .atual a {
+    /*border: 1px #000 solid;*/
+    background-color: #1C7520;
+}
+
+
+/*********************************************************/
+/* CORPO: div que abrange #subMenu e #conteudo           */
+/*********************************************************/
+#corpo {
+    background-color: #fff;
+    width: 960px;
+    height: auto;
+}
+
+
+/*********************************************************/
+/* SUBMENU: Menu vertical em paralelo ao conteudo        */
+/*********************************************************/
+#subMenu {
+    padding-left: 15px;
+    width: 230px;
+    height: auto;
+    float: left;
+}
+
+#subMenu ul {
+    border: 1px #C7F9C6 solid;
+    list-style: none;
+    margin-top: 15px;
+    padding: 2px;
+}
+
+#subMenu ul li {
+    /*border: 1px #000 solid;*/
+    font-size: 12px;
+    background-color: #E1FCEE;
+    padding: 3px 15px;
+}
+
+/*#subMenu ul li:hover {
+    background: #E1FCEE url('../imgs/bullet-noticias.png') 185px 2px no-repeat;
+}*/
+
+#subMenu ul li a.ultimo { border:0 }
+
+#subMenu ul li.titulo {
+    color: #fff;
+    padding: 7px 5px;
+    background-color: #3B4041;
+    font-size: 14px;
+}
+
+#subMenu ul li a {
+    border-bottom: 1px #C1D2B0 dashed;
+    background: url('../imgs/arrow.gif') 0px 7px no-repeat;
+    padding: 4px 0px 4px 16px;
+    display: block;
+    color: #000;
+}
+
+
+/*********************************************************/
+/* LOGIN: Area de login dentro de #subMenu               */
+/*********************************************************/
+#login {
+    border: 1px #C7F9C6 solid;
+    margin-top: 30px;
+    padding: 2px;
+}
+
+#login .title {
+    border-bottom: 1px #C1D2B0 dashed;
+    display: block;
+    width: auto;
+    padding: 3px 5px 3px 23px;
+    font-weight: bold;
+}
+
+#login .lock { background: #E1FCEE url('../imgs/lock.png') 3px 4px no-repeat; }
+#login .user { background: #E1FCEE url('../imgs/user.png') 3px 4px no-repeat; }
+
+#login .title small {
+    font-size: 9px;
+    font-weight: normal;
+    margin-left: 5px;
+}
+
+#login form, #login .box {
+    background-color: #E1FCEE;
+    font-family: 'Roboto', sans-serif;
+    font-size: 11px;
+    padding: 5px 0 5px 0;
+    display: block;
+}
+
+#login .box { padding: 5px; }
+
+#login label {
+    width: 50px;
+    display: inline-block;
+    text-align: right;
+    margin-left: 5px;
+}
+
+#login .box label {
+    width: auto;
+    display: block;
+    text-align: left;
+    margin-left: 0px;
+    font-weight: bold;
+}
+
+#login .box input[type=button] {
+    border: 1px #467704 solid;
+    background-color: #fff;
+    cursor: pointer;
+    padding: 0px 10px;
+    margin: 5px 10px 0 0;
+    font-size: 11px;
+}
+
+
+
+#login .box font {
+    font-size: 12px;
+    display: block;
+    margin-bottom: 5px;
+}
+
+#login form .textfield, #login form .passfield {
+    width: 130px;
+    padding: 1px;
+    margin: 0 0 3px 5px;
+    border: 1px #467704 solid;
+    background-color: #fff;
+    font-family: 'Roboto', sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+    text-align: center;
+}
+
+#login form .submit {
+    border: 1px #467704 solid;
+    background-color: #fff;
+    cursor: pointer;
+    padding: 0px 10px;
+    margin-right: 27px;
+    float: right;
+}
+
+#login form a {
+    color: #006a00;
+    font-size: 10px;
+    margin: 4px 0 0 16px;
+    float: left;
+}
+
+#login form a:hover { text-decoration: underline; }
+
+
+/*********************************************************/
+/* CONTEUDO                                              */
+/*********************************************************/
+#conteudo {
+    width: auto;
+    min-height: 300px;
+    height: auto;
+    margin-left: 245px;
+    padding: 30px 15px 10px 15px;
+}
+
+
+/*********************************************************/
+/* RODAPE                                                */
+/*********************************************************/
+#rodape {
+    margin-top: 15px;
+
+}
+
+#rodape .imagem {
+    background: url('../imgs/rodape.png') top center no-repeat; 
+    width: 960px;
+    height: 200px;
+}
+
+#rodape .informacoes {
+    background: url('../imgs/sombra.png') top left no-repeat; 
+    width: 940px;
+    height: 144px;
+    margin: 0 auto 0 auto;
+    padding: 70px 0 0 0;
+    text-align: center;
+    line-height: 20px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #fff;
+}
+
+
+/*********************************************************/
+/* #Carregando - Avisos e Mensagens de Erro              */
+/*********************************************************/
+#carregando {
+    display: none;
+    background-color: #2F3021;
+    position: fixed;
+    margin-top: -20px;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 900;
+}
+
+#caixaMensagem {
+    border: 1px #f00 solid;
+    background: #ffffff;
+    margin: 200px auto 0 auto;
+    padding: 15px 30px;
+    width: 600px;
+    height: auto;
+    z-index: 950;
+}
+
+
+/*********************************************************/
+/* Classes e Tag's personalizadas                        */
+/*********************************************************/
+
+#conteudo h1 {
+    /*border: 1px #1C7520 solid;*/
+    background: url('../imgs/notice-bg.gif') top left repeat-x;
+    color: #fff;
+    height: 28px;
+    padding: 9px 10px 0px 10px;
+    font-size: 16px;
+    font-weight: bold;
+    overflow: hidden;
+}
+
+#conteudo h1 .imgH1 {
+    /*border: 1px #f00 solid;*/
+    float: right;
+    background-position: top left;
+    background-repeat: no-repeat;
+    width: 115px;
+    height: 50px;
+}
+
+#conteudo h1 .geral { margin: -9px -5px 0 0; }
+#conteudo h1 .pessoas { background-image: url('../imgs/pessoas.gif'); margin: -9px -5px 0 0; }
+#conteudo h1 .arvores { background-image: url('../imgs/arvores.gif'); margin: -3px -10px 0 0; }
+#conteudo h1 .peixes { background-image: url('../imgs/peixes.gif'); margin: -6px -40px 0 0; }
+#conteudo h1 .lagarto { background-image: url('../imgs/lagarto.gif'); margin: -14px -15px 0 0; }
+
+#conteudo p {
+    text-align: justify;
+    margin-bottom: 20px;
+}
+
+#conteudo p.marcador {
+    background: url('../imgs/bullet-noticias.png') 0px 3px no-repeat;
+    padding-left: 27px;
+    min-height: 25px;
+}
+
+div.box {
+    /*border: 1px #559408 solid;*/
+    border: 1px #C7F9C6 solid;
+    border-top: 1px #467704 solid;
+    width: auto;
+    height: auto;
+    margin: -1px 0 25px 0;
+    padding: 20px 20px;
+    display: block;
+}
+
+#contagem {	float: right; }
+
+
+/*********************************************************/
+/* Box/Mensagens de erro/sucesso                         */
+/*********************************************************/
+
+span.required-message {
+    border: 1px #CDA406 solid;
+    background-color: #FFDE9D;
+    font-size: 14px;
+    width: auto;
+    height: auto;
+    margin: 20px 0px;
+    padding: 10px 5px;
+    display: block;
+}
+
+span.required-field {
+    font-size: 12px;
+    font-weight: bold;
+    color: #ff0000;
+}
+
+div.success-message {
+    border: 1px #CDA406 solid;
+    background: rgb(173,223,161) url('../imgs/ok.png') 3px center no-repeat;
+    font-size: 14px;
+    width: auto;
+    min-width: 320px;
+    height: auto;
+    margin: 20px auto;
+    padding: 20px 10px 20px 70px;
+    display: none;
+}
+
+div.error-message {
+    border: 1px #f00 solid;
+    background: #f3c8c8 url('../imgs/warning.png') 3px center no-repeat;
+    font-size: 14px;
+    width: auto;
+    min-width: 320px;
+    height: auto;
+    margin: 20px auto;
+    padding: 20px 10px 20px 70px;
+    display: none;
+}
+
+div.error-message p {
+    background: url('../imgs/alert.png') 0px 0px no-repeat;
+    margin: 8px 0;
+    padding-left: 18px;
+}
+
+
+/*********************************************************/
+/* Formul\E1rio                                            */
+/*********************************************************/
+
+.forms {
+    margin-top: 30px;
+}
+
+.forms label {
+    font-size: 14px;
+    min-width: 300px;
+    display: inline-block;
+}
+
+.forms input[type=text], .forms input[type=password] {
+    border: 1px #000 solid;
+    font-size: 16px;
+    padding: 1px 5px;
+    width: 250px;
+    height: 25px;
+}
+.forms textarea {
+    border: 1px #000 solid;
+    font-size: 16px;
+    padding: 1px 5px;
+    width: 100%;
+    height: 95px;
+}
+.minitext {
+    font-size: 10px;
+    padding: 1px 5px;
+    width: 250px;
+    height: 50px;
+
+}
+
+.forms select {
+    padding: 1px 3px;
+    height: 25px;
+}
+
+.forms input[type=submit], .forms input[type=button] {
+    border: 2px #487A04 solid;
+    background-color: #fff;
+    padding: 3px 10px;
+    cursor: pointer;
+}
+
+
+/*********************************************************/
+/* Prgrama\E7\E3o                                            */
+/*********************************************************/
+.evento-data{
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.evento a, .evento a:visited {
+    color: #0000ff;
+}
+
+.evento {
+    /*border: 1px #f00 solid;*/
+    border-bottom: 1px #d2d2d2 solid;
+    margin: 0;
+    padding: 20px 5px 5px 5px;
+    display: none;
+}
+
+.evento .inscricao, .evento .cancelar-inscricao {
+    background: url('../imgs/tick.png') top left no-repeat;
+    padding-left: 20px;
+    float: right;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.evento .cancelar-inscricao {
+    background: url('../imgs/cancel.png') top left no-repeat;
+    font-size: 12px;
+}
+
+.evento:hover {
+    background-color: #E1FCEE;
+}
+
+.evento h2 {
+    color: #000;
+    padding: 0;
+    margin: 0 0 0 1px;
+    font-size: 18px;
+}
+
+.evento p {
+    font-size: 14px;
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+
+/*********************************************************/
+/* Contato                                               */
+/*********************************************************/
+.contato input[type=text], .contato input[type=password], .contato textarea {
+    width: 330px;
+    border: 1px #000 solid;
+}
+
+
+.sobre ul li {
+    margin: 0;
+    margin-left: 30px;
+}
+

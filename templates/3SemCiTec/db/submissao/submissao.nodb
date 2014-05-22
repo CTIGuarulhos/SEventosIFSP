@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<database>
+    <column>id</column>
+    <column>eixo</column>
+    <column>tipo</column>
+    <column>nome</column>
+    <column>email</column>
+    <column>codigo</column>
+    <column>arquivo</column>
+    <column>periodo</column>
+</database>
