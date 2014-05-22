@@ -153,7 +153,7 @@ if (tipoadmin(2, $USER->getCpf(), $SCT_ID)) {
             <br/><br/>
             <input type="submit" value="Inserir Participação" />
             <br><br>
-            <input type="BUTTON" value="Selecionar outro evento" onclick="location.href = '<?php echo $CONFIG->URL_ROOT ?>/?pag=<?php echo $_GET['pag']; ?><?
+            <input type="BUTTON" value="Selecionar outro evento" onclick="location.href = '<?php echo $CONFIG->URL_ROOT ?>/?pag=<?php echo $_GET['pag']; ?><?php
             if (isset($_GET['SCT'])) {
                 echo '&SCT=' . $_GET['SCT'];
             }
@@ -163,7 +163,7 @@ if (tipoadmin(2, $USER->getCpf(), $SCT_ID)) {
         <script
             type = "text/javascript"
             language = "javascript" >
-                        document.getElementById("cpf").focus();
+                document.getElementById("cpf").focus();
         </script>
 
         <?
@@ -195,7 +195,7 @@ if (tipoadmin(2, $USER->getCpf(), $SCT_ID)) {
                         <td align="center"><? echo $x['cpf'] ?></td>
                     </tr>
 
-                <? endwhile ?>
+            <? endwhile ?>
 
             </table>
         <? endif ?>

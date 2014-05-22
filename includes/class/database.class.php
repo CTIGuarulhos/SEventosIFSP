@@ -136,11 +136,11 @@ class MySQL_Connection {
     }
 
     public function setHost($_host) {
-        if (filter_var($_host, FILTER_VALIDATE_IP)) {
+        //if (filter_var($_host, FILTER_VALIDATE_IP)) {
             $this->host = $_host;
-        } else {
-            return false;
-        }
+        //} else {
+        //    return false;
+        //}
     }
 
     public function getUser() {

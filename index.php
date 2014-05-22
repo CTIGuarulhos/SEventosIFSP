@@ -222,42 +222,45 @@ if ($MODULO == "") {
         echo "\t" . '</script>';
     endif;
     /*     * ********************************************** */
-    ?>
-    <script>
-        $(document).ready(function() {
-            $('.fancybox').fancybox({
-                prevEffect: 'none',
-                nextEffect: 'none',
-                width: '90%',
-                height: '90%',
-                autoSize: false
-            });
+    if (file_exists($CONFIG->DIR_ROOT . "/templates/" . $EVENTO['TEMPLATE'] . "/fotos.php")) {
+        ?>
+
+        <script>
+                    $(document).ready(function() {
+                        $('.fancybox').fancybox({
+                            prevEffect: 'none',
+                            nextEffect: 'none',
+                            width: '90%',
+                            height: '90%',
+                            autoSize: false
+                        });
 
 
-        });
-        $(document).ready(function() {
-            $(".fancybox-button").fancybox({
-                prevEffect: 'none',
-                nextEffect: 'none',
-                closeBtn: false,
-                helpers: {
-                    title: {type: 'inside'},
-                    buttons: {}
-                }
-            });
-        });
-        $("#caroufredsel").carouFredSel();
-        $("#caroufredsel a").fancybox({
-            cyclic: true,
-            onStart: function() {
-                $("#caroufredsel").trigger("pause");
-            },
-            onClosed: function() {
-                $("#caroufredsel").trigger("play");
-            }
-        });
+                    });
+                    $(document).ready(function() {
+                        $(".fancybox-button").fancybox({
+                            prevEffect: 'none',
+                            nextEffect: 'none',
+                            closeBtn: false,
+                            helpers: {
+                                title: {type: 'inside'},
+                                buttons: {}
+                            }
+                        });
+                    });
+                    $("#caroufredsel").carouFredSel();
+                    $("#caroufredsel a").fancybox({
+                        cyclic: true,
+                        onStart: function() {
+                            $("#caroufredsel").trigger("pause");
+                        },
+                        onClosed: function() {
+                            $("#caroufredsel").trigger("play");
+                        }
+                    });
 
-    </script>
+        </script>
+    <?php } ?>
 
 </body>
 </html>

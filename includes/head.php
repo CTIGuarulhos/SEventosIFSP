@@ -77,7 +77,7 @@
 </script>
 <style type='text/css'>
     #floating-fblog {width:60px;}
-    #fblog-box {border:1px solid #ccc; padding:5px; background:#fff; z-index:8009; display:block; position:absolute; top:226px; float:left; margin:0 0 0 -350px; text-align:center;}
+    #fblog-box {border:1px solid #ccc; padding:5px; background:#fff; z-index:8009; display:block; position:absolute; top:226px; float:left; margin:0 0 0 -353px; text-align:center;}
     #fblog-box div {margin:0 0 5px;}
 </style>
 <!-- FIM Redes sociais flutuantes Baseado em http://www.gerenciandoblog.com.br --> 

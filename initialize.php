@@ -11,7 +11,7 @@ ini_set("register_globals", 0);
 ini_set("magic_quotes_gpc", 0);
 ini_set("magic_quotes_runtime", 0);
 ini_set("magic_quotes_sybase", 0);
-ini_set("display_errors", 0);
+ini_set("display_errors", 1);
 
 //Descomentar estas 2 linhas abaixo para efetuar testes
 //ini_set("display_errors", 1);
