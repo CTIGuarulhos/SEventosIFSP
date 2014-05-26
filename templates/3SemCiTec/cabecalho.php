@@ -1,7 +1,6 @@
 <link href='http://fonts.googleapis.com/css?family=Scada' rel='stylesheet' type='text/css'>
 <?
 switch ($EVENTO['MES']) {
-
     case 1: $mes = "Janeiro";
         break;
     case 2: $mes = "Fevereiro";
@@ -28,15 +27,33 @@ switch ($EVENTO['MES']) {
         break;
 }
 ?>
-<? $evento = explode("ª",$EVENTO['NOME']); ?>
-<? $nomeevento = explode(",",$evento[1]); ?>
-<div>
-<table cellpadding="0" cellspacing="0" width="100%" border="0" align=center style="height: 100%;">
-<tr>
-  <td width="13%"></td>
-  <td width="12%"><center><table style="height: 100%;" align=center><tr><td><font style="font-family: 'Scada', sans-serif; font-size: 100px; color: #026d80;"><?= $evento[0]; ?></font></td><td><font style="font-family: 'Scada', sans-serif; font-size: 36px; color: #026d80;">ª<br><br></font></td></tr></table></center></td>
-  <td width="57%"><center><font style="font-family: 'Scada', sans-serif; font-size: 35px; color: #026d80;"><?= trim(strtr(strtoupper($nomeevento[0]),"àáâãäåæçèéêëìíîïðñòóôõö÷øùüúþÿ","ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÜÚÞß")); ?></font><br><font style="font-family: 'Scada', sans-serif; font-size: 25px; color: #026d80;"><?= trim(strtr(strtoupper($nomeevento[1]),"àáâãäåæçèéêëìíîïðñòóôõö÷øùüúþÿ","ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÜÚÞß")); ?></font></center></td>
-  <td width="18%"><center><font style="font-family: 'Scada', sans-serif; font-size: 40px; color: #026d80;"><?= $EVENTO['DIA_INICIO'] . " a " . $EVENTO['DIA_FIM']?></font><br><font style="font-family: 'Scada', sans-serif; font-size: 30px; color: #026d80;"><?= trim(strtolower($mes)); ?></font></center></td>
-</tr>
-</table>
+<? $evento = explode("ª", $EVENTO['NOME']); ?>
+<? $nomeevento = explode(",", $evento[1]); ?>
+<div style="width:100%; height: 100%; vertical-align: middle;">
+    <div align=center style="width:13%; height: 100%; display: table-cell; vertical-align: middle;">
+    </div>
+    <div align=center style="width:12%; height: 100%; display: table-cell; vertical-align: middle;">
+        <center>
+            <div>
+                <div style="display: table-cell; vertical-align: middle;">
+                    <font style="font-family: 'Scada', sans-serif; font-size: 100px; color: #026d80;"><?= $evento[0]; ?></font>
+                </div>
+                <div style="display: table-cell; vertical-align: middle;">
+                    <font style="font-family: 'Scada', sans-serif; font-size: 36px; color: #026d80;">ª<br><br></font>
+                </div>
+            </div>
+        </center>
+    </div>
+    <div align=center style="width:57%; height: 100%; display: table-cell; vertical-align: middle;">
+        <center>
+            <font style="font-family: 'Scada', sans-serif; font-size: 35px; color: #026d80;"><?= trim(strtr(strtoupper($nomeevento[0]), "àáâãäåæçèéêëìíîïðñòóôõö÷øùüúþÿ", "ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÜÚÞß")); ?></font><br>
+            <font style="font-family: 'Scada', sans-serif; font-size: 25px; color: #026d80;"><?= trim(strtr(strtoupper($nomeevento[1]), "àáâãäåæçèéêëìíîïðñòóôõö÷øùüúþÿ", "ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÜÚÞß")); ?></font>
+        </center>
+    </div>
+    <div align=center style="width:18%; height: 100%; display: table-cell;  vertical-align: middle;">
+        <center>
+            <font style="font-family: 'Scada', sans-serif; font-size: 40px; color: #026d80;"><?= $EVENTO['DIA_INICIO'] . " a " . $EVENTO['DIA_FIM'] ?></font><br>
+            <font style="font-family: 'Scada', sans-serif; font-size: 30px; color: #026d80;"><?= trim(strtolower($mes)); ?></font>
+        </center>
+    </div>
 </div>

@@ -27,6 +27,7 @@
                     <li>Giovani Fonseca Ravagnani Disperati - Técnico de Tecnologia da Informação</li>
                     <li>Ricardo Medeiros Priuli - Técnico AudioVisual</li>
                     <li>Robson Ferreira Lopes - Coordenador de Tecnologia da Informação</li>
+                    <li>Sérgio Andrade Silva Leal - Técnico AudioVisual</li>
                 </ul>
                 </p></td></tr></table><br><br>
     <p>
