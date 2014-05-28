@@ -19,7 +19,7 @@ if (isset($_POST['nome'])):
     $tipo = $_POST['tipo'];
     $files = $$_POST['files'];
     $dadosOK = true;
-    if (mime_content_type($_FILES['files']['tmp_name']) != "application/pdf") {
+    if (strpos($_FILES['files']['tmp_name'], '.pdf') != false) {
         $dadosOK = false;
     }
     //Nome
@@ -94,11 +94,10 @@ if (isset($dadosOK) && $dadosOK === true) {
         <label for="eixo"><span class="required-field">*</span> Eixo tecnológico:</label><br />
         <select name="emaileixo" id="emaileixo">
             <option value = ""  selected> ** Selecione **
-            <option value = "CIINED" <? if ($emaileixo == "CIINED") echo selected ?> > Ciência, Inovação e Educação
-        <option value = "CIINSA" <? if ($emaileixo == "CIINSA") echo selected ?> > Ciência e Inovação em Saúde
-        <option value = "CIINES" <? if ($emaileixo == "CIINES") echo selected ?> > Ciência e Inovação em Esporte
-        <option value = "PRLOSU" <? if ($emaileixo == "PRLOSU") echo selected ?> > Práticas Locais Sustentáveis
-        <!-- <option value = "TEST" <? if ($emaileixo == "TEST") echo selected ?> > TESTE DE ENVIO -->
+            <option value = "CIEDUIN" <? if ($emaileixo == "CIEDUIN") echo selected ?> > Ciência, Educação, Inovação
+        <option value = "PAPODESSO" <? if ($emaileixo == "PAPODESSO") echo selected ?> > Participação Popular e Desenvolvimento Social
+        <option value = "CITECDESSO" <? if ($emaileixo == "CITECDESSO") echo selected ?> > Ciência e Tecnologia para o Desenvolvimento Social
+        <option value = "PRALOSUS" <? if ($emaileixo == "PRALOSUS") echo selected ?> > Práticas Locais Sustentáveis
         </select><br/><br/>
 
         <label for="eixo"><span class="required-field">*</span> Tipo:</label><br />
@@ -117,13 +116,7 @@ if (isset($dadosOK) && $dadosOK === true) {
         <input type="text" value="<?= $email ?>" name="email" /><br /> <br />
         <label for="nome"><?php HTML_RequiredField() ?>Arquivo:</label><br/>
         <input type="file" value="<?= $files ?>" name="files" /><br /><br />
-        <label for="nome"><?php HTML_RequiredField() ?>Disponibilidade:</label><br/>
-        <select name="periodo" id="periodo">
-            <option value = ""  selected> ** Selecione **
-            <option value = "MANHA" <? if ($emaileixo == "MANHA") echo selected ?> > Manhã
-        <option value = "TARDE" <? if ($emaileixo == "TARDE") echo selected ?> > Tarde
-        <option value = "NOITE" <? if ($emaileixo == "NOITE") echo selected ?> > Noite
-        </select><br/><br/>
+        <input type="hidden" value="NOITE" name="periodo" /><br /> <br />
         <div style="border:2px solid; border-radius:25px;"><br>
             &nbsp;&nbsp;&nbsp;<img name="codigo" src="includes/gdimg.php" alt="codigo" /><br><br>
             &nbsp;&nbsp;&nbsp;<label for="codigo"><?php HTML_RequiredField() ?>Código imagem:</label><br/>

@@ -29,6 +29,7 @@ switch ($EVENTO['MES']) {
 ?>
 <? $evento = explode("ª", $EVENTO['NOME']); ?>
 <? $nomeevento = explode(",", $evento[1]); ?>
+<br>
 <div style="width:100%; height: 100%; vertical-align: middle;">
     <div align=center style="width:13%; height: 100%; display: table-cell; vertical-align: middle;">
     </div>
@@ -53,7 +54,8 @@ switch ($EVENTO['MES']) {
     <div align=center style="width:18%; height: 100%; display: table-cell;  vertical-align: middle;">
         <center>
             <font style="font-family: 'Scada', sans-serif; font-size: 40px; color: #026d80;"><?= $EVENTO['DIA_INICIO'] . " a " . $EVENTO['DIA_FIM'] ?></font><br>
-            <font style="font-family: 'Scada', sans-serif; font-size: 30px; color: #026d80;"><?= trim(strtolower($mes)); ?></font>
+            <font style="font-family: 'Scada', sans-serif; font-size: 30px; color: #026d80;"><?= trim(strtolower($mes)); ?></font><br>
+            <font style="font-family: 'Scada', sans-serif; font-size: 30px; color: #026d80;"><?= $EVENTO['ANO']; ?></font>
         </center>
     </div>
 </div>

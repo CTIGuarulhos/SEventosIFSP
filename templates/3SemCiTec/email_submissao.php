@@ -20,28 +20,21 @@ function email_submissao($nome, $d_email, $emaileixo, $tipo, $nomes, $nome_temp,
     $mail->Password = $CONFIG->MAIL_PSWD; // Senha de SMTP
     $mail->From = $CONFIG->MAIL_FROM;
     $mail->FromName = $CONFIG->MAIL_NAME;
-    if ($emaileixo == "CIINED") {
-        //$mail->AddBCC('douglasanpa@gmail.com');
+    if ($emaileixo == "CIEDUIN") {
         $mail->AddBCC('marinilzes@gmail.com');
         $mail->AddBCC('rogeriomarques@me.com');
     }
-    if ($emaileixo == "CIINSA") {
-        //$mail->AddBCC('douglasanpa@gmail.com');
+    if ($emaileixo == "PAPODESSO") {
         $mail->AddBCC('marinilzes@gmail.com');
         $mail->AddBCC('rogeriomarques@me.com');
     }
-    if ($emaileixo == "CIINES") {
-        //$mail->AddBCC('douglasanpa@gmail.com');
+    if ($emaileixo == "CITECDESSO") {
         $mail->AddBCC('marinilzes@gmail.com');
         $mail->AddBCC('rogeriomarques@me.com');
     }
-    if ($emaileixo == "PRLOSU") {
-        //$mail->AddBCC('douglasanpa@gmail.com');
+    if ($emaileixo == "PRALOSUS") {
         $mail->AddBCC('marinilzes@gmail.com');
         $mail->AddBCC('rogeriomarques@me.com');
-    }
-    if ($emaileixo == "TEST") {
-        $mail->AddBCC('douglasanpa@gmail.com');
     }
     $mail->AddReplyTo($d_email, $nome);
     $mail->AddAddress($d_email);
