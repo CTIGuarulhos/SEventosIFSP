@@ -9,7 +9,7 @@ if (isset($_POST['cpf'])):
 
 
     //Transforma os parametros em variaveis
-    import_request_variables("P");
+    extract($_POST, EXTR_PREFIX_SAME, "");
 
     //Funções de validação
     require_once($CONFIG->DIR_ROOT . "/includes/validacao.php");

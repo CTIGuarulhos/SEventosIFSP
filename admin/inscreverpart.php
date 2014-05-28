@@ -76,7 +76,7 @@ if (tipoadmin(2, $USER->getCpf(), $SCT_ID)) {
             $_POST = safe_sql($_POST);
 
             //Transforma os parametros em variaveis
-            import_request_variables("P");
+            extract($_POST, EXTR_PREFIX_SAME, "");
             $dadosOK = true;
 
             //Valida se existe participante

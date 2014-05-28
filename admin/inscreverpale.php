@@ -33,7 +33,7 @@ if (tipoadmin(2, $USER->getCpf(), $SCT_ID)) {
         //Escapa as variÃveis
         $_POST = safe_sql($_POST);
         //Transforma os parametros em variaveis
-        import_request_variables("P");
+        extract($_POST, EXTR_PREFIX_SAME, "");
 
         //FunÃ§Ãµes de validaÃ§Ã£o
         require_once($CONFIG->DIR_ROOT . "/includes/validacao.php");
