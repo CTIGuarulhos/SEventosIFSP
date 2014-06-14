@@ -34,7 +34,7 @@ if (tipoadmin(7, $USER->getCpf(), $SCT_ID)) {
         $erro = array();
         //Se dados OK insere no banco de dados
         if ($dadosOK) {
-
+            $mes = $_POST['mes'];
             $query = "UPDATE edicao SET NOME='$nome', CADASTRO='$cadastro', TEMPLATE='$template', URL_INST='$url_inst', ";
             $query .= "NOME_INST_RED='$nome_inst_red', NOME_INST_COMP='$nome_inst_comp', ENDERECO_L1='$endereco_l1', ENDERECO_L2='$endereco_l2', URL_MAPS_IFRAME='$url_maps_iframe', ";
             $query .= "URL_MAPS='$url_maps', DIA_INICIO='$dia_inicio', DIA_FIM='$dia_fim', MES='$mes', ANO='$ano', ";
