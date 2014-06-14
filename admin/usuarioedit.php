@@ -23,7 +23,7 @@ if (tipoadmin(5, $USER->getCpf(), $SCT_ID)) {
 
 #--------------------------- ALTERA��O DADOS -------------------------------#
     if (isset($_POST['alterar_dados'])):
-
+	$eventos = $_POST['eventos'];
         //Escapa as vari�veis
         $_POST = safe_sql($_POST);
 
@@ -153,7 +153,7 @@ if (tipoadmin(5, $USER->getCpf(), $SCT_ID)) {
             if (isset($_POST['admin'])) {
                 $query .= "admin=$admin, ";
             }
-            if (isset($_POST['eventos'])) {
+            if (count($eventos) > 0) {
                 $eventos = checkboxToString($eventos);
                 $query .= "eventos='$eventos', ";
             }

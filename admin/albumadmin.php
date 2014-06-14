@@ -20,7 +20,7 @@ if (tipoadmin(5, $USER->getCpf(), $SCT_ID)) {
 
 
     require_once("albumadmin_functions.php");
-    if (isset($deletaralbum)):
+    if (isset($deletaralbum) AND strlen($deletaralbum) > 0):
         deletar_album($deletaralbum);
         echo "<meta HTTP-EQUIV='refresh' CONTENT='0;URL=$Esta_Pagina'>";
     endif;

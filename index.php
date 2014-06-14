@@ -188,7 +188,7 @@ if ($MODULO == "") {
 
         <div class="noprint"><center>Desenvolvido por <strong><a href="<?php echo $CONFIG->URL_ROOT ?>/?pag=sobre">Equipe</a></strong></center><br></div>
                 <?
-                if (isset($Return_URL)) {
+                if (isset($Return_URL) AND strlen($Return_URL) > 0 ) {
                     header("Location: $Return_URL");
                     unset($Return_URL);
                 }

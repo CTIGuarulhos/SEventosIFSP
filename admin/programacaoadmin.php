@@ -19,12 +19,12 @@ if (tipoadmin(5, $USER->getCpf(), $SCT_ID)) {
     $deletarpalestrante = safe_sql($_REQUEST['deletarpalestrante']);
 
 
-    if (isset($deletarevento)):
+    if (isset($deletarevento) AND strlen($deletarevento) > 0):
         require_once("eventoadmin_functions.php");
         deletar_evento($deletarevento);
         echo "<meta HTTP-EQUIV='refresh' CONTENT='0;URL=$Esta_Pagina'>";
     endif;
-    if (isset($deletarpalestrante)):
+    if (isset($deletarpalestrante) AND strlen($deletarpalestrante) > 0):
         require_once("eventoadmin_functions.php");
         deletar_palestrante($deletarpalestrante);
     //echo "<meta HTTP-EQUIV='refresh' CONTENT='0;URL=$Esta_Pagina'>";
