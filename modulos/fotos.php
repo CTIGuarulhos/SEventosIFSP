@@ -13,7 +13,7 @@ $diaSemana = array('Domingo', 'Segunda-feira', 'Terça-feira', 'Quarta-feira', '
 <br/>
 
 <p>
-    Veja aqui as fotos da <?php echo $EVENTO['NOME'] ?>.
+    Veja aqui as fotos d<?php echo $EVENTO['GENERO'] ?> <?php echo $EVENTO['NOME'] ?>.
 </p>
 
 <p>

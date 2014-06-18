@@ -27,7 +27,7 @@ function email_confirmacao($nome, $senha, $codigo, $email) {
     $PARA = $email;
 
     $MSG = "Olá $nome,<br/><br/>\n";
-    $MSG .= 'Você está recebendo esta mensagem porque se cadastrou na ' . $EVENTO['NOME'] . '.<br/>'; /* ' do '.$EVENTO['NOME_INST_RED'].'.<br/>'; */
+    $MSG .= 'Você está recebendo esta mensagem porque se cadastrou n' . $EVENTO['GENERO'] . ' ' . $EVENTO['NOME'] . '.<br/>'; /* ' do '.$EVENTO['NOME_INST_RED'].'.<br/>'; */
 
     $MSG .= "Clique no link abaixo para ativar sua conta e poder se inscrever nos eventos oferecidos:<br/><br/>\n";
     $MSG .= '<a href="' . $CONFIG->URL_ROOT . '?pag=confirmacao&codigo=' . $codigo . '">' . $CONFIG->URL_ROOT . '/?pag=confirmacao&codigo=' . $codigo . '</a>.<br/><br/>' . "\n";
@@ -81,7 +81,7 @@ function email_reconfirmacao($nome, $codigo, $email) {
     $PARA = $email;
 
     $MSG = "Olá $nome,<br/><br/>\n";
-    $MSG .= 'Você está recebendo esta mensagem porque se cadastrou na ' . $EVENTO['NOME'] . '.<br/>'; /* ' do '.$EVENTO['NOME_INST_RED'].'.<br/>'; */
+    $MSG .= 'Você está recebendo esta mensagem porque se cadastrou n' . $EVENTO['GENERO'] . ' ' . $EVENTO['NOME'] . '.<br/>'; /* ' do '.$EVENTO['NOME_INST_RED'].'.<br/>'; */
 
     $MSG .= "Clique no link abaixo para ativar sua conta e poder se inscrever nos eventos oferecidos:<br/><br/>\n";
     $MSG .= '<a href="' . $CONFIG->URL_ROOT . '/?pag=confirmacao&codigo=' . $codigo . '">' . $CONFIG->URL_ROOT . '/?pag=confirmacao&codigo=' . $codigo . '</a>.<br/><br/>' . "\n";

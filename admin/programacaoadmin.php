@@ -35,7 +35,7 @@ if (tipoadmin(5, $USER->getCpf(), $SCT_ID)) {
     <br/>
 
     <p>
-        Procure o dia e o evento e selecione <img src="<?php echo $CONFIG->URL_ROOT ?>/includes/imgs/view.png" name="EDITAR" ALT="EDITAR" VALUE="EDITAR" title="EDITAR"> para editar e <img src="<?php echo $CONFIG->URL_ROOT ?>/includes/imgs/cancel.png" name="DELETAR" ALT="DELETAR" VALUE="DELETAR" title="DELETAR"> para excluir.
+        Procure o dia e a atividade e selecione <img src="<?php echo $CONFIG->URL_ROOT ?>/includes/imgs/view.png" name="EDITAR" ALT="EDITAR" VALUE="EDITAR" title="EDITAR"> para editar e <img src="<?php echo $CONFIG->URL_ROOT ?>/includes/imgs/cancel.png" name="DELETAR" ALT="DELETAR" VALUE="DELETAR" title="DELETAR"> para excluir.
     <hr style="border:1px #a5a5a5 dashed;margin:15px 0px;" /><center>UTILIZE ESSA FERRAMENTA COM MUITO CUIDADO!</center> <br><br>
     </p>
 

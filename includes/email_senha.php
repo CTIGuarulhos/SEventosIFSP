@@ -23,7 +23,7 @@ function email_senha($nome, $novasenha, $email, $codigo, $confirmado) {
 
     $MSG = "Olá $nome,<br/><br/>\n";
     if ($confirmado == 1) {
-        $MSG .= 'Você está recebendo esta mensagem porque solicitou uma nova senha de acesso ao sistema da ' . $EVENTO['NOME'] . '.<br/>'; /* do $EVENTO['NOME_INST_RED'].<br/>\n"; */
+        $MSG .= 'Você está recebendo esta mensagem porque solicitou uma nova senha de acesso ao sistema d' . $EVENTO['GENERO'] . ' ' . $EVENTO['NOME'] . '.<br/>'; /* do $EVENTO['NOME_INST_RED'].<br/>\n"; */
         $MSG .= "Nova senha: <b>$novasenha</b><br/><br/>\n";
         $MSG .= "A senha poderá ser alterada após fazer o login no site, no menu \"meus dados\".<br/><br/>\n";
     }

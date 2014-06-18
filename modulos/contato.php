@@ -62,7 +62,7 @@ $_SESSION['letrasgd'] = gerarLetras();
 <p>
     Use esta p&aacute;gina para entrar em contato com a Comiss&atilde;o Organizadora, tirar d&uacute;vidas, fazer sugest&otilde;es ou cr&iacute;ticas.
     Todos os campos s&atilde;o de preenchimento obrigat&oacute;rio. <br><br>
-    Esta p&aacute;gina tem a &uacute;nica finalidade de atender quest&otilde;es sobre a <?php echo $EVENTO['NOME'] ?>. 
+    Esta p&aacute;gina tem a &uacute;nica finalidade de atender quest&otilde;es sobre <?php echo $EVENTO['GENERO'] ?> <?php echo $EVENTO['NOME'] ?>. 
     Qualquer outro assunto n&atilde;o ser&aacute; respondido.
 </p>
 

@@ -15,7 +15,7 @@ $diaSemana = array('Domingo', 'Segunda-feira', 'Terça-feira', 'Quarta-feira', '
 <br/>
 
 <p>
-    Consulte aqui os eventos da <?php echo $EVENTO['NOME'] ?>.
+    Consulte aqui os eventos d<?php echo $EVENTO['GENERO'] ?> <?php echo $EVENTO['NOME'] ?>.
     Não se esqueça de realizar inscrição nos eventos escolhidos e assinar a
     lista de presença no dia para garantir o direito ao certificado.
     <br><br>

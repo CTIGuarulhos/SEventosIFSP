@@ -253,7 +253,7 @@ endif;
                 Ap&oacute;s cadastro, use seu e-mail e senha nos campos ao lado para inscrever-se nos eventos.
             </p>
             <!-- <p>
-                    Caso voc&ecirc; j&aacute; tenha participado da edi&ccedil;&atilde;o anterior da <?php echo $EVENTO['NOME'] ?> do <?php echo $EVENTO['NOME_INST_RED'] ?>, provavelmente voc&ecirc; j&aacute; est&aacute; cadastrado. Use seu
+                    Caso voc&ecirc; j&aacute; tenha participado da edi&ccedil;&atilde;o anterior d<?php echo $EVENTO['GENERO'] ?> <?php echo $EVENTO['NOME'] ?> do <?php echo $EVENTO['NOME_INST_RED'] ?>, provavelmente voc&ecirc; j&aacute; est&aacute; cadastrado. Use seu
                     e-mail e senha para acessar sua conta. Ou use o link de recuperar senha.
             </p> -->
             <p>

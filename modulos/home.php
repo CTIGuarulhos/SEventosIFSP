@@ -8,7 +8,7 @@
             $contatempo = $expira - $horaatual;
             $contadias = (int) ($contatempo / 86400);
             ?> 
-            A <?php echo $EVENTO['NOME'] ?> está chegando.<br/>
+            <?php echo strtoupper($EVENTO['GENERO']) ?> <?php echo $EVENTO['NOME'] ?> está chegando.<br/>
             Fa&ccedil;a j&aacute; seu <a style="color:blue;" href="<?php echo $CONFIG->URL_ROOT ?>/?pag=cadastro">cadastro </a> e sua <a style="color:blue;" href="<?php echo $CONFIG->URL_ROOT ?>/?pag=programacao">inscri&ccedil;&atilde;o</a>!
             <br><br>
             A inscrição para as atividades permanecerá aberta até o limite de vagas de cada atividade.
@@ -24,7 +24,7 @@ if (time() > $timeevento AND time() < $timecertificado):
     <h1>Certificados</h1>
     <div class="box">
         <center style="">
-            Os certificados da  <?php echo $EVENTO['NOME'] ?> ser&atilde;o emitidos uma semana ap&oacute;s o termino do evento.<br/>
+            Os certificados d<?php echo $EVENTO['GENERO'] ?>  <?php echo $EVENTO['NOME'] ?> ser&atilde;o emitidos uma semana ap&oacute;s o termino do evento.<br/>
         </center>
     </div>
 <?php endif; ?>
@@ -33,7 +33,7 @@ if (time() > $timeevento AND time() < $timecertificado):
     <h1>Certificados</h1>
     <div class="box">
         <center style="">
-            Os certificados da  <?php echo $EVENTO['NOME'] ?> ja est&atilde;o dispon&iacute;veis para quem fez inscri&ccedil;&atilde;o e confirmou sua presen&ccedil;a.<br /><br />Aos que se inscreveram no momento do evento os certificados serão emitidos gradativamente.
+            Os certificados d<?php echo $EVENTO['GENERO'] ?>  <?php echo $EVENTO['NOME'] ?> ja est&atilde;o dispon&iacute;veis para quem fez inscri&ccedil;&atilde;o e confirmou sua presen&ccedil;a.<br /><br />Aos que se inscreveram no momento do evento os certificados serão emitidos gradativamente.
         </center>
     </div>
 <?php endif; ?>

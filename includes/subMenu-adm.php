@@ -10,7 +10,7 @@ $result = mysql_fetch_array($DB->Query($query));
                 if (isset($_GET['SCT'])) {
                     echo '&SCT=' . $_GET['SCT'];
                 }
-                ?>">NOVO EVENTO</a></li> <? } ?>
+                ?>">NOVA ATIVIDADE</a></li> <? } ?>
         <? if (tipoadmin(5, $USER->getCpf(), $SCT_ID, 0)) { ?><li><a href="<?php echo $CONFIG->URL_ROOT ?>/?pag=admprogramacaoadmin<?
                 if (isset($_GET['SCT'])) {
                     echo '&SCT=' . $_GET['SCT'];

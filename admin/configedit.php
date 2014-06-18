@@ -35,7 +35,7 @@ if (tipoadmin(7, $USER->getCpf(), $SCT_ID)) {
         //Se dados OK insere no banco de dados
         if ($dadosOK) {
             $mes = $_POST['mes'];
-            $query = "UPDATE edicao SET NOME='$nome', CADASTRO='$cadastro', TEMPLATE='$template', URL_INST='$url_inst', ";
+            $query = "UPDATE edicao SET GENERO='$genero', NOME='$nome', CADASTRO='$cadastro', TEMPLATE='$template', URL_INST='$url_inst', ";
             $query .= "NOME_INST_RED='$nome_inst_red', NOME_INST_COMP='$nome_inst_comp', ENDERECO_L1='$endereco_l1', ENDERECO_L2='$endereco_l2', URL_MAPS_IFRAME='$url_maps_iframe', ";
             $query .= "URL_MAPS='$url_maps', DIA_INICIO='$dia_inicio', DIA_FIM='$dia_fim', MES='$mes', ANO='$ano', ";
             $query .= "HORA='$hora', MINUTO='$minuto', LIBERACAO='$liberacao', APRESENTACAO='$apresentacao', DATASIMPORTANTES='$datasimportantes', COMISSAOORGANIZADORA='$comissaoorganizadora', ";
@@ -82,6 +82,20 @@ if (tipoadmin(7, $USER->getCpf(), $SCT_ID)) {
         </label>
         <input type="text" name="semtec" id="semtec" maxlength="4" size="4" value="<?php echo $result['SEMTEC'] ?>" disabled="disabled" />
         <br/><br/>
+        <label for="genero"><?php HTML_RequiredField() ?>Genero do Nome do Evento:</label>
+        <select name="genero" id="genero">
+            <option value = "a" <?php
+            if ($result['GENERO'] == "a") {
+                echo " selected";
+            }
+            ?>>A</option>
+            <option value = "o" <?php
+            if ($result['GENERO'] == "o") {
+                echo " selected";
+            }
+            ?>>O</option>
+        </select>
+        <br/><br/>
 
         <label for="nome"><?php HTML_RequiredField() ?>Nome:</label>
         <input type="text" name="nome" id="nome" maxlength="127" size="35" value="<?php echo $result['NOME'] ?>" />
@@ -89,12 +103,12 @@ if (tipoadmin(7, $USER->getCpf(), $SCT_ID)) {
 
         <label for="cadastro"><?php HTML_RequiredField() ?>Cadastro:</label>
         <select name="cadastro" id="cadastro">
-            <option value = "aberto" <?
+            <option value = "aberto" <?php
             if ($result['CADASTRO'] == "aberto") {
                 echo " selected";
             }
             ?>>Aberto</option>
-            <option value = "fechado" <?
+            <option value = "fechado" <?php
             if ($result['CADASTRO'] == "fechado") {
                 echo " selected";
             }

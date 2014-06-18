@@ -60,11 +60,11 @@ if (tipoadmin(5, $USER->getCpf(), $SCT_ID)) {
     ?>
     <script language="javascript" type="text/javascript" src="<?php echo $CONFIG->URL_ROOT ?>/includes/js//datetimepicker.js"></script>
 
-    <h1>Adicionar Evento<span class="imgH1 geral"></span></h1>
+    <h1>Adicionar Atividade<span class="imgH1 geral"></span></h1>
     <br/>
 
     <p>
-        Insira os dados do Evento.
+        Insira os dados da Atividade.
     </p>
 
     <?php

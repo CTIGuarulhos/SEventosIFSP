@@ -129,7 +129,7 @@ if (toString(mm).length)
 faltam += (mm < 10) ? '0'+mm+':' : mm+':';
 if (toString(ss).length)
 faltam += (ss < 10) ? '0'+ss : ss;
-//	faltam += ' para a <?php echo $EVENTO['NOME'] ?> ';
+//	faltam += ' para <?php echo $EVENTO['GENERO'] ?> <?php echo $EVENTO['NOME'] ?> ';
 //	faltam += 'do <?php echo $EVENTO['NOME_INST_RED'] ?>:<br/>';
 
 if (dd+hh+mm+ss > 0) {

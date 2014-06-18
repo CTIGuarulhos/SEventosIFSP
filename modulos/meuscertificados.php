@@ -5,7 +5,7 @@ if (!$SESSION->IsLoggedIn()) {
     <h1>Certificados<span class="imgH1 geral"></span></h1>		
     <div class="box">
         <p >
-            Os certificados da <?php echo $EVENTO['NOME'] ?> do <?php echo $EVENTO['NOME_INST_RED'] ?> já estão disponíveis online.
+            Os certificados d<?php $EVENTO['GENERO'] ?> <?php echo $EVENTO['NOME'] ?> do <?php echo $EVENTO['NOME_INST_RED'] ?> já estão disponíveis online.
         </p>
         <p >
             Para visualizar, acesse sua conta através do seu e-mail e senha no campo ao lado esquerdo da página e clique no menu <b>Certificados</b>.

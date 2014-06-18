@@ -1,7 +1,7 @@
 <h1>Como Chegar<span class="imgH1 geral"></span></h1>
 <br/>
 <center>
-    A <?php echo $EVENTO['NOME'] ?> acontecer&aacute; no seguinte endereço:
+    <?php strtoupper($EVENTO['GENERO']) ?> <?php echo $EVENTO['NOME'] ?> acontecer&aacute; no seguinte endereço:
     <br>
     <?php echo $EVENTO['ENDERECO_L1'] ?>
     <br>
