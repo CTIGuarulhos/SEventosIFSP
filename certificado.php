@@ -95,7 +95,7 @@ if ($documento == "sim") {
     $textocertificado .= " RG <b>" . $CPF . "</b>";
 }
 $textocertificado .= " participou " . $tipo . " intitulad" . substr($tipo, -1, 1);
-$textocertificado .= " <b>" . $titulo . "</b> durante ". $EVENTO['GENERO'] ."<b>" . $EVENTO['NOME'];
+$textocertificado .= " <b>" . $titulo . "</b> durante ". $EVENTO['GENERO'] ." <b>" . $EVENTO['NOME'];
 $textocertificado .= "</b> realizada no dia " . $dia . " de " . $mes . " de " . $ano;
 $textocertificado .= " com duração de " . $duracao . " minutos.";
 
