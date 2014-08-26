@@ -8,7 +8,7 @@ function usuarios_por_evento($evento_id, $listar) {
     global $_arraySearch, $_arrayReplace, $DB, $CONFIG;
     ?>
 
-    <?
+    <?php
     $query = "SELECT titulo FROM eventos WHERE id='$evento_id'";
     $Revento = mysql_fetch_array($DB->Query($query));
     $query = "SELECT * FROM participantes p, participacoes t WHERE t.cpf_participante = p.cpf AND t.id_evento='$evento_id' AND t.tipo='P' ";
@@ -23,13 +23,13 @@ function usuarios_por_evento($evento_id, $listar) {
     else:
         ?>
 
-        <? $Revento['titulo'] = str_replace($_arraySearch, $_arrayReplace, strtoupper($Revento['titulo'])); ?>
-        <b>EVENTO: <i><?= $Revento['titulo'] ?></i> (<?= mysql_num_rows($result) ?>)</b>
+        <?php $Revento['titulo'] = str_replace($_arraySearch, $_arrayReplace, strtoupper($Revento['titulo'])); ?>
+        <b>EVENTO: <i><?php echo $Revento['titulo'] ?></i> (<?php echo mysql_num_rows($result) ?>)</b>
         <br/>
 
-        <form name="presenca" method="post" action="<?= $Esta_Pagina ?>" onsubmit="document.getElementById('Psubmit').disabled = true;">
-            <input type="hidden" name="evento" value="<?= $evento_id ?>" />
-            <input type="hidden" name="listar" value="<?= $listar ?>" />
+        <form name="presenca" method="post" action="<?php echo $Esta_Pagina ?>" onsubmit="document.getElementById('Psubmit').disabled = true;">
+            <input type="hidden" name="evento" value="<?php echo $evento_id ?>" />
+            <input type="hidden" name="listar" value="<?php echo $listar ?>" />
 
             <table cellspacing="0">
                 <caption class="noprint" style="text-align:right;padding:5px">
@@ -38,37 +38,37 @@ function usuarios_por_evento($evento_id, $listar) {
                 <tr>
                     <th>NOME</th>
 
-                    <? if ($listar == 1): ?>
+                    <?php if ($listar == 1): ?>
                         <th align="center">PRONTUÁRIO</th>
-                    <? else: ?>
+                    <?php else: ?>
                         <th align="center">DOCUMENTO</th>
-                    <? endif ?>
+                    <?php endif ?>
 
                     <th align="center" width="100">PRESENÇA</th>
                 </tr>
 
-                <?
+                <?php
                 while ($x = mysql_fetch_array($result)):
                     $x['nome'] = str_replace($_arraySearch, $_arrayReplace, strtoupper($x['nome']));
                     ?>
 
                     <tr>
-                        <td><?= $x['nome'] ?></td>
+                        <td><?php echo $x['nome'] ?></td>
 
-                        <? if ($listar == 1): ?>
-                            <td align="center"><?= strlen($x['RA']) ? substr($x['RA'], 0, 6) . "-" . strtoupper(substr($x['RA'], 6, 1)) : "<b>-------</b>" ?></td>
-                        <? else: ?>
-                            <td align="center"><? echo $x['cpf'] ?></td>
-                        <? endif ?>
+                        <?php if ($listar == 1): ?>
+                            <td align="center"><?php echo strlen($x['RA']) ? substr($x['RA'], 0, 6) . "-" . strtoupper(substr($x['RA'], 6, 1)) : "<b>-------</b>" ?></td>
+                        <?php else: ?>
+                            <td align="center"><?php echo $x['cpf'] ?></td>
+                        <?php endif ?>
 
                         <td align="center">
-                            <input type="checkbox" name="cbx[<?= $x['cpf'] ?>]" <?= $x['presenca'] == 1 ? 'checked="checked"' : '' ?> onclick="set_presenca('p_<?= $x['cpf'] ?>');" class="noprint" />
-                            <input type="hidden" name="presenca[<?= $x['cpf'] ?>]" id="p_<?= $x['cpf'] ?>" value="<?= $x['presenca'] ?>" />
-                            <b style="color:#<?= $x['presenca'] == 1 ? '00c400' : 'f00' ?>" class="noshow"><?= $x['presenca'] == 1 ? 'OK' : 'FALTA' ?></b>
+                            <input type="checkbox" name="cbx[<?php echo $x['cpf'] ?>]" <?php echo $x['presenca'] == 1 ? 'checked="checked"' : '' ?> onclick="set_presenca('p_<?php echo $x['cpf'] ?>');" class="noprint" />
+                            <input type="hidden" name="presenca[<?php echo $x['cpf'] ?>]" id="p_<?php echo $x['cpf'] ?>" value="<?php echo $x['presenca'] ?>" />
+                            <b style="color:#<?php echo $x['presenca'] == 1 ? '00c400' : 'f00' ?>" class="noshow"><?php echo $x['presenca'] == 1 ? 'OK' : 'FALTA' ?></b>
                         </td>
                     </tr>
 
-                <? endwhile ?>
+                <?php endwhile ?>
 
             </table>
 
@@ -76,8 +76,8 @@ function usuarios_por_evento($evento_id, $listar) {
             <input type="submit" value="Confirmar" id="Psubmit" class="noprint" style="float:right;" />
         </form>
 
-    <? endif ?>
-    <?
+    <?php endif ?>
+    <?php
 }
 
 //function usuarios_por_evento()
@@ -93,11 +93,11 @@ function turmas_por_evento($evento_id, $listar) {
     include("636.php");
     ?>
 
-    <form name="presenca" method="post" action="<?= $Esta_Pagina ?>" onsubmit="document.getElementById('Psubmit').disabled = true;">
-        <input type="hidden" name="evento" value="<?= $evento_id ?>" />
-        <input type="hidden" name="listar" value="<?= $listar ?>" />
+    <form name="presenca" method="post" action="<?php echo $Esta_Pagina ?>" onsubmit="document.getElementById('Psubmit').disabled = true;">
+        <input type="hidden" name="evento" value="<?php echo $evento_id ?>" />
+        <input type="hidden" name="listar" value="<?php echo $listar ?>" />
 
-        <?
+        <?php
         $query = "SELECT titulo FROM eventos WHERE id='$evento_id'";
         $Revento = mysql_fetch_array($DB->Query($query));
 
@@ -119,51 +119,51 @@ function turmas_por_evento($evento_id, $listar) {
             else:
                 ?>
 
-                <? $Revento['titulo'] = str_replace($_arraySearch, $_arrayReplace, strtoupper($Revento['titulo'])); ?>
-                <b>EVENTO: <i><?= $Revento['titulo'] ?></i> (<?= mysql_num_rows($result) ?>)</b><br/>
-                <b>TURMA: &nbsp;&nbsp;<?= $turma ?></b>
+                <?php $Revento['titulo'] = str_replace($_arraySearch, $_arrayReplace, strtoupper($Revento['titulo'])); ?>
+                <b>EVENTO: <i><?php echo $Revento['titulo'] ?></i> (<?php echo mysql_num_rows($result) ?>)</b><br/>
+                <b>TURMA: &nbsp;&nbsp;<?php echo $turma ?></b>
                 <br/><br class="noshow"/>
 
-                <table cellspacing="0"<? if ($count < $total): ?> style="page-break-after:always;"<? endif ?>>
-                    <? if ($count == 1): ?>
+                <table cellspacing="0"<?php if ($count < $total): ?> style="page-break-after:always;"<?php endif ?>>
+                    <?php if ($count == 1): ?>
                         <caption class="noprint" style="text-align:right;padding:5px">
                             <a href="javascript:void();" onclick="window.print();" title="imprimir"><img src="<?php echo $CONFIG->URL_ROOT ?>/includes/imgs/print.png" alt="imprimir" /></a>
                         </caption>
-                    <? endif ?>
+                    <?php endif ?>
                     <tr>
                         <th>NOME</th>
                         <th align="center">PRONTUÁRIO</th>
                         <th align="center" width="100">PRESENÇA</th>
                     </tr>
 
-                    <?
+                    <?php
                     while ($x = mysql_fetch_array($result)):
                         $x['nome'] = str_replace($_arraySearch, $_arrayReplace, strtoupper($x['nome']));
                         ?>
 
                         <tr>
-                            <td><?= $x['nome'] ?></td>
-                            <td align="center"><?= strlen($x['RA']) ? substr($x['RA'], 0, 6) . "-" . strtoupper(substr($x['RA'], 6, 1)) : "<b>-------</b>" ?></td>
+                            <td><?php echo $x['nome'] ?></td>
+                            <td align="center"><?php echo strlen($x['RA']) ? substr($x['RA'], 0, 6) . "-" . strtoupper(substr($x['RA'], 6, 1)) : "<b>-------</b>" ?></td>
                             <td align="center">
-                                <input type="checkbox" name="cbx[<?= $x['cpf'] ?>]" <?= $x['presenca'] == 1 ? 'checked="checked"' : '' ?> onclick="set_presenca('p_<?= $x['cpf'] ?>');" class="noprint" />
-                                <input type="hidden" name="presenca[<?= $x['cpf'] ?>]" id="p_<?= $x['cpf'] ?>" value="<?= $x['presenca'] ?>" />
-                                <b style="color:#<?= $x['presenca'] == 1 ? '00c400' : 'f00' ?>" class="noshow"><?= $x['presenca'] == 1 ? 'OK' : 'FALTA' ?></b>
+                                <input type="checkbox" name="cbx[<?php echo $x['cpf'] ?>]" <?php echo $x['presenca'] == 1 ? 'checked="checked"' : '' ?> onclick="set_presenca('p_<?php echo $x['cpf'] ?>');" class="noprint" />
+                                <input type="hidden" name="presenca[<?php echo $x['cpf'] ?>]" id="p_<?php echo $x['cpf'] ?>" value="<?php echo $x['presenca'] ?>" />
+                                <b style="color:#<?php echo $x['presenca'] == 1 ? '00c400' : 'f00' ?>" class="noshow"><?php echo $x['presenca'] == 1 ? 'OK' : 'FALTA' ?></b>
                             </td>
                         </tr>
 
-                    <? endwhile ?>
+                    <?php endwhile ?>
 
                 </table>
                 <br class="noprint" />
                 <br class="noprint" />
 
-            <? endif ?>
-        <? endforeach ?>
+            <?php endif ?>
+        <?php endforeach ?>
 
         <br class="noprint"/>
         <input type="submit" value="Confirmar" id="Psubmit" class="noprint" style="float:right;" />
     </form>
-    <?
+    <?php
 }
 
 //function turmas_por_evento()

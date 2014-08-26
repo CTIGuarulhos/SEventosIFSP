@@ -240,34 +240,34 @@
                                 if (!input.attr("readonly"))
                                     input
                                             .one("unmask", function() {
-                                        input
-                                                .unbind(".mask")
-                                                .removeData("buffer")
-                                                .removeData("tests");
-                                    })
+                                                input
+                                                        .unbind(".mask")
+                                                        .removeData("buffer")
+                                                        .removeData("tests");
+                                            })
                                             .bind("focus.mask", function() {
-                                        focusText = input.val();
-                                        var pos = checkVal();
-                                        writeBuffer();
-                                        setTimeout(function() {
-                                            if (pos == mask.length)
-                                                input.caret(0, pos);
-                                            else
-                                                input.caret(pos);
-                                        }, 0);
-                                    })
+                                                focusText = input.val();
+                                                var pos = checkVal();
+                                                writeBuffer();
+                                                setTimeout(function() {
+                                                    if (pos == mask.length)
+                                                        input.caret(0, pos);
+                                                    else
+                                                        input.caret(pos);
+                                                }, 0);
+                                            })
                                             .bind("blur.mask", function() {
-                                        checkVal();
-                                        if (input.val() != focusText)
-                                            input.change();
-                                    })
+                                                checkVal();
+                                                if (input.val() != focusText)
+                                                    input.change();
+                                            })
                                             .bind("keydown.mask", keydownEvent)
                                             .bind("keypress.mask", keypressEvent)
                                             .bind(pasteEventName, function() {
-                                        setTimeout(function() {
-                                            input.caret(checkVal(true));
-                                        }, 0);
-                                    });
+                                                setTimeout(function() {
+                                                    input.caret(checkVal(true));
+                                                }, 0);
+                                            });
 
                                 checkVal(); //Perform initial check for existing values
                             });

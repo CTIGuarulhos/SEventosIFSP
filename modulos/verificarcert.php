@@ -38,20 +38,20 @@ if (isset($dadosOK) && !$dadosOK) {
 }
 ?>
 
-<form class="forms" name="alt_dados" method="post" action="<? echo $Esta_Pagina; ?>">
+<form class="forms" name="alt_dados" method="post" action="<?php echo $Esta_Pagina; ?>">
 
     <input type="hidden" name="verificacertificado" value="false" />
     <label for="documento"><?php HTML_RequiredField() ?>DOCUMENTO (CPF OU RG):</label>
-    <input type="text" name="documento" id="documento" maxlength="15" size="35" value="<?= $_POST['documento'] ?>" />
+    <input type="text" name="documento" id="documento" maxlength="15" size="35" value="<?php echo $_POST['documento'] ?>" />
     <br><br>
 
     <label for="codcontrole"><?php HTML_RequiredField() ?>CÓDIGO DE VALIDAÇÃO:</label>
-    <input type="text" name="codcontrole" id="codcontrole" maxlength="32" size="35" value="<?= $_POST['codcontrole'] ?>" />
+    <input type="text" name="codcontrole" id="codcontrole" maxlength="32" size="35" value="<?php echo $_POST['codcontrole'] ?>" />
     <br><br>
 
     <input type="submit" value="Verificar autenticidade" />
 
-    <?
+    <?php
     if (isset($_POST['verificacertificado'])):
 
         if (mysql_num_rows($result) == 1) {
@@ -61,52 +61,52 @@ if (isset($dadosOK) && !$dadosOK) {
             $data = implode("/", array_reverse(explode("-", $result['DATA'])));
             ?><br><br><center><font color="red"><b>Dados para autenticação</b></font></center><br><br>
             <label for="Nome">Nome do Participante:</label>
-            <input type="text" name="nome" id="nome" maxlength="15" size="35" value="<?= $result['NOME'] ?> " readonly />
+            <input type="text" name="nome" id="nome" maxlength="15" size="35" value="<?php echo $result['NOME'] ?> " readonly />
             <br/><br/>
 
-            <label for="<?
+            <label for="<?php
             if ($result['documento'] == "sim") {
                 echo "CPF";
             } elseif ($result['documento'] == "nao") {
                 echo "RG";
             }
-            ?>"><?
+            ?>"><?php
                        if ($result['documento'] == "sim") {
                            echo "CPF";
                        } elseif ($result['documento'] == "nao") {
                            echo "RG";
                        }
                        ?> do Participante:</label>
-            <input type="text" name="<?
+            <input type="text" name="<?php
             if ($result['documento'] == "sim") {
                 echo "CPF";
             } elseif ($result['documento'] == "nao") {
                 echo "RG";
             }
-            ?>" id="<?
+            ?>" id="<?php
                    if ($result['documento'] == "sim") {
                        echo "CPF";
                    } elseif ($result['documento'] == "nao") {
                        echo "RG";
                    }
-                   ?>" maxlength="15" size="35" value="<?= $result['CPF'] ?>" readonly />
+                   ?>" maxlength="15" size="35" value="<?php echo $result['CPF'] ?>" readonly />
             <br><br>
             <label for="edicao">Nome do Evento:</label>
-            <input type="text" name="edicao" id="edicao" maxlength="15" size="35" value="<?= $result['EDICAO'] ?>" readonly />
+            <input type="text" name="edicao" id="edicao" maxlength="15" size="35" value="<?php echo $result['EDICAO'] ?>" readonly />
             <br/><br/>        
             <label for="titulo">Nome da Atividade:</label>
-            <input type="text" name="titulo" id="titulo" maxlength="15" size="35" value="<?= $result['TITULO'] ?>" readonly />
+            <input type="text" name="titulo" id="titulo" maxlength="15" size="35" value="<?php echo $result['TITULO'] ?>" readonly />
             <br/><br/>                
             <label for="data">Data da Atividade:</label>
-            <input type="text" name="data" id="data" maxlength="15" size="35" value="<?= $data ?>" readonly />
+            <input type="text" name="data" id="data" maxlength="15" size="35" value="<?php echo $data ?>" readonly />
             <br/><br/>
             <label for="duracao">Duração (em minutos):</label>
-            <input type="text" name="duracao" id="duracao" maxlength="15" size="35" value="<?= $result['DURACAO'] ?>" readonly />
+            <input type="text" name="duracao" id="duracao" maxlength="15" size="35" value="<?php echo $result['DURACAO'] ?>" readonly />
             <br/><br/>                
 
 
 
-            <?
+            <?php
         }
     endif;
     ?>

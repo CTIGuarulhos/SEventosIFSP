@@ -1,4 +1,4 @@
-<?
+<?php
 //***************************************
 // This is downloaded from www.plus2net.com //
 /// You can distribute this code with the link to www.plus2net.com ///
@@ -20,7 +20,7 @@
     </head>
 
     <body bgcolor="#ffffff" text="#000000" link="#0000ff" vlink="#800080" alink="#ff0000">
-        <?
+        <?php
         $max_no_img = 4;  // Maximum number of images value to be set here
         echo "<form method=post action=addimgck.php enctype='multipart/form-data'>";
         echo "<table border='0' width='400' cellspacing='0' cellpadding='0' align=center>";

@@ -14,7 +14,7 @@ function usuarios_inscritos($listar) {
     global $_arraySearch, $_arrayReplace, $DB, $CONFIG;
     ?>
 
-    <?
+    <?php
     if ($listar == 1)
         $query = "SELECT * FROM participantes WHERE cpf NOT IN('24985405809','16719501860') AND confirmado = 0 ORDER BY nome";
     elseif ($listar == 2)
@@ -25,7 +25,7 @@ function usuarios_inscritos($listar) {
     else:
         ?>
 
-        <b>ALUNOS <? if ($listar == 1): ?>NÃO <? endif ?>ATIVOS: (<?= mysql_num_rows($result) ?>)</b>
+        <b>ALUNOS <?php if ($listar == 1): ?>NÃO <?php endif ?>ATIVOS: (<?php echo mysql_num_rows($result) ?>)</b>
         <br/><br class="noshow"/>
 
         <table cellspacing="0">
@@ -39,31 +39,31 @@ function usuarios_inscritos($listar) {
                 <th>AÇÕES</th>
             </tr>
 
-            <?
+            <?php
             while ($x = mysql_fetch_array($result)):
                 $x['nome'] = str_replace($_arraySearch, $_arrayReplace, strtoupper($x['nome']));
                 ?>
 
                 <tr>
-                    <td><?= $x['nome'] ?></td>
-                    <td><?= strtolower($x['email']) ?></td>	
-                    <td align="center"><?= $x['cpf'] ?></td>
-                <form method="post" action="<?= $Esta_Pagina ?>">
+                    <td><?php echo $x['nome'] ?></td>
+                    <td><?php echo strtolower($x['email']) ?></td>	
+                    <td align="center"><?php echo $x['cpf'] ?></td>
+                <form method="post" action="<?php echo $Esta_Pagina ?>">
                     <td align="center">
-                        <a href='<?= $CONFIG->URL_ROOT ?>/?pag=admusuarioedit&usuario=<?= $x['cpf'] ?>' ALT="EDITAR" title="EDITAR"><img src="<?php echo $CONFIG->URL_ROOT ?>/includes/imgs/view.png" width="14" height="12" ALT="EDITAR" title="EDITAR"></a> &nbsp;&nbsp;
-                        <input type="hidden" name="deletarusuario" value="<?= $x['cpf'] ?>" />
+                        <a href='<?php echo $CONFIG->URL_ROOT ?>/?pag=admusuarioedit&usuario=<?php echo $x['cpf'] ?>' ALT="EDITAR" title="EDITAR"><img src="<?php echo $CONFIG->URL_ROOT ?>/includes/imgs/view.png" width="14" height="12" ALT="EDITAR" title="EDITAR"></a> &nbsp;&nbsp;
+                        <input type="hidden" name="deletarusuario" value="<?php echo $x['cpf'] ?>" />
                         <input type="image" src="<?php echo $CONFIG->URL_ROOT ?>/includes/imgs/deletar.gif" width="11" height="11" name="DELETAR" ALT="DELETAR" VALUE="DELETAR" title="DELETAR">
                 </form>
 
             </td>
             </tr>
 
-        <? endwhile ?>
+        <?php endwhile ?>
 
         </table>
 
-    <? endif ?>
-    <?
+    <?php endif ?>
+    <?php
 }
 
 //function usuarios_inscritos()
@@ -73,7 +73,7 @@ function buscar_usuarios($listar, $busca) {
     global $_arraySearch, $_arrayReplace, $DB, $CONFIG;
     ?>
 
-    <?
+    <?php
     $query = "SELECT * FROM participantes WHERE cpf NOT IN('24985405809','16719501860') AND (NOME LIKE '%$busca%' OR CPF LIKE '%$busca%' OR RG LIKE '%$busca%') ";
     if ($listar == "1") {
         $query .= "AND confirmado='0'";
@@ -86,9 +86,9 @@ function buscar_usuarios($listar, $busca) {
         echo "<i>Nenhum usuário cadastrado.</i>";
     else:
         ?>
-        <? if ($busca != '') : ?>
-            <b>BUSCA "<?= $busca; ?>" EM <? if ($listar == '0'): ?>TODOS OS USUARIOS<? endif ?><? if ($listar == 1): ?>USUÁRIOS NÃO ATIVOS<? endif ?><? if ($listar == 2): ?>USUÁRIOS ATIVOS<? endif ?>: (<?= mysql_num_rows($result) ?>)</b><? else: ?>
-            <b>EXIBINDO <? if ($listar == '0'): ?>TODOS OS USUARIOS<? endif ?><? if ($listar == 1): ?>USUÁRIOS NÃO ATIVOS<? endif ?><? if ($listar == 2): ?>USUÁRIOS ATIVOS<? endif ?>: (<?= mysql_num_rows($result) ?>)</b><? endif; ?>
+        <?php if ($busca != '') : ?>
+            <b>BUSCA "<?php echo $busca; ?>" EM <?php if ($listar == '0'): ?>TODOS OS USUARIOS<?php endif ?><?php if ($listar == 1): ?>USUÁRIOS NÃO ATIVOS<?php endif ?><?php if ($listar == 2): ?>USUÁRIOS ATIVOS<?php endif ?>: (<?php echo mysql_num_rows($result) ?>)</b><?php else: ?>
+            <b>EXIBINDO <?php if ($listar == '0'): ?>TODOS OS USUARIOS<?php endif ?><?php if ($listar == 1): ?>USUÁRIOS NÃO ATIVOS<?php endif ?><?php if ($listar == 2): ?>USUÁRIOS ATIVOS<?php endif ?>: (<?php echo mysql_num_rows($result) ?>)</b><?php endif; ?>
         <br/><br class="noshow"/>
 
         <table cellspacing="0">
@@ -102,35 +102,35 @@ function buscar_usuarios($listar, $busca) {
                 <th>AÇÕES</th>
             </tr>
 
-            <?
+            <?php
             while ($x = mysql_fetch_array($result)):
                 $x['nome'] = str_replace($_arraySearch, $_arrayReplace, strtoupper($x['nome']));
                 ?>
 
                 <tr>
-                    <td><?= $x['nome'] ?></td>
-                    <td><?= strtolower($x['email']) ?></td>	
-                    <td align="center"><?= $x['cpf'] ?></td>
-                <form method="post" action="<?= $Esta_Pagina ?>">
+                    <td><?php echo $x['nome'] ?></td>
+                    <td><?php echo strtolower($x['email']) ?></td>	
+                    <td align="center"><?php echo $x['cpf'] ?></td>
+                <form method="post" action="<?php echo $Esta_Pagina ?>">
                     <td align="center">
-                        <a href='<?= $CONFIG->URL_ROOT ?>/?pag=admusuarioedit&usuario=<?= $x['cpf'] ?><?
+                        <a href='<?php echo $CONFIG->URL_ROOT ?>/?pag=admusuarioedit&usuario=<?php echo $x['cpf'] ?><?php
                         if (isset($_GET['SCT'])) {
                             echo '&SCT=' . $_GET['SCT'];
                         }
                         ?>' ALT="EDITAR" title="EDITAR"><img src="<?php echo $CONFIG->URL_ROOT ?>/includes/imgs/view.png" width="14" height="12" ALT="EDITAR" title="EDITAR"></a> &nbsp;&nbsp;
-                        <input type="hidden" name="deletarusuario" value="<?= $x['cpf'] ?>" />
+                        <input type="hidden" name="deletarusuario" value="<?php echo $x['cpf'] ?>" />
                         <input type="image" src="<?php echo $CONFIG->URL_ROOT ?>/includes/imgs/deletar.gif" width="11" height="11" name="DELETAR" ALT="DELETAR" VALUE="DELETAR" title="DELETAR">
                 </form>
 
             </td>
             </tr>
 
-        <? endwhile ?>
+        <?php endwhile ?>
 
         </table>
 
-    <? endif ?>
-    <?
+    <?php endif ?>
+    <?php
 }
 
 //function usuarios_inscritos()

@@ -1,4 +1,4 @@
-<?
+<?php
 
 // no direct access
 isset($CONFIG) or exit('Acesso Restrito');
@@ -99,8 +99,7 @@ function valCpf($cpf) {
             $dv = $digito[9] * 10 + $digito[10];
             if ($dv != $dv_informado) {
                 $status = false;
-            }
-            else
+            } else
                 $status = true;
         }//FECHA ELSE
     }//FECHA ELSE(is_numeric)

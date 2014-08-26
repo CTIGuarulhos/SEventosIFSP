@@ -62,14 +62,14 @@
         focus: function(delay, fn) {
             return typeof delay === "number" ?
                     this.each(function() {
-                var elem = this;
-                setTimeout(function() {
-                    $(elem).focus();
-                    if (fn) {
-                        fn.call(elem);
-                    }
-                }, delay);
-            }) :
+                        var elem = this;
+                        setTimeout(function() {
+                            $(elem).focus();
+                            if (fn) {
+                                fn.call(elem);
+                            }
+                        }, delay);
+                    }) :
                     this._focus.apply(this, arguments);
         },
         scrollParent: function() {
@@ -117,8 +117,8 @@
         disableSelection: function() {
             return this.bind(($.support.selectstart ? "selectstart" : "mousedown") +
                     ".ui-disableSelection", function(event) {
-                event.preventDefault();
-            });
+                        event.preventDefault();
+                    });
         },
         enableSelection: function() {
             return this.unbind(".ui-disableSelection");
@@ -129,11 +129,11 @@
         var side = name === "Width" ? ["Left", "Right"] : ["Top", "Bottom"],
                 type = name.toLowerCase(),
                 orig = {
-            innerWidth: $.fn.innerWidth,
-            innerHeight: $.fn.innerHeight,
-            outerWidth: $.fn.outerWidth,
-            outerHeight: $.fn.outerHeight
-        };
+                    innerWidth: $.fn.innerWidth,
+                    innerHeight: $.fn.innerHeight,
+                    outerWidth: $.fn.outerWidth,
+                    outerHeight: $.fn.outerHeight
+                };
 
         function reduce(elem, size, border, margin) {
             $.each(side, function() {

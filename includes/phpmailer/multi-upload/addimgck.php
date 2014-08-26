@@ -1,4 +1,4 @@
-<?
+<?php
 //***************************************
 // This is downloaded from www.plus2net.com //
 /// You can distribute this code with the link to www.plus2net.com ///
@@ -19,7 +19,7 @@
     </head>
 
     <body bgcolor="#ffffff" text="#000000" link="#0000ff" vlink="#800080" alink="#ff0000">
-        <?
+        <?php
         while (list($key, $value) = each($_FILES['images']['name'])) {
             if (!empty($value)) {
                 $filename = $value;

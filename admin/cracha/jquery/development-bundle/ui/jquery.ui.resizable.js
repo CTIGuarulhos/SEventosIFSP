@@ -176,19 +176,19 @@
                 $(this.element)
                         .addClass("ui-resizable-autohide")
                         .hover(function() {
-                    if (o.disabled)
-                        return;
-                    $(this).removeClass("ui-resizable-autohide");
-                    self._handles.show();
-                },
-                        function() {
                             if (o.disabled)
                                 return;
-                            if (!self.resizing) {
-                                $(this).addClass("ui-resizable-autohide");
-                                self._handles.hide();
-                            }
-                        });
+                            $(this).removeClass("ui-resizable-autohide");
+                            self._handles.show();
+                        },
+                                function() {
+                                    if (o.disabled)
+                                        return;
+                                    if (!self.resizing) {
+                                        $(this).addClass("ui-resizable-autohide");
+                                        self._handles.hide();
+                                    }
+                                });
             }
 
             //Initialize the mouse interaction
@@ -210,12 +210,12 @@
                 var wrapper = this.element;
                 wrapper.after(
                         this.originalElement.css({
-                    position: wrapper.css('position'),
-                    width: wrapper.outerWidth(),
-                    height: wrapper.outerHeight(),
-                    top: wrapper.css('top'),
-                    left: wrapper.css('left')
-                })
+                            position: wrapper.css('position'),
+                            width: wrapper.outerWidth(),
+                            height: wrapper.outerHeight(),
+                            top: wrapper.css('top'),
+                            left: wrapper.css('left')
+                        })
                         ).remove();
             }
 

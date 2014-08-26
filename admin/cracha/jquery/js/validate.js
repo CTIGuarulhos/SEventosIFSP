@@ -129,12 +129,12 @@
 
             var data = $.validator.normalizeRules(
                     $.extend(
-                    {},
-                    $.validator.metadataRules(element),
-                    $.validator.classRules(element),
-                    $.validator.attributeRules(element),
-                    $.validator.staticRules(element)
-                    ), element);
+                            {},
+                            $.validator.metadataRules(element),
+                            $.validator.classRules(element),
+                            $.validator.attributeRules(element),
+                            $.validator.staticRules(element)
+                            ), element);
 
             // make sure required is at front
             if (data.required) {
@@ -428,15 +428,15 @@
                         .not(":submit, :reset, :image, [disabled]")
                         .not(this.settings.ignore)
                         .filter(function() {
-                    !this.name && validator.settings.debug && window.console && console.error("%o has no name assigned", this);
+                            !this.name && validator.settings.debug && window.console && console.error("%o has no name assigned", this);
 
-                    // select only the first element for each name, and only those with rules specified
-                    if (this.name in rulesCache || !validator.objectLength($(this).rules()))
-                        return false;
+                            // select only the first element for each name, and only those with rules specified
+                            if (this.name in rulesCache || !validator.objectLength($(this).rules()))
+                                return false;
 
-                    rulesCache[this.name] = true;
-                    return true;
-                });
+                            rulesCache[this.name] = true;
+                            return true;
+                        });
             },
             clean: function(selector) {
                 return $(selector)[0];

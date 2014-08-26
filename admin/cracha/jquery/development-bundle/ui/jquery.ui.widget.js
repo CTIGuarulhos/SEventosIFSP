@@ -184,8 +184,8 @@
                     .unbind("." + this.widgetName)
                     .removeAttr("aria-disabled")
                     .removeClass(
-                    this.widgetBaseClass + "-disabled " +
-                    "ui-state-disabled");
+                            this.widgetBaseClass + "-disabled " +
+                            "ui-state-disabled");
         },
         widget: function() {
             return this.element;

@@ -77,7 +77,7 @@ if (isset($dadosOK) && $dadosOK === true) {
 ?>
 
 
-<form class="forms contato" name="contato" method="post" action="<? echo $Esta_Pagina; ?>">
+<form class="forms contato" name="contato" method="post" action="<?php echo $Esta_Pagina; ?>">
 
     <?php HTML_RequiredMessage() ?>
 
@@ -97,7 +97,7 @@ if (isset($dadosOK) && $dadosOK === true) {
     <textarea name="msg" id="msg"><?php echo $msg ?></textarea>
     <br/><br/>
 
-    <td align="center"><img name="codigo" src="includes/gdimg.php?letrasgd=<?php echo $_SESSION['letrasgd'];?>" alt="codigo" /></td><br><br>
+    <td align="center"><img name="codigo" src="includes/gdimg.php?letrasgd=<?php echo $_SESSION['letrasgd']; ?>" alt="codigo" /></td><br><br>
 
 
     <label for="codigo"><?php HTML_RequiredField() ?>Código imagem:</label><br/>

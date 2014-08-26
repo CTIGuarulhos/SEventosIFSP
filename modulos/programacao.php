@@ -46,7 +46,7 @@ if (isset($_SESSION['temp']['inscricaoOK'])) {
 }
 ?>
 
-<?
+<?php
 if (@mysql_num_rows($eventos) > 0):  //if 01
 
     while ($evento = mysql_fetch_array($eventos)):
@@ -82,57 +82,57 @@ if (@mysql_num_rows($eventos) > 0):  //if 01
             ?>
 
             <div class="box-data">
-                <h1 class="evento-data"><?= $data_evento . ' - ' . $diaSemana[date('w', $ts_evento)] ?></h1>
-                <?
+                <h1 class="evento-data"><?php echo $data_evento . ' - ' . $diaSemana[date('w', $ts_evento)] ?></h1>
+                <?php
                 $data = $evento['data'];
             }
             ?>
 
             <div class="evento">
-                <h2><?= $evento['titulo'] ?><? if ($evento['tipo'] != 0): ?> - <b><?= $tipo[$evento['tipo']] ?></b><? endif ?></h2>
+                <h2><?php echo $evento['titulo'] ?><?php if ($evento['tipo'] != 0): ?> - <b><?php echo $tipo[$evento['tipo']] ?></b><?php endif ?></h2>
 
-                <? if (strlen($evento['descricao'])): ?>
+                <?php if (strlen($evento['descricao'])): ?>
                     <br/>
-                    <p><?= nl2br($evento['descricao']) ?></p>
-                <? endif ?>
+                    <p><?php echo nl2br($evento['descricao']) ?></p>
+                <?php endif ?>
 
-                <? if ($evento['tipo']): ?>
-                    <? if (($total_vagas - $inscritos) > 0): ?>
-                        <small style="float:right">Vagas: <?= $total_vagas - $inscritos ?> de <?= $total_vagas ?></small>
-                    <? endif ?>
-                <? endif ?>
-                <small>Local: <?= $evento['local'] ?></small>
-                <?
+                <?php if ($evento['tipo']): ?>
+                    <?php if (($total_vagas - $inscritos) > 0): ?>
+                        <small style="float:right">Vagas: <?php echo $total_vagas - $inscritos ?> de <?php echo $total_vagas ?></small>
+                    <?php endif ?>
+                <?php endif ?>
+                <small>Local: <?php echo $evento['local'] ?></small>
+                <?php
                 $query = "SELECT cod_palestrante FROM part_palestrante WHERE cod_palestra='{$evento['id']}'";
                 $palestrantes = $DB->Query($query);
                 if (@mysql_num_rows($palestrantes) > 0):  //if 01
                     if (@mysql_num_rows($palestrantes) == 1):  //if 01 
                         ?>
                         <br><small>Palestrante:</small>
-                    <? else : ?>
+                    <?php else : ?>
                         <br><small>Palestrantes:</small>
-                    <? endif; ?>
-                    <? while ($palestrante = mysql_fetch_array($palestrantes)): ?>
-                        <?
+                    <?php endif; ?>
+                    <?php while ($palestrante = mysql_fetch_array($palestrantes)): ?>
+                        <?php
                         $query = "SELECT palestrante FROM palestrante WHERE codigo='{$palestrante['cod_palestrante']}'";
                         $nomepalestrante = mysql_fetch_array($DB->Query($query));
                         ?>
-                        <small><?= $nomepalestrante['palestrante'] ?></small><br>
-                    <? endwhile; ?>
-                <? endif; ?>
+                        <small><?php echo $nomepalestrante['palestrante'] ?></small><br>
+                    <?php endwhile; ?>
+                <?php endif; ?>
 
                 <br/>
-                <? if ($inscricoes_abertas === true): ?>
-                    <a class="inscricao" href="<?php echo $CONFIG->URL_ROOT ?>/inscrevase.php?evento=<?= $evento['id'] ?>">INSCREVA-SE</a>
-                <? else: ?>
-                    <? if ($evento['tipo']): ?>
-                        <small style="float:right"><?= $inscricoes_abertas ?></small>
-                    <? endif ?>
-                <? endif ?>
-                <small>Data: <?= $data_evento ?>&nbsp;&nbsp;<b>|</b>&nbsp;&nbsp;Horário: <?= $hora_evento ?>&nbsp;&nbsp;<b>|</b>&nbsp;&nbsp;Duração aprox.: <?= $evento['duracao'] ?> min.</small>
+                <?php if ($inscricoes_abertas === true): ?>
+                    <a class="inscricao" href="<?php echo $CONFIG->URL_ROOT ?>/inscrevase.php?evento=<?php echo $evento['id'] ?>">INSCREVA-SE</a>
+                <?php else: ?>
+                    <?php if ($evento['tipo']): ?>
+                        <small style="float:right"><?php echo $inscricoes_abertas ?></small>
+                    <?php endif ?>
+                <?php endif ?>
+                <small>Data: <?php echo $data_evento ?>&nbsp;&nbsp;<b>|</b>&nbsp;&nbsp;Horário: <?php echo $hora_evento ?>&nbsp;&nbsp;<b>|</b>&nbsp;&nbsp;Duração aprox.: <?php echo $evento['duracao'] ?> min.</small>
             </div>
 
-            <?
+            <?php
         endwhile;
         echo "</div>";
     else:  //if 01
@@ -147,4 +147,4 @@ if (@mysql_num_rows($eventos) > 0):  //if 01
         <?php endif; ?><br><br>
         <h3>Em Construção</h3>
         <!--<h3>Nenhum evento disponível</h3> -->
-                                                                                <? endif  //if 01 ?>
+                                                                                                                <?php endif  //if 01 ?>

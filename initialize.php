@@ -107,7 +107,7 @@ if (mysql_num_rows($DB->Query($query)) <= 0) {
 }
 $query = "SELECT * FROM edicao WHERE SEMTEC = '$SCT_ID'";
 $EVENTO = mysql_fetch_array($DB->Query($query));
-if (!file_exists($CONFIG->DIR_ROOT . "/templates/" . $EVENTO['TEMPLATE']) and !is_dir($dir)) {
+if (!file_exists($CONFIG->DIR_ROOT . "/templates/" . $EVENTO['TEMPLATE']) and ! is_dir($dir)) {
     $EVENTO['TEMPLATE'] = "Default";
 }
 ?>

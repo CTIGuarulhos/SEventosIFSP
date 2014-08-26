@@ -23,11 +23,11 @@
             this.element
                     .addClass("ui-progressbar ui-widget ui-widget-content ui-corner-all")
                     .attr({
-                role: "progressbar",
-                "aria-valuemin": this.min,
-                "aria-valuemax": this.options.max,
-                "aria-valuenow": this._value()
-            });
+                        role: "progressbar",
+                        "aria-valuemin": this.min,
+                        "aria-valuemax": this.options.max,
+                        "aria-valuenow": this._value()
+                    });
 
             this.valueDiv = $("<div class='ui-progressbar-value ui-widget-header ui-corner-left'></div>")
                     .appendTo(this.element);

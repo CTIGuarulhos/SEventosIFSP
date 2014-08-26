@@ -60,8 +60,8 @@
                     .removeData("draggable")
                     .unbind(".draggable")
                     .removeClass("ui-draggable"
-                    + " ui-draggable-dragging"
-                    + " ui-draggable-disabled");
+                            + " ui-draggable-dragging"
+                            + " ui-draggable-disabled");
             this._mouseDestroy();
 
             return this;
@@ -83,9 +83,9 @@
                 $(o.iframeFix === true ? "iframe" : o.iframeFix).each(function() {
                     $('<div class="ui-draggable-iframeFix" style="background: #fff;"></div>')
                             .css({
-                        width: this.offsetWidth + "px", height: this.offsetHeight + "px",
-                        position: "absolute", opacity: "0.001", zIndex: 1000
-                    })
+                                width: this.offsetWidth + "px", height: this.offsetHeight + "px",
+                                position: "absolute", opacity: "0.001", zIndex: 1000
+                            })
                             .css($(this).offset())
                             .appendTo("body");
                 });
@@ -258,9 +258,9 @@
                     .find("*")
                     .andSelf()
                     .each(function() {
-                if (this == event.target)
-                    handle = true;
-            });
+                        if (this == event.target)
+                            handle = true;
+                    });
 
             return handle;
 

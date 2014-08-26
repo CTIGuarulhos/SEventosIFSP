@@ -27,9 +27,9 @@
                 from: mode == 'hide'
                         ? original
                         : {
-                    height: original.height * factor,
-                    width: original.width * factor
-                }
+                            height: original.height * factor,
+                            width: original.width * factor
+                        }
             });
 
             elem.effect('scale', o.options, o.duration, o.callback);

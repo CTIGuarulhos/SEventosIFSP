@@ -8,7 +8,7 @@ function usuarios_inscritos($listar) {
     global $_arraySearch, $_arrayReplace, $DB, $CONFIG;
     ?>
 
-    <?
+    <?php
     if ($listar == 1)
         $query = "SELECT * FROM participantes WHERE RA IS NOT NULL AND cpf NOT IN('24985405809','16719501860') ORDER BY nome";
     elseif ($listar == 2)
@@ -21,7 +21,7 @@ function usuarios_inscritos($listar) {
     else:
         ?>
 
-        <b>USUÁRIOS INSCRITOS: (<?= mysql_num_rows($result) ?>)</b>
+        <b>USUÁRIOS INSCRITOS: (<?php echo mysql_num_rows($result) ?>)</b>
         <br/><br class="noshow"/>
 
         <table cellspacing="0">
@@ -31,38 +31,38 @@ function usuarios_inscritos($listar) {
             <tr>
                 <th>NOME</th>
 
-                <? if ($listar == 1): ?>
+                <?php if ($listar == 1): ?>
                     <th align="center">PRONTUÁRIO</th>
-                <? else: ?>
+                <?php else: ?>
                     <th align="center">DOCUMENTO</th>
-                <? endif ?>
+                <?php endif ?>
 
                 <th align="center" width="200">ASSINATURA</th>
             </tr>
 
-            <?
+            <?php
             while ($x = mysql_fetch_array($result)):
                 $x['nome'] = str_replace($_arraySearch, $_arrayReplace, strtoupper($x['nome']));
                 ?>
 
                 <tr>
-                    <td><?= $x['nome'] ?></td>
+                    <td><?php echo $x['nome'] ?></td>
 
-                    <? if ($listar == 1): ?>
-                        <td align="center"><?= strlen($x['RA']) ? substr($x['RA'], 0, 6) . "-" . strtoupper(substr($x['RA'], 6, 1)) : "<b>-------</b>" ?></td>
-                    <? else: ?>
-                        <td align="center"><?= $x['cpf'] ?></td>
-                    <? endif ?>
+                    <?php if ($listar == 1): ?>
+                        <td align="center"><?php echo strlen($x['RA']) ? substr($x['RA'], 0, 6) . "-" . strtoupper(substr($x['RA'], 6, 1)) : "<b>-------</b>" ?></td>
+                    <?php else: ?>
+                        <td align="center"><?php echo $x['cpf'] ?></td>
+                    <?php endif ?>
 
                     <td>&nbsp;</td>
                 </tr>
 
-            <? endwhile ?>
+            <?php endwhile ?>
 
         </table>
 
-    <? endif ?>
-    <?
+    <?php endif ?>
+    <?php
 }
 
 //function usuarios_inscritos()
@@ -71,7 +71,7 @@ function usuarios_por_evento($evento_id, $listar) {
     global $_arraySearch, $_arrayReplace, $DB, $CONFIG;
     ?>
 
-    <?
+    <?php
     $query = "SELECT titulo, data, hora, local, duracao FROM eventos WHERE id='$evento_id'";
     $Revento = mysql_fetch_array($DB->Query($query));
     $query = "SELECT * FROM participantes p, participacoes t WHERE t.cpf_participante = p.cpf AND t.id_evento='$evento_id' ";
@@ -86,8 +86,8 @@ function usuarios_por_evento($evento_id, $listar) {
     else:
         ?>
 
-        <? $Revento['titulo'] = str_replace($_arraySearch, $_arrayReplace, strtoupper($Revento['titulo'])); ?>
-        <b>USUÁRIOS INSCRITOS POR EVENTO: <i><?= $Revento['titulo'] ?></i> (<?= mysql_num_rows($result) ?>)</b>
+        <?php $Revento['titulo'] = str_replace($_arraySearch, $_arrayReplace, strtoupper($Revento['titulo'])); ?>
+        <b>USUÁRIOS INSCRITOS POR EVENTO: <i><?php echo $Revento['titulo'] ?></i> (<?php echo mysql_num_rows($result) ?>)</b>
         <br/><br class="noshow"/>
 
         <table cellspacing="0">
@@ -97,16 +97,16 @@ function usuarios_por_evento($evento_id, $listar) {
             <tr>
                 <th>NOME</th>
 
-                <? if ($listar == 1): ?>
+                <?php if ($listar == 1): ?>
                     <th align="center">PRONTUÁRIO</th>
-                <? else: ?>
+                <?php else: ?>
                     <th align="center">DOCUMENTO</th>
-                <? endif ?>
+                <?php endif ?>
 
                 <th align="center" width="200">ASSINATURA</th>
             </tr>
 
-            <?
+            <?php
             while ($x = mysql_fetch_array($result)):
                 $x['nome'] = str_replace($_arraySearch, $_arrayReplace, strtoupper($x['nome']));
                 if ($listar == 2) {
@@ -115,23 +115,23 @@ function usuarios_por_evento($evento_id, $listar) {
                 ?>
 
                 <tr>
-                    <td><?= $x['nome'] ?></td>
+                    <td><?php echo $x['nome'] ?></td>
 
-                    <? if ($listar == 1): ?>
-                        <td align="center"><?= strlen($x['RA']) ? substr($x['RA'], 0, 6) . "-" . strtoupper(substr($x['RA'], 6, 1)) : "<b>-------</b>" ?></td>
-                    <? else: ?>
-                        <td align="center"><?= $x['cpf'] ?></td>
-                    <? endif ?>
+                    <?php if ($listar == 1): ?>
+                        <td align="center"><?php echo strlen($x['RA']) ? substr($x['RA'], 0, 6) . "-" . strtoupper(substr($x['RA'], 6, 1)) : "<b>-------</b>" ?></td>
+                    <?php else: ?>
+                        <td align="center"><?php echo $x['cpf'] ?></td>
+                    <?php endif ?>
 
                     <td>&nbsp;</td>
                 </tr>
 
-            <? endwhile ?>
+            <?php endwhile ?>
 
         </table>
 
-    <? endif ?>
-    <?
+    <?php endif ?>
+    <?php
 }
 
 //function usuarios_por_evento()

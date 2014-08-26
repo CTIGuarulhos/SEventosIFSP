@@ -8,7 +8,7 @@ function usuarios_inscritos($listar) {
     global $_arraySearch, $_arrayReplace, $DB, $CONFIG;
     ?>
 
-    <?
+    <?php
     if ($listar == 1)
         $query = "SELECT * FROM participantes WHERE RA IS NOT NULL AND cpf NOT IN('24985405809','16719501860') AND CONFIRMADO = '1'  ORDER BY nome";
     elseif ($listar == 2)
@@ -22,7 +22,7 @@ function usuarios_inscritos($listar) {
     else:
         ?>
 
-        <b>USUÁRIOS INSCRITOS: (<?= mysql_num_rows($result) ?>)</b>
+        <b>USUÁRIOS INSCRITOS: (<?php echo mysql_num_rows($result) ?>)</b>
         <br/><br class="noshow"/>
 
         <table cellspacing="0">
@@ -32,40 +32,40 @@ function usuarios_inscritos($listar) {
             <tr>
                 <th>NOME</th>
 
-                <? if ($listar == 1): ?>
+                <?php if ($listar == 1): ?>
                     <th align="center">PRONTUÁRIO</th>
-                <? else: ?>
+                <?php else: ?>
                     <th align="center">DOCUMENTO</th>
-                <? endif ?>
+                <?php endif ?>
 
                 <th align="center" width="200">ASSINATURA</th>
             </tr>
 
-            <?
+            <?php
             while ($x = mysql_fetch_array($result)):
                 $x['nome'] = str_replace($_arraySearch, $_arrayReplace, strtoupper($x['nome']));
                 ?>
 
                 <tr>
-                    <td><a href="javascript:void();" onclick="AbreCracha('<?php echo $CONFIG->URL_ROOT ?>/admin/cracha/?nome=<?= $x['nome'] ?>&instituicao=Visitante&tipoParticipante=<?= $x['cpf'] ?>&print=1');"><font color="black"><?= $x['nome'] ?></font></a></td>
+                    <td><a href="javascript:void();" onclick="AbreCracha('<?php echo $CONFIG->URL_ROOT ?>/admin/cracha/?nome=<?php echo $x['nome'] ?>&instituicao=Visitante&tipoParticipante=<?php echo $x['cpf'] ?>&print=1');"><font color="black"><?php echo $x['nome'] ?></font></a></td>
 
-                    <? if ($listar == 1): ?>
-                        <td align="center"><?= strlen($x['RA']) ? substr($x['RA'], 0, 6) . "-" . strtoupper(substr($x['RA'], 6, 1)) : "<b>-------</b>" ?></td>
-                    <? else: ?>
-                        <td align="center"><?= $x['cpf'] ?></td>
-                    <? endif ?>
+                    <?php if ($listar == 1): ?>
+                        <td align="center"><?php echo strlen($x['RA']) ? substr($x['RA'], 0, 6) . "-" . strtoupper(substr($x['RA'], 6, 1)) : "<b>-------</b>" ?></td>
+                    <?php else: ?>
+                        <td align="center"><?php echo $x['cpf'] ?></td>
+                    <?php endif ?>
 
                     <td>&nbsp;</td>
                 </tr>
 
-            <? endwhile ?>
+            <?php endwhile ?>
 
 
 
         </table>
 
-    <? endif ?>
-    <?
+    <?php endif ?>
+    <?php
 }
 
 //function usuarios_inscritos()
@@ -74,7 +74,7 @@ function busca_usuario($busca) {
     global $_arraySearch, $_arrayReplace, $DB, $CONFIG;
     ?>
 
-    <?
+    <?php
     $busca = str_replace(".", "", $busca);
 
     //if ($busca <> "")
@@ -89,7 +89,7 @@ function busca_usuario($busca) {
     else:
         ?>
 
-        <b>USUÁRIOS ENCONTRADOS: (<?= mysql_num_rows($result) ?>)</b>
+        <b>USUÁRIOS ENCONTRADOS: (<?php echo mysql_num_rows($result) ?>)</b>
         <br/><br class="noshow"/>
 
         <table cellspacing="0">
@@ -99,40 +99,40 @@ function busca_usuario($busca) {
             <tr>
                 <th>NOME</th>
 
-                <? if ($listar == 1): ?>
+                <?php if ($listar == 1): ?>
                     <th align="center">PRONTUÁRIO</th>
-                <? else: ?>
+                <?php else: ?>
                     <th align="center">DOCUMENTO</th>
-                <? endif ?>
+                <?php endif ?>
 
                 <th align="center" width="200">ASSINATURA</th>
             </tr>
 
-            <?
+            <?php
             while ($x = mysql_fetch_array($result)):
                 $x['nome'] = str_replace($_arraySearch, $_arrayReplace, strtoupper($x['nome']));
                 ?>
 
                 <tr>
-                    <td><a href="javascript:void();" onclick="AbreCracha('<?php echo $CONFIG->URL_ROOT ?>/admin/cracha/?nome=<?= $x['nome'] ?>&instituicao=Visitante&tipoParticipante=<?= $x['cpf'] ?>&print=1');"><font color="black"><?= $x['nome'] ?></font></a></td>
+                    <td><a href="javascript:void();" onclick="AbreCracha('<?php echo $CONFIG->URL_ROOT ?>/admin/cracha/?nome=<?php echo $x['nome'] ?>&instituicao=Visitante&tipoParticipante=<?php echo $x['cpf'] ?>&print=1');"><font color="black"><?php echo $x['nome'] ?></font></a></td>
 
-                    <? if ($listar == 1): ?>
-                        <td align="center"><?= strlen($x['RA']) ? substr($x['RA'], 0, 6) . "-" . strtoupper(substr($x['RA'], 6, 1)) : "<b>-------</b>" ?></td>
-                    <? else: ?>
-                        <td align="center"><?= substr($x['cpf'], 0, 3) . "." . substr($x['cpf'], 3, 3) . "." . substr($x['cpf'], 6, 3) . "-" . substr($x['cpf'], 9, 2) ?></td>
-                    <? endif ?>
+                    <?php if ($listar == 1): ?>
+                        <td align="center"><?php echo strlen($x['RA']) ? substr($x['RA'], 0, 6) . "-" . strtoupper(substr($x['RA'], 6, 1)) : "<b>-------</b>" ?></td>
+                    <?php else: ?>
+                        <td align="center"><?php echo substr($x['cpf'], 0, 3) . "." . substr($x['cpf'], 3, 3) . "." . substr($x['cpf'], 6, 3) . "-" . substr($x['cpf'], 9, 2) ?></td>
+                    <?php endif ?>
 
                     <td>&nbsp;</td>
                 </tr>
 
-            <? endwhile ?>
+            <?php endwhile ?>
 
 
 
         </table>
 
-    <? endif ?>
-    <?
+    <?php endif ?>
+    <?php
 }
 
 //function usuarios_inscritos()
@@ -141,7 +141,7 @@ function usuarios_por_evento($evento_id, $listar) {
     global $_arraySearch, $_arrayReplace, $CONFIG, $DB;
     ?>
 
-    <?
+    <?php
     $query = "SELECT * FROM eventos WHERE id='$evento_id'";
     $Revento = mysql_fetch_array($DB->Query($query));
     $query = "SELECT * FROM participantes p, participacoes t WHERE t.cpf_participante = p.cpf AND t.id_evento='$evento_id' ";
@@ -156,13 +156,13 @@ function usuarios_por_evento($evento_id, $listar) {
     else:
         ?>
 
-        <?
+        <?php
         $Revento['titulo'] = str_replace($_arraySearch, $_arrayReplace, strtoupper($Revento['titulo']));
         $dt = date_create($Revento['data']);         //datetime
         $data_evento = date_format($dt, "d/m/Y");   //string - data do evento
         $hora_evento = substr($Revento['hora'], 0, 5); //string - hora do evento 
         ?>
-        <b>EVENTO <?= $Revento['id'] ?>: <i><?= $Revento['titulo'] ?></i> (<?= mysql_num_rows($result) ?>/<?= $Revento['vagas'] ?>)</b><br>Local: <?= $Revento['local'] ?><br>Data: <?= $data_evento ?>&nbsp;&nbsp;<b>|</b>&nbsp;&nbsp;Horário: <?= $hora_evento ?>&nbsp;&nbsp;<b>|</b>&nbsp;&nbsp;Duração aprox.: <?= $Revento['duracao'] ?> min.
+        <b>EVENTO <?php echo $Revento['id'] ?>: <i><?php echo $Revento['titulo'] ?></i> (<?php echo mysql_num_rows($result) ?>/<?php echo $Revento['vagas'] ?>)</b><br>Local: <?php echo $Revento['local'] ?><br>Data: <?php echo $data_evento ?>&nbsp;&nbsp;<b>|</b>&nbsp;&nbsp;Horário: <?php echo $hora_evento ?>&nbsp;&nbsp;<b>|</b>&nbsp;&nbsp;Duração aprox.: <?php echo $Revento['duracao'] ?> min.
         <br/><br class="noshow"/>
 
         <table cellspacing="0">
@@ -172,16 +172,16 @@ function usuarios_por_evento($evento_id, $listar) {
             <tr>
                 <th>NOME</th>
 
-                <? if ($listar == 1): ?>
+                <?php if ($listar == 1): ?>
                     <th align="center">PRONTUÁRIO</th>
-                <? else: ?>
+                <?php else: ?>
                     <th align="center">DOCUMENTO</th>
-                <? endif ?>
+                <?php endif ?>
 
                 <th align="center" width="200">ASSINATURA</th>
             </tr>
 
-            <?
+            <?php
             while ($x = mysql_fetch_array($result)):
                 $x['nome'] = str_replace($_arraySearch, $_arrayReplace, strtoupper($x['nome']));
                 if ($listar == 2) {
@@ -191,38 +191,38 @@ function usuarios_por_evento($evento_id, $listar) {
 
                 <tr>
 
-                    <td><a href="javascript:void();" onclick="AbreCracha('<?php echo $CONFIG->URL_ROOT ?>/admin/cracha/?nome=<?= $x['nome'] ?>&instituicao=Visitante&tipoParticipante=<?= $x['cpf'] ?>&print=1');"><font color="black"><?= $x['nome'] ?></font></a></td>
+                    <td><a href="javascript:void();" onclick="AbreCracha('<?php echo $CONFIG->URL_ROOT ?>/admin/cracha/?nome=<?php echo $x['nome'] ?>&instituicao=Visitante&tipoParticipante=<?php echo $x['cpf'] ?>&print=1');"><font color="black"><?php echo $x['nome'] ?></font></a></td>
 
-                    <? if ($listar == 1): ?>
-                        <td align="center"><?= strlen($x['RA']) ? substr($x['RA'], 0, 6) . "-" . strtoupper(substr($x['RA'], 6, 1)) : "<b>-------</b>" ?></td>
-                    <? else: ?>
-                        <td align="center"><?= $x['cpf'] ?></td>
-                    <? endif ?>
+                    <?php if ($listar == 1): ?>
+                        <td align="center"><?php echo strlen($x['RA']) ? substr($x['RA'], 0, 6) . "-" . strtoupper(substr($x['RA'], 6, 1)) : "<b>-------</b>" ?></td>
+                    <?php else: ?>
+                        <td align="center"><?php echo $x['cpf'] ?></td>
+                    <?php endif ?>
 
                     <td>&nbsp;</td>
                 </tr>
 
-            <? endwhile ?>
+            <?php endwhile ?>
 
-            <? $linhasvazias = 0 ?>
-            <? while ($linhasvazias < 10): ?> 
-                <? $linhasvazias = $linhasvazias + 1; ?>
+            <?php $linhasvazias = 0 ?>
+            <?php while ($linhasvazias < 10): ?> 
+                <?php $linhasvazias = $linhasvazias + 1; ?>
                 <tr>
-                    <td><font color='white'><? echo $linhasvazias; ?></font></td>
+                    <td><font color='white'><?php echo $linhasvazias; ?></font></td>
 
-                    <? if ($listar == 1): ?>
+                    <?php if ($listar == 1): ?>
                         <td align="center"></td>
-                    <? else: ?>
+                    <?php else: ?>
                         <td align="center"></td>
-                    <? endif ?>
+                    <?php endif ?>
 
                     <td align="center" width="200"></td>
                 </tr>
-            <? endwhile ?>
+            <?php endwhile ?>
         </table>
 
-    <? endif ?>
-    <?
+    <?php endif ?>
+    <?php
 }
 
 //function usuarios_por_evento()

@@ -95,7 +95,7 @@ if ($documento == "sim") {
     $textocertificado .= " RG <b>" . $CPF . "</b>";
 }
 $textocertificado .= " participou " . $tipo . " intitulad" . substr($tipo, -1, 1);
-$textocertificado .= " <b>" . $titulo . "</b> durante ". $EVENTO['GENERO'] ." <b>" . $EVENTO['NOME'];
+$textocertificado .= " <b>" . $titulo . "</b> durante " . $EVENTO['GENERO'] . " <b>" . $EVENTO['NOME'];
 $textocertificado .= "</b> realizada no dia " . $dia . " de " . $mes . " de " . $ano;
 $textocertificado .= " com duração de " . $duracao . " minutos.";
 
@@ -131,7 +131,7 @@ $assinaturainstituicao = $EVENTO['NOME_INST_COMP'];
         <meta name="robots" content="noindex,nofollow" />
         <script type="text/javascript" src="<?php echo $CONFIG->URL_ROOT ?>/includes/js/jquery.js"></script>
         <script type="text/javascript" src="<?php echo $CONFIG->URL_ROOT ?>/includes/js/certificado.js"></script>
-        <link rel="stylesheet" href="<?php echo $CONFIG->URL_ROOT ?>/templates/<? echo $EVENTO['TEMPLATE'] ?>/css/certificado.css" media="all" />
+        <link rel="stylesheet" href="<?php echo $CONFIG->URL_ROOT ?>/templates/<?php echo $EVENTO['TEMPLATE'] ?>/css/certificado.css" media="all" />
         <link href='http://fonts.googleapis.com/css?family=Roboto:400,400italic,700&subset=latin,latin-ext' rel='stylesheet' type='text/css'>   
             <title><?php echo $EVENTO['NOME'] ?> - CERTIFICADO</title>
 
@@ -218,7 +218,7 @@ $assinaturainstituicao = $EVENTO['NOME_INST_COMP'];
                             <tr>
                                 <td style="width: 25%"></td>
                                 <td style="width: 75%">
-                                    <? require($CONFIG->DIR_ROOT . "/templates/" . $EVENTO['TEMPLATE'] . "/certificado.php"); ?>
+                                    <?php require($CONFIG->DIR_ROOT . "/templates/" . $EVENTO['TEMPLATE'] . "/certificado.php"); ?>
                                 </td>
                             </tr>
                         </tbody>

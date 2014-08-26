@@ -71,12 +71,12 @@ if (tipoadmin(2, $USER->getCpf(), $SCT_ID)) {
 
     <h1>Inscrever Palestrante<span class="imgH1 geral"></span></h1>
     <br/>
-    <?
+    <?php
     $query = "SELECT titulo FROM eventos WHERE id = '$evento'";
     $result = mysql_fetch_array($DB->Query($query));
     ?>
     <p>
-        Insira os palestrantes do evento <?= $evento ?> - <?= $result['titulo'] ?>
+        Insira os palestrantes do evento <?php echo $evento ?> - <?php echo $result['titulo'] ?>
     </p>
 
     <?php
@@ -89,19 +89,19 @@ if (tipoadmin(2, $USER->getCpf(), $SCT_ID)) {
     ?>
 
     <?php HTML_RequiredMessage() ?>
-    <form class="forms" name="buscar_palestrante" method="post" action="<?= $Esta_Pagina ?>">
+    <form class="forms" name="buscar_palestrante" method="post" action="<?php echo $Esta_Pagina ?>">
         <label for="busca">Buscar Palestrante:</label>
-        <input type="text" name="busca" id="busca" maxlength="35" size="35" value="<?= $busca ?>" />
+        <input type="text" name="busca" id="busca" maxlength="35" size="35" value="<?php echo $busca ?>" />
         <br/><br/>
         <input type="submit" value="Buscar" />
     </form>
 
-    <form class="forms" name="alt_evento" method="post" action="<?= $Esta_Pagina ?>">
+    <form class="forms" name="alt_evento" method="post" action="<?php echo $Esta_Pagina ?>">
         <input type="hidden" name="alterar_evento" value="false" />
         <label for="evento"><?php HTML_RequiredField() ?>Palestrante:</label>
 
         <select name="cod_palestrante" style="width:650px; height: 30px">
-            <?
+            <?php
             if (@mysql_num_rows($Palestrantes) <= 0):
                 echo "<option value=\"0\"><i>Nenhum Palestrante Encontrado</i></option>";
             else:
@@ -109,8 +109,8 @@ if (tipoadmin(2, $USER->getCpf(), $SCT_ID)) {
                 while ($x = mysql_fetch_array($Palestrantes)):
                     ?>
 
-                    <option value="<?= $x['codigo'] ?>" <?= $evento_op2 == $x['codigo'] ? 'selected="selected"' : '' ?>><?= $x['codigo'] ?> - <?= $x['palestrante'] ?></option>
-                    <?
+                    <option value="<?php echo $x['codigo'] ?>" <?php echo $evento_op2 == $x['codigo'] ? 'selected="selected"' : '' ?>><?php echo $x['codigo'] ?> - <?php echo $x['palestrante'] ?></option>
+                    <?php
                 endwhile;
             endif;
             ?>
@@ -119,4 +119,4 @@ if (tipoadmin(2, $USER->getCpf(), $SCT_ID)) {
 
         <input type="submit" value="Inserir Participação" />
     </form>
-<? } ?>
+<?php } ?>

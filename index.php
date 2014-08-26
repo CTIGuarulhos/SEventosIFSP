@@ -11,7 +11,7 @@ if ($MODULO == "") {
 <!DOCTYPE html>
 <html lang="pt-BR">
     <head>
-        <!-- <?= date("d/m/Y H:i:s") ?> -->
+        <!-- <?php echo date("d/m/Y H:i:s") ?> -->
         <!-- INICIO HEAD -->
 
         <?php
@@ -24,13 +24,13 @@ if ($MODULO == "") {
         <!-- FIM HEAD -->
     </head>
     <body> 
-        <? if (isset($_GET['SCT'])): ?>
-            <? if ($_GET['SCT'] != $CONFIG->SCT_ID): ?>
+        <?php if (isset($_GET['SCT'])): ?>
+            <?php if ($_GET['SCT'] != $CONFIG->SCT_ID): ?>
                 <?php $paginaatual = str_replace("&SCT=" . $_GET['SCT'], "", $Esta_Pagina); ?>
                 <?php $paginaatual = str_replace("?SCT=" . $_GET['SCT'], "", $paginaatual); ?>
-                <div style="background-color:red;text-align:center"><font color="yellow">Você está acessando este site para visualização de eventos anteriores, para o evento atual <strong><a href="<?= $paginaatual ?>">Clique aqui</a></strong></font></div><br>
-            <? endif ?>
-        <? endif ?>
+                <div style="background-color:red;text-align:center"><font color="yellow">Você está acessando este site para visualização de eventos anteriores, para o evento atual <strong><a href="<?php echo $paginaatual ?>">Clique aqui</a></strong></font></div><br>
+            <?php endif ?>
+        <?php endif ?>
         <div id = "pagina">
             <!-- INICIO CABECALHO -->
             <div id="carregando"></div>
@@ -39,7 +39,7 @@ if ($MODULO == "") {
                     $(document).ready(function() {
                         $("#carregando").fadeIn(300);
                         title = "Alerta";
-    <?
+    <?php
     switch ($_SESSION['temp']['erro_login']) {
         case 1:
             echo 'msg = "Usu&aacute;rio não cadastrado.";';
@@ -58,9 +58,9 @@ if ($MODULO == "") {
                             $("#carregando").fadeOut(300);
                         });
                     });
-    <? unset($_SESSION['temp']['erro_login']); ?>
+    <?php unset($_SESSION['temp']['erro_login']); ?>
                 </script>
-            <? endif; ?>
+            <?php endif; ?>
             <div id = "banner" class="naoselecionavel">                
                 <?php
                 if (file_exists($CONFIG->DIR_ROOT . "/templates/" . $EVENTO['TEMPLATE'] . "/cabecalho.php")) {
@@ -71,7 +71,7 @@ if ($MODULO == "") {
             <div id = "menu">
                 <ul>
                     <?php require($CONFIG->DIR_ROOT . "/includes/menu.php") ?>
-                    <?
+                    <?php
                     if (file_exists($CONFIG->DIR_ROOT . "/templates/" . $EVENTO['TEMPLATE'] . "/menu.php")) {
                         require($CONFIG->DIR_ROOT . "/templates/" . $EVENTO['TEMPLATE'] . "/menu.php");
                     }
@@ -80,7 +80,7 @@ if ($MODULO == "") {
             </div>
             <!-- FIM CABECALHO -->
             <div id = "corpo">
-                <?
+                <?php
                 if ($MODULO == "home") {
                     if (file_exists($CONFIG->DIR_ROOT . "/templates/" . $EVENTO['TEMPLATE'] . "/fotos.php")) {
                         require($CONFIG->DIR_ROOT . "/templates/" . $EVENTO['TEMPLATE'] . "/fotos.php");
@@ -116,17 +116,17 @@ if ($MODULO == "") {
                             <div>
                                 <div id="fb-root">
                                 </div>
-                                <fb:like font="arial" href="<? echo $Esta_Pagina ?>" layout="box_count" send="true" show_faces="false" width="54"></fb:like>
+                                <fb:like font="arial" href="<?php echo $Esta_Pagina ?>" layout="box_count" send="true" show_faces="false" width="54"></fb:like>
                             </div>
                             <div>
                                 <g:plusone size="tall"></g:plusone>
                             </div>
                             <div>
-                                <a class="twitter-share-button" data-count="vertical" data-related="<? echo $EVENTO['NOME'] ?>" data-text="<? echo $EVENTO['NOME'] ?>" data-url="<? echo $Esta_Pagina ?>" href="http://twitter.com/share"></a>
+                                <a class="twitter-share-button" data-count="vertical" data-related="<?php echo $EVENTO['NOME'] ?>" data-text="<?php echo $EVENTO['NOME'] ?>" data-url="<?php echo $Esta_Pagina ?>" href="http://twitter.com/share"></a>
                             </div>
                             <div>
                                 <script src="http://platform.linkedin.com/in.js" type="text/javascript"></script>
-                                <script type="IN/Share" data-counter="top" title-text="<? echo $EVENTO['NOME'] ?>"></script>
+                                <script type="IN/Share" data-counter="top" title-text="<?php echo $EVENTO['NOME'] ?>"></script>
                             </div>
                         </div>
                     </div>
@@ -169,14 +169,14 @@ if ($MODULO == "") {
                     ?>
                     <script type="text/javascript" src="<?php echo $js['src'] ?>"></script>
                 <?php endforeach; ?>
-            <? endif ?>
+            <?php endif ?>
             <?php
             if (isset($header['css'])):
                 foreach ($header['css'] as $css):
                     ?>
                     <link type="text/css" rel="stylesheet" href="<?php echo $css['href'] ?>" media="<?php echo isset($css['media']) ? $css['media'] : "all" ?>" />
                 <?php endforeach; ?>
-            <? endif ?>
+            <?php endif ?>
             <div id="rodape">
                 <?php
                 if (file_exists($CONFIG->DIR_ROOT . "/templates/" . $EVENTO['TEMPLATE'] . "/rodape.php")) {
@@ -187,8 +187,8 @@ if ($MODULO == "") {
         </div>
 
         <div class="noprint"><center>Desenvolvido por <strong><a href="<?php echo $CONFIG->URL_ROOT ?>/?pag=sobre">Equipe</a></strong></center><br></div>
-                <?
-                if (isset($Return_URL) AND strlen($Return_URL) > 0 ) {
+                <?php
+                if (isset($Return_URL) AND strlen($Return_URL) > 0) {
                     header("Location: $Return_URL");
                     unset($Return_URL);
                 }
@@ -226,38 +226,38 @@ if ($MODULO == "") {
                     ?>
 
             <script>
-                        $(document).ready(function() {
-                            $('.fancybox').fancybox({
-                                prevEffect: 'none',
-                                nextEffect: 'none',
-                                width: '90%',
-                                height: '90%',
-                                autoSize: false
-                            });
+                    $(document).ready(function() {
+                        $('.fancybox').fancybox({
+                            prevEffect: 'none',
+                            nextEffect: 'none',
+                            width: '90%',
+                            height: '90%',
+                            autoSize: false
+                        });
 
 
-                        });
-                        $(document).ready(function() {
-                            $(".fancybox-button").fancybox({
-                                prevEffect: 'none',
-                                nextEffect: 'none',
-                                closeBtn: false,
-                                helpers: {
-                                    title: {type: 'inside'},
-                                    buttons: {}
-                                }
-                            });
-                        });
-                        $("#caroufredsel").carouFredSel();
-                        $("#caroufredsel a").fancybox({
-                            cyclic: true,
-                            onStart: function() {
-                                $("#caroufredsel").trigger("pause");
-                            },
-                            onClosed: function() {
-                                $("#caroufredsel").trigger("play");
+                    });
+                    $(document).ready(function() {
+                        $(".fancybox-button").fancybox({
+                            prevEffect: 'none',
+                            nextEffect: 'none',
+                            closeBtn: false,
+                            helpers: {
+                                title: {type: 'inside'},
+                                buttons: {}
                             }
                         });
+                    });
+                    $("#caroufredsel").carouFredSel();
+                    $("#caroufredsel a").fancybox({
+                        cyclic: true,
+                        onStart: function() {
+                            $("#caroufredsel").trigger("pause");
+                        },
+                        onClosed: function() {
+                            $("#caroufredsel").trigger("play");
+                        }
+                    });
 
             </script>
         <?php } ?>

@@ -148,16 +148,16 @@ jQuery.effects || (function($, undefined) {
 
     var classAnimationActions = ['add', 'remove', 'toggle'],
             shorthandStyles = {
-        border: 1,
-        borderBottom: 1,
-        borderColor: 1,
-        borderLeft: 1,
-        borderRight: 1,
-        borderTop: 1,
-        borderWidth: 1,
-        margin: 1,
-        padding: 1
-    };
+                border: 1,
+                borderBottom: 1,
+                borderColor: 1,
+                borderLeft: 1,
+                borderRight: 1,
+                borderTop: 1,
+                borderWidth: 1,
+                margin: 1,
+                padding: 1
+            };
 
     function getElementStyles() {
         var style = document.defaultView
@@ -378,13 +378,13 @@ jQuery.effects || (function($, undefined) {
                     wrapper = $('<div></div>')
                             .addClass('ui-effects-wrapper')
                             .css({
-                        fontSize: '100%',
-                        background: 'transparent',
-                        border: 'none',
-                        margin: 0,
-                        padding: 0
-                    }),
-                    active = document.activeElement;
+                                fontSize: '100%',
+                                background: 'transparent',
+                                border: 'none',
+                                margin: 0,
+                                padding: 0
+                            }),
+                            active = document.activeElement;
 
                     element.wrap(wrapper);
 
@@ -495,10 +495,10 @@ jQuery.effects || (function($, undefined) {
                     var args = _normalizeArguments.apply(this, arguments),
                             // TODO: make effects take actual parameters instead of a hash
                             args2 = {
-                        options: args[1],
-                        duration: args[2],
-                        callback: args[3]
-                    },
+                                options: args[1],
+                                duration: args[2],
+                                callback: args[3]
+                            },
                     mode = args2.options.mode,
                             effectMethod = $.effects[effect];
 

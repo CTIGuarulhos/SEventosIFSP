@@ -16,35 +16,35 @@
     var W = $(window),
             D = $(document),
             F = $.fancybox = function() {
-        F.open.apply(this, arguments);
-    },
+                F.open.apply(this, arguments);
+            },
             IE = navigator.userAgent.match(/msie/),
             didUpdate = null,
             isTouch = document.createTouch !== undefined,
             isQuery = function(obj) {
-        return obj && obj.hasOwnProperty && obj instanceof $;
-    },
+                return obj && obj.hasOwnProperty && obj instanceof $;
+            },
             isString = function(str) {
-        return str && $.type(str) === "string";
-    },
+                return str && $.type(str) === "string";
+            },
             isPercentage = function(str) {
-        return isString(str) && str.indexOf('%') > 0;
-    },
+                return isString(str) && str.indexOf('%') > 0;
+            },
             isScrollable = function(el) {
-        return (el && !(el.style.overflow && el.style.overflow === 'hidden') && ((el.clientWidth && el.scrollWidth > el.clientWidth) || (el.clientHeight && el.scrollHeight > el.clientHeight)));
-    },
+                return (el && !(el.style.overflow && el.style.overflow === 'hidden') && ((el.clientWidth && el.scrollWidth > el.clientWidth) || (el.clientHeight && el.scrollHeight > el.clientHeight)));
+            },
             getScalar = function(orig, dim) {
-        var value = parseInt(orig, 10) || 0;
+                var value = parseInt(orig, 10) || 0;
 
-        if (dim && isPercentage(orig)) {
-            value = F.getViewport()[ dim ] / 100 * value;
-        }
+                if (dim && isPercentage(orig)) {
+                    value = F.getViewport()[ dim ] / 100 * value;
+                }
 
-        return Math.ceil(value);
-    },
+                return Math.ceil(value);
+            },
             getValue = function(value, dim) {
-        return getScalar(value, dim) + 'px';
-    };
+                return getScalar(value, dim) + 'px';
+            };
 
     $.extend(F, {
         // The current version of fancyBox
@@ -402,36 +402,36 @@
                 clearTimeout(F.player.timer);
             },
                     set = function() {
-                clear();
+                        clear();
 
-                if (F.current && F.player.isActive) {
-                    F.player.timer = setTimeout(F.next, F.current.playSpeed);
-                }
-            },
+                        if (F.current && F.player.isActive) {
+                            F.player.timer = setTimeout(F.next, F.current.playSpeed);
+                        }
+                    },
                     stop = function() {
-                clear();
+                        clear();
 
-                $('body').unbind('.player');
+                        $('body').unbind('.player');
 
-                F.player.isActive = false;
+                        F.player.isActive = false;
 
-                F.trigger('onPlayEnd');
-            },
+                        F.trigger('onPlayEnd');
+                    },
                     start = function() {
-                if (F.current && (F.current.loop || F.current.index < F.group.length - 1)) {
-                    F.player.isActive = true;
+                        if (F.current && (F.current.loop || F.current.index < F.group.length - 1)) {
+                            F.player.isActive = true;
 
-                    $('body').bind({
-                        'afterShow.player onUpdate.player': set,
-                        'onCancel.player beforeClose.player': stop,
-                        'beforeLoad.player': clear
-                    });
+                            $('body').bind({
+                                'afterShow.player onUpdate.player': set,
+                                'onCancel.player beforeClose.player': stop,
+                                'beforeLoad.player': clear
+                            });
 
-                    set();
+                            set();
 
-                    F.trigger('onPlayStart');
-                }
-            };
+                            F.trigger('onPlayStart');
+                        }
+                    };
 
             if (action === true || (!F.player.isActive && action !== false)) {
                 start();
@@ -597,9 +597,9 @@
         getViewport: function() {
             var locked = (F.current && F.current.locked) || false,
                     rez = {
-                x: W.scrollLeft(),
-                y: W.scrollTop()
-            };
+                        x: W.scrollLeft(),
+                        y: W.scrollTop()
+                    };
 
             if (locked) {
                 rez.w = locked[0].clientWidth;
@@ -1350,10 +1350,10 @@
                     width = F.wrap.width() + margin[1] + margin[3],
                     height = F.wrap.height() + margin[0] + margin[2],
                     rez = {
-                position: 'absolute',
-                top: margin[0],
-                left: margin[3]
-            };
+                        position: 'absolute',
+                        top: margin[0],
+                        left: margin[3]
+                    };
 
             if (current.autoCenter && current.fixed && !onlyAbsolute && height <= viewport.h && width <= viewport.w) {
                 rez.position = 'fixed';
@@ -1842,31 +1842,31 @@
                 that = $(this),
                 selector = this.selector || '',
                 run = function(e) {
-            var what = $(this).blur(), idx = index, relType, relVal;
+                    var what = $(this).blur(), idx = index, relType, relVal;
 
-            if (!(e.ctrlKey || e.altKey || e.shiftKey || e.metaKey) && !what.is('.fancybox-wrap')) {
-                relType = options.groupAttr || 'data-fancybox-group';
-                relVal = what.attr(relType);
+                    if (!(e.ctrlKey || e.altKey || e.shiftKey || e.metaKey) && !what.is('.fancybox-wrap')) {
+                        relType = options.groupAttr || 'data-fancybox-group';
+                        relVal = what.attr(relType);
 
-                if (!relVal) {
-                    relType = 'rel';
-                    relVal = what.get(0)[ relType ];
-                }
+                        if (!relVal) {
+                            relType = 'rel';
+                            relVal = what.get(0)[ relType ];
+                        }
 
-                if (relVal && relVal !== '' && relVal !== 'nofollow') {
-                    what = selector.length ? $(selector) : that;
-                    what = what.filter('[' + relType + '="' + relVal + '"]');
-                    idx = what.index(this);
-                }
+                        if (relVal && relVal !== '' && relVal !== 'nofollow') {
+                            what = selector.length ? $(selector) : that;
+                            what = what.filter('[' + relType + '="' + relVal + '"]');
+                            idx = what.index(this);
+                        }
 
-                options.index = idx;
+                        options.index = idx;
 
-                // Stop an event from bubbling if everything is fine
-                if (F.open(what, options) !== false) {
-                    e.preventDefault();
-                }
-            }
-        };
+                        // Stop an event from bubbling if everything is fine
+                        if (F.open(what, options) !== false) {
+                            e.preventDefault();
+                        }
+                    }
+                };
 
         options = options || {};
         index = options.index || 0;

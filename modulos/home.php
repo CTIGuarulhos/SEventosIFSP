@@ -2,7 +2,7 @@
     <h1>Contagem Regressiva<span id="contagem"><script type="text/javascript">ContagemRegressiva();</script></span></h1>
     <div class="box">
         <center style="">
-            <?
+            <?php
             $expira = mktime($EVENTO['HORA'], $EVENTO['MINUTO'], 0, $EVENTO ['MES'], $EVENTO['DIA_INICIO'], $EVENTO['ANO']);
             $horaatual = date('U');
             $contatempo = $expira - $horaatual;

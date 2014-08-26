@@ -742,17 +742,17 @@
                 runtime = +new Date - config.started,
                 passed = config.stats.all - config.stats.bad,
                 html = [
-            'Tests completed in ',
-            runtime,
-            ' milliseconds.<br/>',
-            '<span class="passed">',
-            passed,
-            '</span> tests of <span class="total">',
-            config.stats.all,
-            '</span> passed, <span class="failed">',
-            config.stats.bad,
-            '</span> failed.'
-        ].join('');
+                    'Tests completed in ',
+                    runtime,
+                    ' milliseconds.<br/>',
+                    '<span class="passed">',
+                    passed,
+                    '</span> tests of <span class="total">',
+                    config.stats.all,
+                    '</span> passed, <span class="failed">',
+                    config.stats.bad,
+                    '</span> failed.'
+                ].join('');
 
         if (banner) {
             banner.className = (config.stats.bad ? "qunit-fail" : "qunit-pass");

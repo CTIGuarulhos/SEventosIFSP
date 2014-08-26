@@ -1,4 +1,4 @@
-<?
+<?php
 //Verifica se o usuário está logado
 if (!$SESSION->IsLoggedIn()) {
     header('Location: ' . $CONFIG->URL_ROOT . '/?pag=cadastro');
@@ -42,13 +42,13 @@ if (isset($_SESSION['temp']['inscricaoOK'])) {
 }
 ?>
 
-<? if (@mysql_num_rows($result) <= 0): ?>
+<?php if (@mysql_num_rows($result) <= 0): ?>
 
     <i>Voc&ecirc; ainda n&atilde;o se inscreveu em nenhum evento.</i>
 
-<? else: ?>
+<?php else: ?>
 
-    <?
+    <?php
     while ($x = mysql_fetch_array($result)):
         $eventoID = $x['id_evento'];
         $query = "SELECT * FROM eventos where id='$eventoID'";
@@ -76,28 +76,28 @@ if (isset($_SESSION['temp']['inscricaoOK'])) {
             ?>
 
             <div class="box-data">
-                <h1 class="evento-data"><?= $data_evento . ' - ' . $diaSemana[date('w', $ts_evento)] ?></h1>
-                <?
+                <h1 class="evento-data"><?php echo $data_evento . ' - ' . $diaSemana[date('w', $ts_evento)] ?></h1>
+                <?php
                 $data = $evento['data'];
             endif; //if 02
             ?>
 
             <div class="evento">
-                <h2><?= $evento['titulo'] ?> - <b><?= $tipo[$evento['tipo']] ?></b></h2>
+                <h2><?php echo $evento['titulo'] ?> - <b><?php echo $tipo[$evento['tipo']] ?></b></h2>
 
-                <? if (strlen($evento['descricao'])): ?>
+                <?php if (strlen($evento['descricao'])): ?>
                     <br/>
-                    <p><?= nl2br($evento['descricao']) ?></p>
-                <? endif ?>
+                    <p><?php echo nl2br($evento['descricao']) ?></p>
+                <?php endif ?>
 
-                <small>Local: <?= $evento['local'] ?></small>
+                <small>Local: <?php echo $evento['local'] ?></small>
                 <br/>
-                <? if ($inscricoes_abertas === true): ?>
-                    <a class="cancelar-inscricao" href="<?php echo $CONFIG->URL_ROOT ?>/cancelar-inscricao.php?evento=<?= $evento['id'] ?>">CANCELAR INSCRI&Ccedil&Atilde;O</a>
-                <? endif ?>
-                <small>Data: <?= $data_evento ?>&nbsp;&nbsp;<b>|</b>&nbsp;&nbsp;Horário: <?= $hora_evento ?>&nbsp;&nbsp;<b>|</b>&nbsp;&nbsp;Dura&ccedil&atilde;o aprox.: <?= $evento['duracao'] ?> min.</small>
+                <?php if ($inscricoes_abertas === true): ?>
+                    <a class="cancelar-inscricao" href="<?php echo $CONFIG->URL_ROOT ?>/cancelar-inscricao.php?evento=<?php echo $evento['id'] ?>">CANCELAR INSCRI&Ccedil&Atilde;O</a>
+                <?php endif ?>
+                <small>Data: <?php echo $data_evento ?>&nbsp;&nbsp;<b>|</b>&nbsp;&nbsp;Horário: <?php echo $hora_evento ?>&nbsp;&nbsp;<b>|</b>&nbsp;&nbsp;Dura&ccedil&atilde;o aprox.: <?php echo $evento['duracao'] ?> min.</small>
             </div>
 
-        <? endwhile ?>
-        <? echo "</div>"; ?>
-<? endif ?>
+        <?php endwhile ?>
+        <?php echo "</div>"; ?>
+<?php endif ?>

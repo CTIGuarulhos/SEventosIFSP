@@ -1464,7 +1464,7 @@ var TableTools;
                                 sLoopData = mTypeData.replace(/\n/g, " ");
                                 sLoopData =
                                         sLoopData.replace(/<img.*?\s+alt\s*=\s*(?:"([^"]+)"|'([^']+)'|([^\s>]+)).*?>/gi,
-                                        '$1$2$3');
+                                                '$1$2$3');
                                 sLoopData = sLoopData.replace(/<.*?>/g, "");
                             }
                             else

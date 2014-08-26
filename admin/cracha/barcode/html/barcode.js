@@ -53,17 +53,17 @@ $(function() {
         var showTooltip = function(object) {
             object
                     .on("mouseover", function() {
-                var timer = $(this).data("timer");
-                if (timer) {
-                    clearTimeout(timer);
-                }
-            })
+                        var timer = $(this).data("timer");
+                        if (timer) {
+                            clearTimeout(timer);
+                        }
+                    })
                     .on("mouseout", function() {
-                var that = $(this);
-                that.data("timer", setTimeout(function() {
-                    that.removeClass("visible");
-                }, 1000));
-            });
+                        var that = $(this);
+                        that.data("timer", setTimeout(function() {
+                            that.removeClass("visible");
+                        }, 1000));
+                    });
 
             return function() {
                 var $this = $(this),
@@ -77,30 +77,30 @@ $(function() {
                 // Show it once so we can get the outerWidth properly
                 object
                         .css({
-                    left: -99999,
-                    top: -99999
-                })
+                            left: -99999,
+                            top: -99999
+                        })
                         .addClass("visible")
                         .css({
-                    left: offset.left + $this.width() - object.outerWidth(),
-                    top: offset.top + $this.height()
-                });
+                            left: offset.left + $this.width() - object.outerWidth(),
+                            top: offset.top + $this.height()
+                        });
                 return false;
             };
         },
                 hideTooltip = function(object) {
-            return function() {
-                object.data("timer", setTimeout(function() {
-                    object.removeClass("visible");
-                }, 1000));
-            };
-        },
+                    return function() {
+                        object.data("timer", setTimeout(function() {
+                            object.removeClass("visible");
+                        }, 1000));
+                    };
+                },
                 bubbleize = function(object) {
-            return object
-                    .addClass("bubble")
-                    .attr("role", "tooltip")
-                    .appendTo(document.body);
-        },
+                    return object
+                            .addClass("bubble")
+                            .attr("role", "tooltip")
+                            .appendTo(document.body);
+                },
                 explanation = bubbleize($("#explanation")),
                 validCharacters = bubbleize($("#validCharacters"));
 

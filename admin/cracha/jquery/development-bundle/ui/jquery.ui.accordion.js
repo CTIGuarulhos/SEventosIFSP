@@ -48,29 +48,29 @@
             self.headers = self.element.find(options.header)
                     .addClass("ui-accordion-header ui-helper-reset ui-state-default ui-corner-all")
                     .bind("mouseenter.accordion", function() {
-                if (options.disabled) {
-                    return;
-                }
-                $(this).addClass("ui-state-hover");
-            })
+                        if (options.disabled) {
+                            return;
+                        }
+                        $(this).addClass("ui-state-hover");
+                    })
                     .bind("mouseleave.accordion", function() {
-                if (options.disabled) {
-                    return;
-                }
-                $(this).removeClass("ui-state-hover");
-            })
+                        if (options.disabled) {
+                            return;
+                        }
+                        $(this).removeClass("ui-state-hover");
+                    })
                     .bind("focus.accordion", function() {
-                if (options.disabled) {
-                    return;
-                }
-                $(this).addClass("ui-state-focus");
-            })
+                        if (options.disabled) {
+                            return;
+                        }
+                        $(this).addClass("ui-state-focus");
+                    })
                     .bind("blur.accordion", function() {
-                if (options.disabled) {
-                    return;
-                }
-                $(this).removeClass("ui-state-focus");
-            });
+                        if (options.disabled) {
+                            return;
+                        }
+                        $(this).removeClass("ui-state-focus");
+                    });
 
             self.headers.next()
                     .addClass("ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom");
@@ -104,18 +104,18 @@
             self.headers
                     .attr("role", "tab")
                     .bind("keydown.accordion", function(event) {
-                return self._keydown(event);
-            })
+                        return self._keydown(event);
+                    })
                     .next()
                     .attr("role", "tabpanel");
 
             self.headers
                     .not(self.active || "")
                     .attr({
-                "aria-expanded": "false",
-                "aria-selected": "false",
-                tabIndex: -1
-            })
+                        "aria-expanded": "false",
+                        "aria-selected": "false",
+                        tabIndex: -1
+                    })
                     .next()
                     .hide();
 
@@ -125,10 +125,10 @@
             } else {
                 self.active
                         .attr({
-                    "aria-expanded": "true",
-                    "aria-selected": "true",
-                    tabIndex: 0
-                });
+                            "aria-expanded": "true",
+                            "aria-selected": "true",
+                            tabIndex: 0
+                        });
             }
 
             // only need links in tab order for Safari
@@ -260,16 +260,16 @@
 
                 this.headers.next()
                         .each(function() {
-                    $(this).height(Math.max(0, maxHeight -
-                            $(this).innerHeight() + $(this).height()));
-                })
+                            $(this).height(Math.max(0, maxHeight -
+                                    $(this).innerHeight() + $(this).height()));
+                        })
                         .css("overflow", "auto");
             } else if (options.autoHeight) {
                 maxHeight = 0;
                 this.headers.next()
                         .each(function() {
-                    maxHeight = Math.max(maxHeight, $(this).height("").height());
-                })
+                            maxHeight = Math.max(maxHeight, $(this).height("").height());
+                        })
                         .height(maxHeight);
             }
 
@@ -314,12 +314,12 @@
                 this.active.next().addClass("ui-accordion-content-active");
                 var toHide = this.active.next(),
                         data = {
-                    options: options,
-                    newHeader: $([]),
-                    oldHeader: options.active,
-                    newContent: $([]),
-                    oldContent: toHide
-                },
+                            options: options,
+                            newHeader: $([]),
+                            oldHeader: options.active,
+                            newContent: $([]),
+                            oldContent: toHide
+                        },
                 toShow = (this.active = $([]));
                 this._toggle(toShow, toHide, data);
                 return;
@@ -345,12 +345,12 @@
                     toShow = clicked.next(),
                     toHide = this.active.next(),
                     data = {
-                options: options,
-                newHeader: clickedIsActive && options.collapsible ? $([]) : clicked,
-                oldHeader: this.active,
-                newContent: clickedIsActive && options.collapsible ? $([]) : toShow,
-                oldContent: toHide
-            },
+                        options: options,
+                        newHeader: clickedIsActive && options.collapsible ? $([]) : clicked,
+                        oldHeader: this.active,
+                        newContent: clickedIsActive && options.collapsible ? $([]) : toShow,
+                        oldContent: toHide
+                    },
             down = this.headers.index(this.active[0]) > this.headers.index(clicked[0]);
 
             // when the call to ._toggle() comes after the class changes
@@ -468,17 +468,17 @@
             // TODO assert that the blur and focus triggers are really necessary, remove otherwise
             toHide.prev()
                     .attr({
-                "aria-expanded": "false",
-                "aria-selected": "false",
-                tabIndex: -1
-            })
+                        "aria-expanded": "false",
+                        "aria-selected": "false",
+                        tabIndex: -1
+                    })
                     .blur();
             toShow.prev()
                     .attr({
-                "aria-expanded": "true",
-                "aria-selected": "true",
-                tabIndex: 0
-            })
+                        "aria-expanded": "true",
+                        "aria-selected": "true",
+                        tabIndex: 0
+                    })
                     .focus();
         },
         _completed: function(cancel) {
@@ -560,32 +560,32 @@
                         .end()
                         .filter(":visible")
                         .animate(hideProps, {
-                    step: function(now, settings) {
-                        // only calculate the percent when animating height
-                        // IE gets very inconsistent results when animating elements
-                        // with small values, which is common for padding
-                        if (settings.prop == "height") {
-                            percentDone = (settings.end - settings.start === 0) ? 0 :
-                                    (settings.now - settings.start) / (settings.end - settings.start);
-                        }
+                            step: function(now, settings) {
+                                // only calculate the percent when animating height
+                                // IE gets very inconsistent results when animating elements
+                                // with small values, which is common for padding
+                                if (settings.prop == "height") {
+                                    percentDone = (settings.end - settings.start === 0) ? 0 :
+                                            (settings.now - settings.start) / (settings.end - settings.start);
+                                }
 
-                        options.toShow[ 0 ].style[ settings.prop ] =
-                                (percentDone * showProps[ settings.prop ].value)
-                                + showProps[ settings.prop ].unit;
-                    },
-                    duration: options.duration,
-                    easing: options.easing,
-                    complete: function() {
-                        if (!options.autoHeight) {
-                            options.toShow.css("height", "");
-                        }
-                        options.toShow.css({
-                            width: originalWidth,
-                            overflow: overflow
+                                options.toShow[ 0 ].style[ settings.prop ] =
+                                        (percentDone * showProps[ settings.prop ].value)
+                                        + showProps[ settings.prop ].unit;
+                            },
+                            duration: options.duration,
+                            easing: options.easing,
+                            complete: function() {
+                                if (!options.autoHeight) {
+                                    options.toShow.css("height", "");
+                                }
+                                options.toShow.css({
+                                    width: originalWidth,
+                                    overflow: overflow
+                                });
+                                options.complete();
+                            }
                         });
-                        options.complete();
-                    }
-                });
             },
             bounceslide: function(options) {
                 this.slide(options, {

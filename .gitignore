@@ -1,6 +1,5 @@
 includes/configuration.php
 /nbproject/private/
-/nbproject/
 Thumbs.db
 thumbs.dbincludes/css/sansation_bold.woff
 includes/css/sansation_light.woff
@@ -10,5 +9,7 @@ noticias
 includes/css/fonts.css
 includes/css/sansation_bold.woff
 includes/css/sansation_light.woff
+templates/Default/db/submissao/submissao.nodb
+templates/1SemCiTec/db/submissao/submissao.nodb
 templates/2SemCiTec/db/submissao/submissao.nodb
 templates/3SemCiTec/db/submissao/submissao.nodb

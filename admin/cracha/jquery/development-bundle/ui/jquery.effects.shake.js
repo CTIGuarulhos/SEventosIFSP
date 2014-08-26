@@ -47,11 +47,11 @@
             ;
             el.animate(animation1, speed, o.options.easing).
                     animate(animation, speed / 2, o.options.easing, function() { // Last shake
-                $.effects.restore(el, props);
-                $.effects.removeWrapper(el); // Restore
-                if (o.callback)
-                    o.callback.apply(this, arguments); // Callback
-            });
+                        $.effects.restore(el, props);
+                        $.effects.removeWrapper(el); // Restore
+                        if (o.callback)
+                            o.callback.apply(this, arguments); // Callback
+                    });
             el.queue('fx', function() {
                 el.dequeue();
             });

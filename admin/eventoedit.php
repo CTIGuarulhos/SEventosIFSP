@@ -78,7 +78,7 @@ if (tipoadmin(5, $USER->getCpf(), $SCT_ID)) {
 
     <?php HTML_RequiredMessage() ?>
 
-    <form class="forms" name="alt_evento" method="post" action="<?= $Esta_Pagina ?>">
+    <form class="forms" name="alt_evento" method="post" action="<?php echo $Esta_Pagina ?>">
 
         <input type="hidden" name="alterar_evento" value="false" />
         <input type="hidden" name="id" value="<?php echo $editevento ?>" />
@@ -91,32 +91,32 @@ if (tipoadmin(5, $USER->getCpf(), $SCT_ID)) {
 
         <label for="tipo"><?php HTML_RequiredField() ?>Tipo:</label>
         <select name="tipo" id="tipo">
-            <option value = "0" <?
+            <option value = "0" <?php
             if ($result['tipo'] == 0) {
                 echo " selected";
             }
             ?>> Outros
-            <option value = "1" <?
+            <option value = "1" <?php
             if ($result['tipo'] == 1) {
                 echo " selected";
             }
             ?>> Palestra
-            <option value = "2" <?
+            <option value = "2" <?php
             if ($result['tipo'] == 2) {
                 echo " selected";
             }
             ?>> Mini-Curso
-            <option value = "3" <?
+            <option value = "3" <?php
             if ($result['tipo'] == 3) {
                 echo " selected";
             }
             ?>> Mesa Redonda
-            <option value = "4" <?
+            <option value = "4" <?php
             if ($result['tipo'] == 4) {
                 echo " selected";
             }
             ?>> Seção Oral
-            <option value = "5" <?
+            <option value = "5" <?php
             if ($result['tipo'] == 5) {
                 echo " selected";
             }
@@ -160,4 +160,4 @@ if (tipoadmin(5, $USER->getCpf(), $SCT_ID)) {
 
         <input type="submit" value="Atualizar evento" />
     </form>
-<? } ?>
+<?php } ?>

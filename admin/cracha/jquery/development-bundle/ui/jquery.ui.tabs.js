@@ -85,9 +85,9 @@
                     .removeClass("ui-state-processing")
                     .find("span:data(label.tabs)")
                     .each(function() {
-                var el = $(this);
-                el.html(el.data("label.tabs")).removeData("label.tabs");
-            });
+                        var el = $(this);
+                        el.html(el.data("label.tabs")).removeData("label.tabs");
+                    });
         },
         _tabify: function(init) {
             var self = this,
@@ -189,8 +189,8 @@
                 // A selected tab cannot become disabled.
                 o.disabled = $.unique(o.disabled.concat(
                         $.map(this.lis.filter(".ui-state-disabled"), function(n, i) {
-                    return self.lis.index(n);
-                })
+                            return self.lis.index(n);
+                        })
                         )).sort();
 
                 if ($.inArray(o.selected, o.disabled) != -1) {
@@ -295,13 +295,13 @@
             // Show a tab...
             var showTab = showFx
                     ? function(clicked, $show) {
-                $(clicked).closest("li").addClass("ui-tabs-selected ui-state-active");
-                $show.hide().removeClass("ui-tabs-hide") // avoid flicker that way
-                        .animate(showFx, showFx.duration || "normal", function() {
-                    resetStyle($show, showFx);
-                    self._trigger("show", null, self._ui(clicked, $show[ 0 ]));
-                });
-            }
+                        $(clicked).closest("li").addClass("ui-tabs-selected ui-state-active");
+                        $show.hide().removeClass("ui-tabs-hide") // avoid flicker that way
+                                .animate(showFx, showFx.duration || "normal", function() {
+                                    resetStyle($show, showFx);
+                                    self._trigger("show", null, self._ui(clicked, $show[ 0 ]));
+                                });
+                    }
             : function(clicked, $show) {
                 $(clicked).closest("li").addClass("ui-tabs-selected ui-state-active");
                 $show.removeClass("ui-tabs-hide");
@@ -311,13 +311,13 @@
             // Hide a tab, $show is optional...
             var hideTab = hideFx
                     ? function(clicked, $hide) {
-                $hide.animate(hideFx, hideFx.duration || "normal", function() {
-                    self.lis.removeClass("ui-tabs-selected ui-state-active");
-                    $hide.addClass("ui-tabs-hide");
-                    resetStyle($hide, hideFx);
-                    self.element.dequeue("tabs");
-                });
-            }
+                        $hide.animate(hideFx, hideFx.duration || "normal", function() {
+                            self.lis.removeClass("ui-tabs-selected ui-state-active");
+                            $hide.addClass("ui-tabs-hide");
+                            resetStyle($hide, hideFx);
+                            self.element.dequeue("tabs");
+                        });
+                    }
             : function(clicked, $hide, $show) {
                 self.lis.removeClass("ui-tabs-selected ui-state-active");
                 $hide.addClass("ui-tabs-hide");
@@ -535,8 +535,8 @@
 
             o.disabled = $.map(
                     $.grep(o.disabled, function(n, i) {
-                return n != index;
-            }),
+                        return n != index;
+                    }),
                     function(n, i) {
                         return n >= index ? --n : n;
                     });
@@ -711,10 +711,10 @@
 
             var stop = self._unrotate || (self._unrotate = !continuing
                     ? function(e) {
-                if (e.clientX) { // in case of a true click
-                    self.rotate(null);
-                }
-            }
+                        if (e.clientX) { // in case of a true click
+                            self.rotate(null);
+                        }
+                    }
             : function(e) {
                 t = o.selected;
                 rotate();

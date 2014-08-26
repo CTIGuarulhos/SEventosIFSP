@@ -46,14 +46,14 @@ if (tipoadmin(7, $USER->getCpf(), $SCT_ID)) {
     <h1 style="margin-bottom:30px;" class="noprint">GERENCIAR USUÁRIOS</h1>
 
     <div id="relatorios">
-        <form method="post" action="<?= $Esta_Pagina ?>">
+        <form method="post" action="<?php echo $Esta_Pagina ?>">
             <label for="l1" style="margin-right:30px;">LISTAR:</label>
-            <input type="radio" name="listar" id="l0" value="0" <?= $listar == 0 ? 'checked="checked" ' : '' ?> <?= $listar == '' ? 'checked="checked" ' : '' ?>/><font id="ll1">TODOS OS USUARIOS</font>
-            <input type="radio" name="listar" id="l1" value="1" <?= $listar == 1 ? 'checked="checked" ' : '' ?>/><font id="ll1">USUÁRIOS NÃO ATIVOS</font>
-            <input type="radio" name="listar" id="l2" value="2" <?= $listar == 2 ? 'checked="checked" ' : '' ?>/><font id="ll1">USUÁRIOS ATIVOS</font><br><br>
-            FILTRAR POR DOCUMENTO OU NOME: 	    <input type="text" name="busca" value="<?= $busca ?>"/>
+            <input type="radio" name="listar" id="l0" value="0" <?php echo $listar == 0 ? 'checked="checked" ' : '' ?> <?php echo $listar == '' ? 'checked="checked" ' : '' ?>/><font id="ll1">TODOS OS USUARIOS</font>
+            <input type="radio" name="listar" id="l1" value="1" <?php echo $listar == 1 ? 'checked="checked" ' : '' ?>/><font id="ll1">USUÁRIOS NÃO ATIVOS</font>
+            <input type="radio" name="listar" id="l2" value="2" <?php echo $listar == 2 ? 'checked="checked" ' : '' ?>/><font id="ll1">USUÁRIOS ATIVOS</font><br><br>
+            FILTRAR POR DOCUMENTO OU NOME: 	    <input type="text" name="busca" value="<?php echo $busca ?>"/>
             <hr style="border:1px #a5a5a5 dashed;margin:15px 0px;" />UTILIZE ESSA FERRAMENTA COM MUITO CUIDADO! <br><br>
-            <input type="hidden" name="opcao" value="1" CHECKED <?= $opcao == 1 ? 'checked="checked" ' : '' ?>onclick="unlock();" /><!--USUÁRIOS NÃO ATIVOS.
+            <input type="hidden" name="opcao" value="1" CHECKED <?php echo $opcao == 1 ? 'checked="checked" ' : '' ?>onclick="unlock();" /><!--USUÁRIOS NÃO ATIVOS.
                                                 <br/><br/>
             
                                                 
@@ -65,7 +65,7 @@ if (tipoadmin(7, $USER->getCpf(), $SCT_ID)) {
         </form>
     </div>
 
-    <?
+    <?php
     require_once("usuarios_functions.php");
     if (isset($deletarusuario)):
         deletar_usuario($deletarusuario);
@@ -77,9 +77,9 @@ if (tipoadmin(7, $USER->getCpf(), $SCT_ID)) {
     ?>
 
 
-    <? if ($opcao == 3): ?>
+    <?php if ($opcao == 3): ?>
         <script type="text/javascript">lock();</script>
-    <? endif
+    <?php endif
     ?>
 
-<? } ?>
+<?php } ?>

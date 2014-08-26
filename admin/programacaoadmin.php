@@ -55,7 +55,7 @@ if (tipoadmin(5, $USER->getCpf(), $SCT_ID)) {
     }
     ?>
 
-    <?
+    <?php
     if (@mysql_num_rows($eventos) > 0):  //if 01
 
         while ($evento = mysql_fetch_array($eventos)):
@@ -91,72 +91,72 @@ if (tipoadmin(5, $USER->getCpf(), $SCT_ID)) {
                 ?>
 
                 <div class="box-data">
-                    <h1 class="evento-data"><?= $data_evento . ' - ' . $diaSemana[date('w', $ts_evento)] ?></h1>
-                    <?
+                    <h1 class="evento-data"><?php echo $data_evento . ' - ' . $diaSemana[date('w', $ts_evento)] ?></h1>
+                    <?php
                     $data = $evento['data'];
                 }
                 ?>
 
                 <div class="evento">
 
-                    <h2><?= $evento['id'] ?> - <?= $evento['titulo'] ?><? if ($evento['tipo'] != 0): ?> - <b><?= $tipo[$evento['tipo']] ?></b><? endif ?></h2><div>
+                    <h2><?php echo $evento['id'] ?> - <?php echo $evento['titulo'] ?><?php if ($evento['tipo'] != 0): ?> - <b><?php echo $tipo[$evento['tipo']] ?></b><?php endif ?></h2><div>
 
 
                     </div>
 
-                    <? if (strlen($evento['descricao'])): ?>
+                    <?php if (strlen($evento['descricao'])): ?>
                         <br/>
-                        <p><?= nl2br($evento['descricao']) ?></p>
-                    <? endif ?>
+                        <p><?php echo nl2br($evento['descricao']) ?></p>
+                    <?php endif ?>
 
-                    <? if ($evento['tipo']): ?>
-                        <small style="float:right">Vagas: <?= $total_vagas - $inscritos ?> de <?= $total_vagas ?></small>
-                    <? endif ?>
-                    <small>Local: <?= $evento['local'] ?></small>
-                    <?
+                    <?php if ($evento['tipo']): ?>
+                        <small style="float:right">Vagas: <?php echo $total_vagas - $inscritos ?> de <?php echo $total_vagas ?></small>
+                    <?php endif ?>
+                    <small>Local: <?php echo $evento['local'] ?></small>
+                    <?php
                     $query = "SELECT cod_palestrante FROM part_palestrante WHERE cod_palestra='{$evento['id']}'";
                     $palestrantes = $DB->Query($query);
                     if (@mysql_num_rows($palestrantes) > 0):  //if 01
                         if (@mysql_num_rows($palestrantes) == 1):  //if 01 
                             ?>
                             <br><small>Palestrante:</small>
-                        <? else : ?>
+                        <?php else : ?>
                             <br><small>Palestrantes:</small>
-                        <? endif; ?>
-                        <? while ($palestrante = mysql_fetch_array($palestrantes)): ?>
-                            <?
+                        <?php endif; ?>
+                        <?php while ($palestrante = mysql_fetch_array($palestrantes)): ?>
+                            <?php
                             $query = "SELECT palestrante FROM palestrante WHERE codigo='{$palestrante['cod_palestrante']}'";
                             $nomepalestrante = mysql_fetch_array($DB->Query($query));
                             ?>
-                            <form method="post" action="<?= $Esta_Pagina ?>">
-                                <input type="hidden" name="deletarpalestrante" value="<?= $palestranteid['codigo'] ?>" />
+                            <form method="post" action="<?php echo $Esta_Pagina ?>">
+                                <input type="hidden" name="deletarpalestrante" value="<?php echo $palestranteid['codigo'] ?>" />
 
-                                <?
+                                <?php
                                 $query = "SELECT codigo FROM part_palestrante WHERE cod_palestrante='{$palestrante['cod_palestrante']}' AND cod_palestra ='{$evento['id']}'";
                                 $palestranteid = mysql_fetch_array($DB->Query($query));
                                 ?>
-                                <a href="<?php echo $CONFIG->URL_ROOT ?>/?pag=admcertificadopalestrante&id=<?= $evento['id'] ?>"><img src="<?php echo $CONFIG->URL_ROOT ?>/includes/imgs/print.png" name="Imprimir Certificado" ALT="Imprimir Certificado" VALUE="Imprimir Certificado" title="Imprimir Certificado"></a>
-                                <input type="image" src="<?php echo $CONFIG->URL_ROOT ?>/includes/imgs/cancel.png" name="DELETAR" ALT="DELETAR" VALUE="DELETAR" title="DELETAR" onclick="alert('Você está excluindo o palestrante <?= $nomepalestrante['palestrante'] ?> do evento <?= $evento['id'] ?> - <?= $evento['titulo'] ?>')"><small><?= $nomepalestrante['palestrante'] ?></small><br>
+                                <a href="<?php echo $CONFIG->URL_ROOT ?>/?pag=admcertificadopalestrante&id=<?php echo $evento['id'] ?>"><img src="<?php echo $CONFIG->URL_ROOT ?>/includes/imgs/print.png" name="Imprimir Certificado" ALT="Imprimir Certificado" VALUE="Imprimir Certificado" title="Imprimir Certificado"></a>
+                                <input type="image" src="<?php echo $CONFIG->URL_ROOT ?>/includes/imgs/cancel.png" name="DELETAR" ALT="DELETAR" VALUE="DELETAR" title="DELETAR" onclick="alert('Você está excluindo o palestrante <?php echo $nomepalestrante['palestrante'] ?> do evento <?php echo $evento['id'] ?> - <?php echo $evento['titulo'] ?>')"><small><?php echo $nomepalestrante['palestrante'] ?></small><br>
                             </form>
-                        <? endwhile; ?>
-                    <? endif; ?>
-                    <form method ="post" action="<?= $Esta_Pagina ?>">
-                        <input type="hidden" name="deletarevento" value="<?= $evento['id'] ?>" />
-                        <!--<a href="<?php echo $CONFIG->URL_ROOT ?>/?pag=adminscreverpale&evento=<?= $evento['id'] ?>">Adicionar Palestrante</a>-->
+                        <?php endwhile; ?>
+                    <?php endif; ?>
+                    <form method ="post" action="<?php echo $Esta_Pagina ?>">
+                        <input type="hidden" name="deletarevento" value="<?php echo $evento['id'] ?>" />
+                        <!--<a href="<?php echo $CONFIG->URL_ROOT ?>/?pag=adminscreverpale&evento=<?php echo $evento['id'] ?>">Adicionar Palestrante</a>-->
 
                         <br/>	
-                        <div class="right"><a href="<?php echo $CONFIG->URL_ROOT ?>/?pag=admeventoedit&id=<?= $evento['id'] ?>"><img src="<?php echo $CONFIG->URL_ROOT ?>/includes/imgs/view.png" name="EDITAR" ALT="EDITAR" VALUE="EDITAR" title="EDITAR"></a>&nbsp;&nbsp;<input type="image" src="<?php echo $CONFIG->URL_ROOT ?>/includes/imgs/cancel.png" name="DELETAR" ALT="DELETAR" VALUE="DELETAR" title="DELETAR" onclick="alert('Você está excluindo o evento <?= $evento['id'] ?> - <?= $evento['titulo'] ?><? if ($evento['tipo'] != 0): ?> - <?= $tipo[$evento['tipo']] ?><? endif ?>')">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div><br>
+                        <div class="right"><a href="<?php echo $CONFIG->URL_ROOT ?>/?pag=admeventoedit&id=<?php echo $evento['id'] ?>"><img src="<?php echo $CONFIG->URL_ROOT ?>/includes/imgs/view.png" name="EDITAR" ALT="EDITAR" VALUE="EDITAR" title="EDITAR"></a>&nbsp;&nbsp;<input type="image" src="<?php echo $CONFIG->URL_ROOT ?>/includes/imgs/cancel.png" name="DELETAR" ALT="DELETAR" VALUE="DELETAR" title="DELETAR" onclick="alert('Você está excluindo o evento <?php echo $evento['id'] ?> - <?php echo $evento['titulo'] ?><?php if ($evento['tipo'] != 0): ?> - <?php echo $tipo[$evento['tipo']] ?><?php endif ?>')">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div><br>
 
-                        <small>Data: <?= $data_evento ?>&nbsp;&nbsp;<b>|</b>&nbsp;&nbsp;Horário: <?= $hora_evento ?>&nbsp;&nbsp;<b>|</b>&nbsp;&nbsp;Duração aprox.: <?= $evento['duracao'] ?> min.</small>
+                        <small>Data: <?php echo $data_evento ?>&nbsp;&nbsp;<b>|</b>&nbsp;&nbsp;Horário: <?php echo $hora_evento ?>&nbsp;&nbsp;<b>|</b>&nbsp;&nbsp;Duração aprox.: <?php echo $evento['duracao'] ?> min.</small>
                     </form></div>
 
-                <?
+                <?php
             endwhile;
             echo "</div>";
         else:  //if 01
             ?>
 
             <h3>Nenhum evento disponível</h3>
-        <? endif  //if 01  ?>
-    <? } ?>
+        <?php endif  //if 01  ?>
+    <?php } ?>
     

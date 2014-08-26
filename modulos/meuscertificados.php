@@ -44,15 +44,15 @@ $header['css'][] = array("href" => $CONFIG->URL_ROOT . "/templates/" . $EVENTO['
             <th width="50%">Acesso aos Certificados</th>
         </tr>
 
-        <? if (mysql_num_rows($result) <= 0): //IF 01 ?>
+        <?php if (mysql_num_rows($result) <= 0): //IF 01 ?>
 
             <tr>
                 <th colspan="5">Você ainda não participou de nenhum evento.</th>
             </tr>
 
-        <? else: //IF 01 ?>
+        <?php else: //IF 01 ?>
 
-            <?
+            <?php
             while ($x = mysql_fetch_array($result)):
                 $semtec = $x['semtec'];
                 $NOME = $x['NOME'];
@@ -60,20 +60,20 @@ $header['css'][] = array("href" => $CONFIG->URL_ROOT . "/templates/" . $EVENTO['
                 ?>
 
                 <tr bgcolor="#<?php echo $bg ?>">
-                    <td style="padding-left:5px;" title="<?= $NOME ?>"><?= $NOME ?></td>
+                    <td style="padding-left:5px;" title="<?php echo $NOME ?>"><?php echo $NOME ?></td>
                     <td class="center">
-                        <a href="<? echo $CONFIG->URL_ROOT ?>/?pag=certificados<?
-                        if ($semtec != $CONFIG->SCT_ID) {
-                            echo '&SCT=' . $semtec;
-                        }
-                        ?>" title="Visualizar certificados">
+                        <a href="<?php echo $CONFIG->URL_ROOT ?>/?pag=certificados<?php
+                           if ($semtec != $CONFIG->SCT_ID) {
+                           echo '&SCT=' . $semtec;
+                           }
+                           ?>" title="Visualizar certificados">
                             <center>Visualizar certificados</center>
                         </a>
                     </td>
                 </tr>
 
-            <? endwhile ?>
-        <? endif //IF 01     ?>
+            <?php endwhile ?>
+        <?php endif //IF 01     ?>
     </table>
 
     <br/><br/>

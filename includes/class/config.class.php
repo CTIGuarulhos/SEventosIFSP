@@ -17,7 +17,7 @@ class Config {
     const WRITE_MODE = 'w';
     const EXTENSION_REQUIRED = true;
     const EXTENSION = '.cfg.php';
-    const IGNORE_LIST = "<?,/*,#,\r\n,\n,*/,?>";
+    const IGNORE_LIST = "<?php ,/*,#,\r\n,\n,*/,?>";
 
     function __construct($_file) {
 

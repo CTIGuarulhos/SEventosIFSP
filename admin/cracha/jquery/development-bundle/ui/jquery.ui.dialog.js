@@ -24,14 +24,14 @@
             'ui-widget-content ' +
             'ui-corner-all ',
             sizeRelatedOptions = {
-        buttons: true,
-        height: true,
-        maxHeight: true,
-        maxWidth: true,
-        minHeight: true,
-        minWidth: true,
-        width: true
-    },
+                buttons: true,
+                height: true,
+                maxHeight: true,
+                maxWidth: true,
+                minHeight: true,
+                minWidth: true,
+                width: true
+            },
     resizableRelatedOptions = {
         maxHeight: true,
         maxWidth: true,
@@ -102,8 +102,8 @@
                     .hide()
                     .addClass(uiDialogClasses + options.dialogClass)
                     .css({
-                zIndex: options.zIndex
-            })
+                        zIndex: options.zIndex
+                    })
                     // setting tabIndex makes the div focusable
                     // setting outline to 0 prevents a border on focus in Mozilla
                     .attr('tabIndex', -1).css('outline', 0).keydown(function(event) {
@@ -115,57 +115,57 @@
                 }
             })
                     .attr({
-                role: 'dialog',
-                'aria-labelledby': titleId
-            })
+                        role: 'dialog',
+                        'aria-labelledby': titleId
+                    })
                     .mousedown(function(event) {
-                self.moveToTop(false, event);
-            }),
+                        self.moveToTop(false, event);
+                    }),
                     uiDialogContent = self.element
                     .show()
                     .removeAttr('title')
                     .addClass(
-                    'ui-dialog-content ' +
-                    'ui-widget-content')
+                            'ui-dialog-content ' +
+                            'ui-widget-content')
                     .appendTo(uiDialog),
                     uiDialogTitlebar = (self.uiDialogTitlebar = $('<div></div>'))
                     .addClass(
-                    'ui-dialog-titlebar ' +
-                    'ui-widget-header ' +
-                    'ui-corner-all ' +
-                    'ui-helper-clearfix'
-                    )
+                            'ui-dialog-titlebar ' +
+                            'ui-widget-header ' +
+                            'ui-corner-all ' +
+                            'ui-helper-clearfix'
+                            )
                     .prependTo(uiDialog),
                     uiDialogTitlebarClose = $('<a href="#"></a>')
                     .addClass(
-                    'ui-dialog-titlebar-close ' +
-                    'ui-corner-all'
-                    )
+                            'ui-dialog-titlebar-close ' +
+                            'ui-corner-all'
+                            )
                     .attr('role', 'button')
                     .hover(
-                    function() {
-                        uiDialogTitlebarClose.addClass('ui-state-hover');
-                    },
-                    function() {
-                        uiDialogTitlebarClose.removeClass('ui-state-hover');
-                    }
-            )
+                            function() {
+                                uiDialogTitlebarClose.addClass('ui-state-hover');
+                            },
+                            function() {
+                                uiDialogTitlebarClose.removeClass('ui-state-hover');
+                            }
+                    )
                     .focus(function() {
-                uiDialogTitlebarClose.addClass('ui-state-focus');
-            })
+                        uiDialogTitlebarClose.addClass('ui-state-focus');
+                    })
                     .blur(function() {
-                uiDialogTitlebarClose.removeClass('ui-state-focus');
-            })
+                        uiDialogTitlebarClose.removeClass('ui-state-focus');
+                    })
                     .click(function(event) {
-                self.close(event);
-                return false;
-            })
+                        self.close(event);
+                        return false;
+                    })
                     .appendTo(uiDialogTitlebar),
                     uiDialogTitlebarCloseText = (self.uiDialogTitlebarCloseText = $('<span></span>'))
                     .addClass(
-                    'ui-icon ' +
-                    'ui-icon-closethick'
-                    )
+                            'ui-icon ' +
+                            'ui-icon-closethick'
+                            )
                     .text(options.closeText)
                     .appendTo(uiDialogTitlebarClose),
                     uiDialogTitle = $('<span></span>')
@@ -352,10 +352,10 @@
                     hasButtons = false,
                     uiDialogButtonPane = $('<div></div>')
                     .addClass(
-                    'ui-dialog-buttonpane ' +
-                    'ui-widget-content ' +
-                    'ui-helper-clearfix'
-                    ),
+                            'ui-dialog-buttonpane ' +
+                            'ui-widget-content ' +
+                            'ui-helper-clearfix'
+                            ),
                     uiButtonSet = $("<div></div>")
                     .addClass("ui-dialog-buttonset")
                     .appendTo(uiDialogButtonPane);
@@ -375,8 +375,8 @@
                             props;
                     var button = $('<button type="button"></button>')
                             .click(function() {
-                        props.click.apply(self.element[0], arguments);
-                    })
+                                props.click.apply(self.element[0], arguments);
+                            })
                             .appendTo(uiButtonSet);
                     // can't use .attr( props, true ) with jQuery 1.3.2.
                     $.each(props, function(key, value) {
@@ -438,9 +438,9 @@
                     // but dialogs have to use absolute or fixed positioning
                     position = self.uiDialog.css('position'),
                     resizeHandles = (typeof handles === 'string' ?
-                    handles :
-                    'n,e,s,w,se,sw,ne,nw'
-                    );
+                            handles :
+                            'n,e,s,w,se,sw,ne,nw'
+                            );
 
             function filteredUi(ui) {
                 return {
@@ -741,9 +741,9 @@
             var $el = (this.oldInstances.pop() || $('<div></div>').addClass('ui-widget-overlay'))
                     .appendTo(document.body)
                     .css({
-                width: this.width(),
-                height: this.height()
-            });
+                        width: this.width(),
+                        height: this.height()
+                    });
 
             if ($.fn.bgiframe) {
                 $el.bgiframe();

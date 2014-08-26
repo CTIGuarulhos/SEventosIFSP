@@ -869,25 +869,25 @@
                 var _s_wrapper = function() {
                 },
                         _a_wrapper = function() {
-                },
+                        },
                         _s_paddingold = function() {
-                },
+                        },
                         _a_paddingold = function() {
-                },
+                        },
                         _s_paddingnew = function() {
-                },
+                        },
                         _a_paddingnew = function() {
-                },
+                        },
                         _s_paddingcur = function() {
-                },
+                        },
                         _a_paddingcur = function() {
-                },
+                        },
                         _onafter = function() {
-                },
+                        },
                         _moveitems = function() {
-                },
+                        },
                         _position = function() {
-                };
+                        };
 
                 //	clone carousel
                 switch (sO.fx)
@@ -1334,21 +1334,21 @@
                 var _s_wrapper = function() {
                 },
                         _a_wrapper = function() {
-                },
+                        },
                         _s_paddingold = function() {
-                },
+                        },
                         _a_paddingold = function() {
-                },
+                        },
                         _s_paddingcur = function() {
-                },
+                        },
                         _a_paddingcur = function() {
-                },
+                        },
                         _onafter = function() {
-                },
+                        },
                         _moveitems = function() {
-                },
+                        },
                         _position = function() {
-                };
+                        };
 
                 //	clone carousel
                 switch (sO.fx)
@@ -2340,8 +2340,8 @@
                     $cfs.trigger(cf_e('pause', conf), pC);
                 })
                         .bind(cf_e('mouseleave', conf, false), function() {
-                    $cfs.trigger(cf_e('resume', conf));
-                });
+                            $cfs.trigger(cf_e('resume', conf));
+                        });
             }
 
             //	play button
@@ -2382,8 +2382,8 @@
                         $cfs.trigger(cf_e('pause', conf), pC);
                     })
                             .bind(cf_e('mouseleave', conf, false), function() {
-                        $cfs.trigger(cf_e('resume', conf));
-                    });
+                                $cfs.trigger(cf_e('resume', conf));
+                            });
                 }
             }
 
@@ -2401,8 +2401,8 @@
                         $cfs.trigger(cf_e('pause', conf), pC);
                     })
                             .bind(cf_e('mouseleave', conf, false), function() {
-                        $cfs.trigger(cf_e('resume', conf));
-                    });
+                                $cfs.trigger(cf_e('resume', conf));
+                            });
                 }
             }
 
@@ -2416,8 +2416,8 @@
                         $cfs.trigger(cf_e('pause', conf), pC);
                     })
                             .bind(cf_e('mouseleave', conf, false), function() {
-                        $cfs.trigger(cf_e('resume', conf));
-                    });
+                                $cfs.trigger(cf_e('resume', conf));
+                            });
                 }
             }
 
@@ -2465,11 +2465,11 @@
                     var scP = $.extend(true, {}, opts.prev, opts.swipe),
                             scN = $.extend(true, {}, opts.next, opts.swipe),
                             swP = function() {
-                        $cfs.trigger(cf_e('prev', conf), [scP])
-                    },
+                                $cfs.trigger(cf_e('prev', conf), [scP])
+                            },
                             swN = function() {
-                        $cfs.trigger(cf_e('next', conf), [scN])
-                    };
+                                $cfs.trigger(cf_e('next', conf), [scN])
+                            };
 
                     switch (opts.direction)
                     {

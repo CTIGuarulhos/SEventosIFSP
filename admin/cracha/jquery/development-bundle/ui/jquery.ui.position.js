@@ -228,9 +228,9 @@
                     curTop = parseInt($.curCSS(elem, "top", true), 10) || 0,
                     curLeft = parseInt($.curCSS(elem, "left", true), 10) || 0,
                     props = {
-                top: (options.top - curOffset.top) + curTop,
-                left: (options.left - curOffset.left) + curLeft
-            };
+                        top: (options.top - curOffset.top) + curTop,
+                        left: (options.left - curOffset.left) + curLeft
+                    };
 
             if ('using' in options) {
                 options.using.call(elem, props);

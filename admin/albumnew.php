@@ -73,7 +73,7 @@ if (tipoadmin(5, $USER->getCpf(), $SCT_ID)) {
 
     <?php HTML_RequiredMessage() ?>
 
-    <form class="forms" name="alt_evento" method="post" action="<?= $Esta_Pagina ?>">
+    <form class="forms" name="alt_evento" method="post" action="<?php echo $Esta_Pagina ?>">
 
         <input type="hidden" name="alterar_album" value="false" />
         <input type="hidden" name="id" value="<?php echo $editalbum ?>" />
@@ -92,4 +92,4 @@ if (tipoadmin(5, $USER->getCpf(), $SCT_ID)) {
 
         <input type="submit" value="Adicionar album" />
     </form>
-<? } ?>
+<?php } ?>

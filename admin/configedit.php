@@ -73,7 +73,7 @@ if (tipoadmin(7, $USER->getCpf(), $SCT_ID)) {
 
     <?php HTML_RequiredMessage() ?>
 
-    <form class="forms" name="alt_edicao" method="post" action="<?= $Esta_Pagina ?>">
+    <form class="forms" name="alt_edicao" method="post" action="<?php echo $Esta_Pagina ?>">
 
         <input type="hidden" name="alterar_edicao" value="false" />
         <input type="hidden" name="id" value="<?php echo $editedicao ?>" />
@@ -119,7 +119,7 @@ if (tipoadmin(7, $USER->getCpf(), $SCT_ID)) {
         <label for="template"><?php HTML_RequiredField() ?>Template:</label>
         <select name="template" id="template">
             <option value = "Default"></option>
-            <? showDir($CONFIG->DIR_ROOT . "/templates/", $result['TEMPLATE']); ?>
+            <?php showDir($CONFIG->DIR_ROOT . "/templates/", $result['TEMPLATE']); ?>
         </select>
         <br/><br/>
 
@@ -200,5 +200,5 @@ if (tipoadmin(7, $USER->getCpf(), $SCT_ID)) {
         <input type="submit" value="Atualizar evento" />
     </form>
 
-<? }
+<?php }
 ?>

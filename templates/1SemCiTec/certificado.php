@@ -4,7 +4,7 @@
     }
 </style>
 <center><h1>Certificado</h1></center>
-<br><p class="justificado"><?= $textocertificado ?></p><br>
+<br><p class="justificado"><?php echo $textocertificado ?></p><br>
 <center>
-    <?= $codigovalidacao ?>
+    <?php echo $codigovalidacao ?>
 </center>

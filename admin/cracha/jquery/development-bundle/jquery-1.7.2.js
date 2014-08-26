@@ -57,8 +57,8 @@
                 rmsPrefix = /^-ms-/,
                 // Used by jQuery.camelCase as callback to replace()
                 fcamelCase = function(all, letter) {
-            return (letter + "").toUpperCase();
-        },
+                    return (letter + "").toUpperCase();
+                },
                 // Keep a UserAgent string for use with jQuery.browser
                 userAgent = navigator.userAgent,
                 // For matching the engine and version of the browser
@@ -752,8 +752,8 @@
                                 // Simulated bind
                                 var args = slice.call(arguments, 2),
                                         proxy = function() {
-                                    return fn.apply(context, args.concat(slice.call(arguments)));
-                                };
+                                            return fn.apply(context, args.concat(slice.call(arguments)));
+                                        };
 
                                 // Set the guid of unique handler to the same of original handler, so it can be removed
                                 proxy.guid = fn.guid = fn.guid || proxy.guid || jQuery.guid++;
@@ -976,168 +976,168 @@
                         firingIndex,
                         // Add one or several callbacks to the list
                         add = function(args) {
-                    var i,
-                            length,
-                            elem,
-                            type,
-                            actual;
-                    for (i = 0, length = args.length; i < length; i++) {
-                        elem = args[ i ];
-                        type = jQuery.type(elem);
-                        if (type === "array") {
-                            // Inspect recursively
-                            add(elem);
-                        } else if (type === "function") {
-                            // Add if not in unique mode and callback is not in
-                            if (!flags.unique || !self.has(elem)) {
-                                list.push(elem);
-                            }
-                        }
-                    }
-                },
-                        // Fire callbacks
-                        fire = function(context, args) {
-                    args = args || [];
-                    memory = !flags.memory || [context, args];
-                    fired = true;
-                    firing = true;
-                    firingIndex = firingStart || 0;
-                    firingStart = 0;
-                    firingLength = list.length;
-                    for (; list && firingIndex < firingLength; firingIndex++) {
-                        if (list[ firingIndex ].apply(context, args) === false && flags.stopOnFalse) {
-                            memory = true; // Mark as halted
-                            break;
-                        }
-                    }
-                    firing = false;
-                    if (list) {
-                        if (!flags.once) {
-                            if (stack && stack.length) {
-                                memory = stack.shift();
-                                self.fireWith(memory[ 0 ], memory[ 1 ]);
-                            }
-                        } else if (memory === true) {
-                            self.disable();
-                        } else {
-                            list = [];
-                        }
-                    }
-                },
-                        // Actual Callbacks object
-                        self = {
-                    // Add a callback or a collection of callbacks to the list
-                    add: function() {
-                        if (list) {
-                            var length = list.length;
-                            add(arguments);
-                            // Do we need to add the callbacks to the
-                            // current firing batch?
-                            if (firing) {
-                                firingLength = list.length;
-                                // With memory, if we're not firing then
-                                // we should call right away, unless previous
-                                // firing was halted (stopOnFalse)
-                            } else if (memory && memory !== true) {
-                                firingStart = length;
-                                fire(memory[ 0 ], memory[ 1 ]);
-                            }
-                        }
-                        return this;
-                    },
-                    // Remove a callback from the list
-                    remove: function() {
-                        if (list) {
-                            var args = arguments,
-                                    argIndex = 0,
-                                    argLength = args.length;
-                            for (; argIndex < argLength; argIndex++) {
-                                for (var i = 0; i < list.length; i++) {
-                                    if (args[ argIndex ] === list[ i ]) {
-                                        // Handle firingIndex and firingLength
-                                        if (firing) {
-                                            if (i <= firingLength) {
-                                                firingLength--;
-                                                if (i <= firingIndex) {
-                                                    firingIndex--;
-                                                }
-                                            }
-                                        }
-                                        // Remove the element
-                                        list.splice(i--, 1);
-                                        // If we have some unicity property then
-                                        // we only need to do this once
-                                        if (flags.unique) {
-                                            break;
-                                        }
+                            var i,
+                                    length,
+                                    elem,
+                                    type,
+                                    actual;
+                            for (i = 0, length = args.length; i < length; i++) {
+                                elem = args[ i ];
+                                type = jQuery.type(elem);
+                                if (type === "array") {
+                                    // Inspect recursively
+                                    add(elem);
+                                } else if (type === "function") {
+                                    // Add if not in unique mode and callback is not in
+                                    if (!flags.unique || !self.has(elem)) {
+                                        list.push(elem);
                                     }
                                 }
                             }
-                        }
-                        return this;
-                    },
-                    // Control if a given callback is in the list
-                    has: function(fn) {
-                        if (list) {
-                            var i = 0,
-                                    length = list.length;
-                            for (; i < length; i++) {
-                                if (fn === list[ i ]) {
-                                    return true;
+                        },
+                        // Fire callbacks
+                        fire = function(context, args) {
+                            args = args || [];
+                            memory = !flags.memory || [context, args];
+                            fired = true;
+                            firing = true;
+                            firingIndex = firingStart || 0;
+                            firingStart = 0;
+                            firingLength = list.length;
+                            for (; list && firingIndex < firingLength; firingIndex++) {
+                                if (list[ firingIndex ].apply(context, args) === false && flags.stopOnFalse) {
+                                    memory = true; // Mark as halted
+                                    break;
                                 }
                             }
-                        }
-                        return false;
-                    },
-                    // Remove all callbacks from the list
-                    empty: function() {
-                        list = [];
-                        return this;
-                    },
-                    // Have the list do nothing anymore
-                    disable: function() {
-                        list = stack = memory = undefined;
-                        return this;
-                    },
-                    // Is it disabled?
-                    disabled: function() {
-                        return !list;
-                    },
-                    // Lock the list in its current state
-                    lock: function() {
-                        stack = undefined;
-                        if (!memory || memory === true) {
-                            self.disable();
-                        }
-                        return this;
-                    },
-                    // Is it locked?
-                    locked: function() {
-                        return !stack;
-                    },
-                    // Call all callbacks with the given context and arguments
-                    fireWith: function(context, args) {
-                        if (stack) {
-                            if (firing) {
+                            firing = false;
+                            if (list) {
                                 if (!flags.once) {
-                                    stack.push([context, args]);
+                                    if (stack && stack.length) {
+                                        memory = stack.shift();
+                                        self.fireWith(memory[ 0 ], memory[ 1 ]);
+                                    }
+                                } else if (memory === true) {
+                                    self.disable();
+                                } else {
+                                    list = [];
                                 }
-                            } else if (!(flags.once && memory)) {
-                                fire(context, args);
                             }
-                        }
-                        return this;
-                    },
-                    // Call all the callbacks with the given arguments
-                    fire: function() {
-                        self.fireWith(this, arguments);
-                        return this;
-                    },
-                    // To know if the callbacks have already been called at least once
-                    fired: function() {
-                        return !!fired;
-                    }
-                };
+                        },
+                        // Actual Callbacks object
+                        self = {
+                            // Add a callback or a collection of callbacks to the list
+                            add: function() {
+                                if (list) {
+                                    var length = list.length;
+                                    add(arguments);
+                                    // Do we need to add the callbacks to the
+                                    // current firing batch?
+                                    if (firing) {
+                                        firingLength = list.length;
+                                        // With memory, if we're not firing then
+                                        // we should call right away, unless previous
+                                        // firing was halted (stopOnFalse)
+                                    } else if (memory && memory !== true) {
+                                        firingStart = length;
+                                        fire(memory[ 0 ], memory[ 1 ]);
+                                    }
+                                }
+                                return this;
+                            },
+                            // Remove a callback from the list
+                            remove: function() {
+                                if (list) {
+                                    var args = arguments,
+                                            argIndex = 0,
+                                            argLength = args.length;
+                                    for (; argIndex < argLength; argIndex++) {
+                                        for (var i = 0; i < list.length; i++) {
+                                            if (args[ argIndex ] === list[ i ]) {
+                                                // Handle firingIndex and firingLength
+                                                if (firing) {
+                                                    if (i <= firingLength) {
+                                                        firingLength--;
+                                                        if (i <= firingIndex) {
+                                                            firingIndex--;
+                                                        }
+                                                    }
+                                                }
+                                                // Remove the element
+                                                list.splice(i--, 1);
+                                                // If we have some unicity property then
+                                                // we only need to do this once
+                                                if (flags.unique) {
+                                                    break;
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                                return this;
+                            },
+                            // Control if a given callback is in the list
+                            has: function(fn) {
+                                if (list) {
+                                    var i = 0,
+                                            length = list.length;
+                                    for (; i < length; i++) {
+                                        if (fn === list[ i ]) {
+                                            return true;
+                                        }
+                                    }
+                                }
+                                return false;
+                            },
+                            // Remove all callbacks from the list
+                            empty: function() {
+                                list = [];
+                                return this;
+                            },
+                            // Have the list do nothing anymore
+                            disable: function() {
+                                list = stack = memory = undefined;
+                                return this;
+                            },
+                            // Is it disabled?
+                            disabled: function() {
+                                return !list;
+                            },
+                            // Lock the list in its current state
+                            lock: function() {
+                                stack = undefined;
+                                if (!memory || memory === true) {
+                                    self.disable();
+                                }
+                                return this;
+                            },
+                            // Is it locked?
+                            locked: function() {
+                                return !stack;
+                            },
+                            // Call all callbacks with the given context and arguments
+                            fireWith: function(context, args) {
+                                if (stack) {
+                                    if (firing) {
+                                        if (!flags.once) {
+                                            stack.push([context, args]);
+                                        }
+                                    } else if (!(flags.once && memory)) {
+                                        fire(context, args);
+                                    }
+                                }
+                                return this;
+                            },
+                            // Call all the callbacks with the given arguments
+                            fire: function() {
+                                self.fireWith(this, arguments);
+                                return this;
+                            },
+                            // To know if the callbacks have already been called at least once
+                            fired: function() {
+                                return !!fired;
+                            }
+                        };
 
                 return self;
             };
@@ -1155,10 +1155,10 @@
                             progressList = jQuery.Callbacks("memory"),
                             state = "pending",
                             lists = {
-                        resolve: doneList,
-                        reject: failList,
-                        notify: progressList
-                    },
+                                resolve: doneList,
+                                reject: failList,
+                                notify: progressList
+                            },
                     promise = {
                         done: doneList.add,
                         fail: failList.add,
@@ -2043,12 +2043,12 @@
                     return data === undefined ?
                             this :
                             this.each(function() {
-                        var queue = jQuery.queue(this, type, data);
+                                var queue = jQuery.queue(this, type, data);
 
-                        if (type === "fx" && queue[0] !== "inprogress") {
-                            jQuery.dequeue(this, type);
-                        }
-                    });
+                                if (type === "fx" && queue[0] !== "inprogress") {
+                                    jQuery.dequeue(this, type);
+                                }
+                            });
                 },
                 dequeue: function(type) {
                     return this.each(function() {
@@ -2759,26 +2759,26 @@
                     rfocusMorph = /^(?:focusinfocus|focusoutblur)$/,
                     rquickIs = /^(\w*)(?:#([\w\-]+))?(?:\.([\w\-]+))?$/,
                     quickParse = function(selector) {
-                var quick = rquickIs.exec(selector);
-                if (quick) {
-                    //   0  1    2   3
-                    // [ _, tag, id, class ]
-                    quick[1] = (quick[1] || "").toLowerCase();
-                    quick[3] = quick[3] && new RegExp("(?:^|\\s)" + quick[3] + "(?:\\s|$)");
-                }
-                return quick;
-            },
+                        var quick = rquickIs.exec(selector);
+                        if (quick) {
+                            //   0  1    2   3
+                            // [ _, tag, id, class ]
+                            quick[1] = (quick[1] || "").toLowerCase();
+                            quick[3] = quick[3] && new RegExp("(?:^|\\s)" + quick[3] + "(?:\\s|$)");
+                        }
+                        return quick;
+                    },
                     quickIs = function(elem, m) {
-                var attrs = elem.attributes || {};
-                return (
-                        (!m[1] || elem.nodeName.toLowerCase() === m[1]) &&
-                        (!m[2] || (attrs.id || {}).value === m[2]) &&
-                        (!m[3] || m[3].test((attrs[ "class" ] || {}).value))
-                        );
-            },
+                        var attrs = elem.attributes || {};
+                        return (
+                                (!m[1] || elem.nodeName.toLowerCase() === m[1]) &&
+                                (!m[2] || (attrs.id || {}).value === m[2]) &&
+                                (!m[3] || m[3].test((attrs[ "class" ] || {}).value))
+                                );
+                    },
                     hoverHack = function(events) {
-                return jQuery.event.special.hover ? events : events.replace(rhoverHack, "mouseenter$1 mouseleave$1");
-            };
+                        return jQuery.event.special.hover ? events : events.replace(rhoverHack, "mouseenter$1 mouseleave$1");
+                    };
 
             /*
              * Helper functions for managing events -- not part of the public interface.
@@ -3592,8 +3592,8 @@
                     // Attach a single capturing handler while someone wants focusin/focusout
                     var attaches = 0,
                             handler = function(event) {
-                        jQuery.event.simulate(fix, event.target, jQuery.event.fix(event), true);
-                    };
+                                jQuery.event.simulate(fix, event.target, jQuery.event.fix(event), true);
+                            };
 
                     jQuery.event.special[ fix ] = {
                         setup: function() {
@@ -3734,16 +3734,16 @@
                             guid = fn.guid || jQuery.guid++,
                             i = 0,
                             toggler = function(event) {
-                        // Figure out which function to execute
-                        var lastToggle = (jQuery._data(this, "lastToggle" + fn.guid) || 0) % i;
-                        jQuery._data(this, "lastToggle" + fn.guid, lastToggle + 1);
+                                // Figure out which function to execute
+                                var lastToggle = (jQuery._data(this, "lastToggle" + fn.guid) || 0) % i;
+                                jQuery._data(this, "lastToggle" + fn.guid, lastToggle + 1);
 
-                        // Make sure that clicks stop
-                        event.preventDefault();
+                                // Make sure that clicks stop
+                                event.preventDefault();
 
-                        // and execute the function
-                        return args[ lastToggle ].apply(this, arguments) || false;
-                    };
+                                // and execute the function
+                                return args[ lastToggle ].apply(this, arguments) || false;
+                            };
 
                     // link all the functions, so any of them can unbind this click handler
                     toggler.guid = guid;
@@ -4643,8 +4643,8 @@
 
                 var origPOS = Expr.match.POS,
                         fescape = function(all, num) {
-                    return "\\" + (num - 0 + 1);
-                };
+                            return "\\" + (num - 0 + 1);
+                        };
 
                 for (var type in Expr.match) {
                     Expr.match[ type ] = new RegExp(Expr.match[ type ].source + (/(?![^\[]*\])(?![^\(]*\))/.source));
@@ -5208,11 +5208,11 @@
                     POS = jQuery.expr.match.globalPOS,
                     // methods guaranteed to produce a unique set when starting from a unique set
                     guaranteedUnique = {
-                children: true,
-                contents: true,
-                next: true,
-                prev: true
-            };
+                        children: true,
+                        contents: true,
+                        next: true,
+                        prev: true
+                    };
 
             jQuery.fn.extend({
                 find: function(selector) {
@@ -5542,15 +5542,15 @@
                     rscriptType = /\/(java|ecma)script/i,
                     rcleanScript = /^\s*<!(?:\[CDATA\[|\-\-)/,
                     wrapMap = {
-                option: [1, "<select multiple='multiple'>", "</select>"],
-                legend: [1, "<fieldset>", "</fieldset>"],
-                thead: [1, "<table>", "</table>"],
-                tr: [2, "<table><tbody>", "</tbody></table>"],
-                td: [3, "<table><tbody><tr>", "</tr></tbody></table>"],
-                col: [2, "<table><tbody></tbody><colgroup>", "</colgroup></table>"],
-                area: [1, "<map>", "</map>"],
-                _default: [0, "", ""]
-            },
+                        option: [1, "<select multiple='multiple'>", "</select>"],
+                        legend: [1, "<fieldset>", "</fieldset>"],
+                        thead: [1, "<table>", "</table>"],
+                        tr: [2, "<table><tbody>", "</tbody></table>"],
+                        td: [3, "<table><tbody><tr>", "</tr></tbody></table>"],
+                        col: [2, "<table><tbody></tbody><colgroup>", "</colgroup></table>"],
+                        area: [1, "<map>", "</map>"],
+                        _default: [0, "", ""]
+                    },
             safeFragment = createSafeFragment(document);
 
             wrapMap.optgroup = wrapMap.option;
@@ -6966,21 +6966,21 @@
                         return this.elements ? jQuery.makeArray(this.elements) : this;
                     })
                             .filter(function() {
-                        return this.name && !this.disabled &&
-                                (this.checked || rselectTextarea.test(this.nodeName) ||
-                                        rinput.test(this.type));
-                    })
+                                return this.name && !this.disabled &&
+                                        (this.checked || rselectTextarea.test(this.nodeName) ||
+                                                rinput.test(this.type));
+                            })
                             .map(function(i, elem) {
-                        var val = jQuery(this).val();
+                                var val = jQuery(this).val();
 
-                        return val == null ?
-                                null :
-                                jQuery.isArray(val) ?
-                                jQuery.map(val, function(val, i) {
-                            return {name: elem.name, value: val.replace(rCRLF, "\r\n")};
-                        }) :
-                                {name: elem.name, value: val.replace(rCRLF, "\r\n")};
-                    }).get();
+                                return val == null ?
+                                        null :
+                                        jQuery.isArray(val) ?
+                                        jQuery.map(val, function(val, i) {
+                                            return {name: elem.name, value: val.replace(rCRLF, "\r\n")};
+                                        }) :
+                                        {name: elem.name, value: val.replace(rCRLF, "\r\n")};
+                            }).get();
                 }
             });
 
@@ -7140,51 +7140,51 @@
                             i,
                             // Fake xhr
                             jqXHR = {
-                        readyState: 0,
-                        // Caches the header
-                        setRequestHeader: function(name, value) {
-                            if (!state) {
-                                var lname = name.toLowerCase();
-                                name = requestHeadersNames[ lname ] = requestHeadersNames[ lname ] || name;
-                                requestHeaders[ name ] = value;
-                            }
-                            return this;
-                        },
-                        // Raw string
-                        getAllResponseHeaders: function() {
-                            return state === 2 ? responseHeadersString : null;
-                        },
-                        // Builds headers hashtable if needed
-                        getResponseHeader: function(key) {
-                            var match;
-                            if (state === 2) {
-                                if (!responseHeaders) {
-                                    responseHeaders = {};
-                                    while ((match = rheaders.exec(responseHeadersString))) {
-                                        responseHeaders[ match[1].toLowerCase() ] = match[ 2 ];
+                                readyState: 0,
+                                // Caches the header
+                                setRequestHeader: function(name, value) {
+                                    if (!state) {
+                                        var lname = name.toLowerCase();
+                                        name = requestHeadersNames[ lname ] = requestHeadersNames[ lname ] || name;
+                                        requestHeaders[ name ] = value;
                                     }
+                                    return this;
+                                },
+                                // Raw string
+                                getAllResponseHeaders: function() {
+                                    return state === 2 ? responseHeadersString : null;
+                                },
+                                // Builds headers hashtable if needed
+                                getResponseHeader: function(key) {
+                                    var match;
+                                    if (state === 2) {
+                                        if (!responseHeaders) {
+                                            responseHeaders = {};
+                                            while ((match = rheaders.exec(responseHeadersString))) {
+                                                responseHeaders[ match[1].toLowerCase() ] = match[ 2 ];
+                                            }
+                                        }
+                                        match = responseHeaders[ key.toLowerCase() ];
+                                    }
+                                    return match === undefined ? null : match;
+                                },
+                                // Overrides response content-type header
+                                overrideMimeType: function(type) {
+                                    if (!state) {
+                                        s.mimeType = type;
+                                    }
+                                    return this;
+                                },
+                                // Cancel the request
+                                abort: function(statusText) {
+                                    statusText = statusText || "abort";
+                                    if (transport) {
+                                        transport.abort(statusText);
+                                    }
+                                    done(0, statusText);
+                                    return this;
                                 }
-                                match = responseHeaders[ key.toLowerCase() ];
-                            }
-                            return match === undefined ? null : match;
-                        },
-                        // Overrides response content-type header
-                        overrideMimeType: function(type) {
-                            if (!state) {
-                                s.mimeType = type;
-                            }
-                            return this;
-                        },
-                        // Cancel the request
-                        abort: function(statusText) {
-                            statusText = statusText || "abort";
-                            if (transport) {
-                                transport.abort(statusText);
-                            }
-                            done(0, statusText);
-                            return this;
-                        }
-                    };
+                            };
 
                     // Callback for when everything is done
                     // It is defined here because jslint complains if it is declared
@@ -7473,10 +7473,10 @@
                 param: function(a, traditional) {
                     var s = [],
                             add = function(key, value) {
-                        // If value is a function, invoke it and return its value
-                        value = jQuery.isFunction(value) ? value() : value;
-                        s[ s.length ] = encodeURIComponent(key) + "=" + encodeURIComponent(value);
-                    };
+                                // If value is a function, invoke it and return its value
+                                value = jQuery.isFunction(value) ? value() : value;
+                                s[ s.length ] = encodeURIComponent(key) + "=" + encodeURIComponent(value);
+                            };
 
                     // Set traditional to true for jQuery <= 1.3.2 behavior.
                     if (traditional === undefined) {
@@ -7721,7 +7721,7 @@
 
                 if (s.dataTypes[ 0 ] === "jsonp" ||
                         s.jsonp !== false && (jsre.test(s.url) ||
-                        inspectData && jsre.test(s.data))) {
+                                inspectData && jsre.test(s.data))) {
 
                     var responseContainer,
                             jsonpCallback = s.jsonpCallback =
@@ -7870,11 +7870,11 @@
 
             var // #5280: Internet Explorer will keep connections alive if we don't abort on unload
                     xhrOnUnloadAbort = window.ActiveXObject ? function() {
-                // Abort all pending requests
-                for (var key in xhrCallbacks) {
-                    xhrCallbacks[ key ](0, 1);
-                }
-            } : false,
+                        // Abort all pending requests
+                        for (var key in xhrCallbacks) {
+                            xhrCallbacks[ key ](0, 1);
+                        }
+                    } : false,
                     xhrId = 0,
                     xhrCallbacks;
 
@@ -8100,13 +8100,13 @@
                             rfxnum = /^([+\-]=)?([\d+.\-]+)([a-z%]*)$/i,
                             timerId,
                             fxAttrs = [
-                        // height animations
-                        ["height", "marginTop", "marginBottom", "paddingTop", "paddingBottom"],
-                        // width animations
-                        ["width", "marginLeft", "marginRight", "paddingLeft", "paddingRight"],
-                        // opacity animations
-                        ["opacity"]
-                    ],
+                                // height animations
+                                ["height", "marginTop", "marginBottom", "paddingTop", "paddingBottom"],
+                                // width animations
+                                ["width", "marginLeft", "marginRight", "paddingLeft", "paddingRight"],
+                                // opacity animations
+                                ["opacity"]
+                            ],
                             fxNow;
 
                     jQuery.fn.extend({
@@ -8863,8 +8863,8 @@
                             return options === undefined ?
                                     this :
                                     this.each(function(i) {
-                                jQuery.offset.setOffset(this, options, i);
-                            });
+                                        jQuery.offset.setOffset(this, options, i);
+                                    });
                         }
 
                         var elem = this[0],

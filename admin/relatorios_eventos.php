@@ -20,7 +20,7 @@ if (tipoadmin(5, $USER->getCpf(), $SCT_ID)) {
     <h1>RELATÓRIO DE EVENTOS</h1>
     <br/>
     <p>Aqui você pode ver todos os eventos separados por dia e as presenças já confirmadas</p>
-    <?
+    <?php
     if (@mysql_num_rows($eventos) > 0):  //if 01
 
         while ($evento = mysql_fetch_array($eventos)):
@@ -54,16 +54,16 @@ if (tipoadmin(5, $USER->getCpf(), $SCT_ID)) {
                     <table width=100%>
                         <tr>
                             <td colspan="4" width=85%><b><font size="5">TOTAL DE PRESENÇAS DO DIA</font></td>
-                            <td><b><font size="5"><?= $soma ?></font></b></td>
-                            <? $somatotal = $somatotal + $soma; ?>
+                            <td><b><font size="5"><?php echo $soma ?></font></b></td>
+                            <?php $somatotal = $somatotal + $soma; ?>
 
-                        </tr> <?
+                        </tr> <?php
                         echo "</table></div></div>";
                         $soma = 0;
                     }
                     ?>
                     <div class="box-data">
-                        <h1 class="evento-data"><?= $data_evento . ' - ' . $diaSemana[date('w', $ts_evento)] ?></h1>
+                        <h1 class="evento-data"><?php echo $data_evento . ' - ' . $diaSemana[date('w', $ts_evento)] ?></h1>
                         <div class="evento">
 
                             <table class="sortable" width=100% border="0,5">
@@ -75,39 +75,39 @@ if (tipoadmin(5, $USER->getCpf(), $SCT_ID)) {
                                     <td><b>LOCAL</b></td>
                                     <td><b>PRESENÇAS</b></td>
                                 </tr>
-                                <?
+                                <?php
                                 $data = $evento['data'];
                             }
                             ?>  
                             <tr>
-                                <td><?= $evento['id'] ?></td>
-                                <td><?= $evento['titulo'] ?></td>
-                                <td><?= substr($evento['hora'], 0, -3); ?></td>
-                                <td><?= $evento['local'] ?></td>
-                                <td><?= $presentes ?></td>
-                                <? $soma = $soma + $presentes ?>
+                                <td><?php echo $evento['id'] ?></td>
+                                <td><?php echo $evento['titulo'] ?></td>
+                                <td><?php echo substr($evento['hora'], 0, -3); ?></td>
+                                <td><?php echo $evento['local'] ?></td>
+                                <td><?php echo $presentes ?></td>
+                                <?php $soma = $soma + $presentes ?>
                             </tr>
 
-                            <?
+                            <?php
                         endwhile;
                         ?>  
                     </table>
                     <table width=100%>
                         <tr>
                             <td colspan="4" width=85%><b><font size="5">TOTAL DE PRESENÇAS DO DIA</font></b></td>
-                            <? $somatotal = $somatotal + $soma; ?>
-                            <td><b><font size="5"><?= $soma ?></font></b></td>
+                            <?php $somatotal = $somatotal + $soma; ?>
+                            <td><b><font size="5"><?php echo $soma ?></font></b></td>
                         </tr>
                     </table></div></div><br><br>
             <table width=100%>
                 <tr>
                     <td colspan="4" width=85%><b><font color="red" size="5">TOTAL DE PRESENÇAS DO EVENTO</font></b></td>
-                    <td><b><font color="red" size="5"><?= $somatotal ?></font></b></td>
-                </tr></table> <?
+                    <td><b><font color="red" size="5"><?php echo $somatotal ?></font></b></td>
+                </tr></table> <?php
         else:  //if 01
             ?>
 
             <h3>Nenhum evento disponível</h3>
-        <? endif  //if 01   ?>
-    <? } ?>
+        <?php endif  //if 01   ?>
+    <?php } ?>
     

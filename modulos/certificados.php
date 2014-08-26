@@ -51,44 +51,44 @@ if ($SESSION->IsLoggedIn()) {
                 <th>Visualizar</th>
             </tr>
 
-            <? if (mysql_num_rows($result) <= 0): //IF 01 ?>
+            <?php if (mysql_num_rows($result) <= 0): //IF 01 ?>
 
                 <tr>
                     <th colspan="5">Nenhuma inscrição encontrada.</th>
                 </tr>
 
-            <? else: //IF 01 ?>
+            <?php else: //IF 01 ?>
 
-                <?
+                <?php
                 while ($x = mysql_fetch_array($result)):
                     $titulo = (strlen($x['titulo']) > 53) ? substr($x['titulo'], 0, 50) . '...' : $x['titulo'];
                     $presenca = $x['presenca'] == 1 ? '<b style="color:#00aa00">OK</b>' : '<font color="#ff0000">não confirmada</font>';
-                    $dataV = is_null($x['data_visualizacao']) ? $x['presenca'] == 1 ? "nunca" : "-"  : formata_data($x['data_visualizacao']);
+                    $dataV = is_null($x['data_visualizacao']) ? $x['presenca'] == 1 ? "nunca" : "-" : formata_data($x['data_visualizacao']);
                     $bg = $bg == "f0f0f0" ? "ffffff" : "f0f0f0";
                     ?>
 
                     <tr bgcolor="#<?php echo $bg ?>">
-                        <td style="padding-left:5px;" title="<?= $x['titulo'] ?>"><?= $titulo ?></td>
-                        <td class="center small"><?= $presenca ?></td>
-                        <!--td class="center"><?= $dataV ?></td-->
+                        <td style="padding-left:5px;" title="<?php echo $x['titulo'] ?>"><?php echo $titulo ?></td>
+                        <td class="center small"><?php echo $presenca ?></td>
+                        <!--td class="center"><?php echo $dataV ?></td-->
                         <td class="center">
-                            <? if ($x['presenca'] == 1): ?>
-                                <a href="certificado.php?evento=<?= $x['id'] ?><?
+                            <?php if ($x['presenca'] == 1): ?>
+                                <a href="certificado.php?evento=<?php echo $x['id'] ?><?php
                                 if (isset($_GET['SCT'])) {
                                     echo '&SCT=' . $_GET['SCT'];
                                 }
                                 ?>" title="Visualizar certificado" target="_blank">
                                     <img src="<?php echo $CONFIG->URL_ROOT ?>/includes/imgs/view.png" alt="Visualizar certificado" />
                                 </a>
-                            <? else: ?>
+                            <?php else: ?>
                                 <!--img src="<?php echo $CONFIG->URL_ROOT ?>/includes/imgs/cancel.png" alt="Sem certificação" /-->
                                 -
-                            <? endif ?>
+                            <?php endif ?>
                         </td>
                     </tr>
 
-                <? endwhile ?>
-            <? endif //IF 01   ?>
+                <?php endwhile ?>
+            <?php endif //IF 01   ?>
         </table>
 
         <br/><br/>

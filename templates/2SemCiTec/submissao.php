@@ -87,45 +87,45 @@ if (isset($dadosOK) && $dadosOK === true) {
     HTML_SuccessMessage("Submissão enviada com sucesso! Aguarde contato");
 }
 ?>
-<? require_once($CONFIG->DIR_ROOT . "/templates/" . $EVENTO['TEMPLATE'] . "/textosubmissao.php"); ?>
+<?php require_once($CONFIG->DIR_ROOT . "/templates/" . $EVENTO['TEMPLATE'] . "/textosubmissao.php"); ?>
 <?php if (($QuantidadeOral < $QuantidadeTotalOral) || ($QuantidadePoster < $QuantidadeTotalPoster)): ?>
     <?php if (time() < $DataFinal): ?>
-        <form class="forms"  name="email" action="<?= $Esta_Pagina ?>" method="POST" enctype="multipart/form-data"/>
+        <form class="forms"  name="email" action="<?php echo $Esta_Pagina ?>" method="POST" enctype="multipart/form-data"/>
         <label for="eixo"><span class="required-field">*</span> Eixo tecnológico:</label><br />
         <select name="emaileixo" id="emaileixo">
             <option value = ""  selected> ** Selecione **
-            <option value = "CIINED" <? if ($emaileixo == "CIINED") echo selected ?> > Ciência, Inovação e Educação
-            <option value = "CIINSA" <? if ($emaileixo == "CIINSA") echo selected ?> > Ciência e Inovação em Saúde
-            <option value = "CIINES" <? if ($emaileixo == "CIINES") echo selected ?> > Ciência e Inovação em Esporte
-            <option value = "PRLOSU" <? if ($emaileixo == "PRLOSU") echo selected ?> > Práticas Locais Sustentáveis
-            <!-- <option value = "TEST" <? if ($emaileixo == "TEST") echo selected ?> > TESTE DE ENVIO -->
+            <option value = "CIINED" <?php if ($emaileixo == "CIINED") echo selected ?> > Ciência, Inovação e Educação
+            <option value = "CIINSA" <?php if ($emaileixo == "CIINSA") echo selected ?> > Ciência e Inovação em Saúde
+            <option value = "CIINES" <?php if ($emaileixo == "CIINES") echo selected ?> > Ciência e Inovação em Esporte
+            <option value = "PRLOSU" <?php if ($emaileixo == "PRLOSU") echo selected ?> > Práticas Locais Sustentáveis
+            <!-- <option value = "TEST" <?php if ($emaileixo == "TEST") echo selected ?> > TESTE DE ENVIO -->
         </select><br/><br/>
 
         <label for="eixo"><span class="required-field">*</span> Tipo:</label><br />
         <select name="tipo" id="tipo">
             <option value = ""  selected> ** Selecione **
-                <? if ($QuantidadePoster < $QuantidadeTotalPoster) : ?>
-                <option value = "Poster" <? if ($tipo == "Poster") echo selected ?> > Poster
-                <? endif ?>
-                <? if ($QuantidadeOral < $QuantidadeTotalOral) : ?>
-                <option value = "Oral" <? if ($tipo == "Oral") echo selected ?> > Comunicação Oral
-                <? endif ?>
+                <?php if ($QuantidadePoster < $QuantidadeTotalPoster) : ?>
+                <option value = "Poster" <?php if ($tipo == "Poster") echo selected ?> > Poster
+                <?php endif ?>
+                <?php if ($QuantidadeOral < $QuantidadeTotalOral) : ?>
+                <option value = "Oral" <?php if ($tipo == "Oral") echo selected ?> > Comunicação Oral
+                <?php endif ?>
         </select><br/><br/>
         <label for="nome"><?php HTML_RequiredField() ?>Nome:</label><br/>
-        <input type="text" value="<?= $nome ?>" name="nome" size="50" /><br /><br />
+        <input type="text" value="<?php echo $nome ?>" name="nome" size="50" /><br /><br />
         <label for="nome"><?php HTML_RequiredField() ?>E-mail:</label><br/>
-        <input type="text" value="<?= $email ?>" name="email" /><br /> <br />
+        <input type="text" value="<?php echo $email ?>" name="email" /><br /> <br />
         <label for="nome"><?php HTML_RequiredField() ?>Arquivo:</label><br/>
-        <input type="file" value="<?= $files ?>" name="files" /><br /><br />
+        <input type="file" value="<?php echo $files ?>" name="files" /><br /><br />
         <label for="nome"><?php HTML_RequiredField() ?>Disponibilidade:</label><br/>
         <select name="periodo" id="periodo">
             <option value = ""  selected> ** Selecione **
-            <option value = "MANHA" <? if ($emaileixo == "MANHA") echo selected ?> > Manhã
-            <option value = "TARDE" <? if ($emaileixo == "TARDE") echo selected ?> > Tarde
-            <option value = "NOITE" <? if ($emaileixo == "NOITE") echo selected ?> > Noite
+            <option value = "MANHA" <?php if ($emaileixo == "MANHA") echo selected ?> > Manhã
+            <option value = "TARDE" <?php if ($emaileixo == "TARDE") echo selected ?> > Tarde
+            <option value = "NOITE" <?php if ($emaileixo == "NOITE") echo selected ?> > Noite
         </select><br/><br/>
         <div style="border:2px solid; border-radius:25px;"><br>
-            &nbsp;&nbsp;&nbsp;<img name="codigo" src="includes/gdimg.php?letrasgd=<?php echo $_SESSION['letrasgd'];?>" alt="codigo" /><br><br>
+            &nbsp;&nbsp;&nbsp;<img name="codigo" src="includes/gdimg.php?letrasgd=<?php echo $_SESSION['letrasgd']; ?>" alt="codigo" /><br><br>
             &nbsp;&nbsp;&nbsp;<label for="codigo"><?php HTML_RequiredField() ?>Código imagem:</label><br/>
             &nbsp;&nbsp;&nbsp;<input type="text" name="codigo" id="codigo" maxlength="5" size="13" />
             <br/><br>

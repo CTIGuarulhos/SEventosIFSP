@@ -28,15 +28,15 @@
 
             this.element
                     .bind('mousedown.' + this.widgetName, function(event) {
-                return self._mouseDown(event);
-            })
+                        return self._mouseDown(event);
+                    })
                     .bind('click.' + this.widgetName, function(event) {
-                if (true === $.data(event.target, self.widgetName + '.preventClickEvent')) {
-                    $.removeData(event.target, self.widgetName + '.preventClickEvent');
-                    event.stopImmediatePropagation();
-                    return false;
-                }
-            });
+                        if (true === $.data(event.target, self.widgetName + '.preventClickEvent')) {
+                            $.removeData(event.target, self.widgetName + '.preventClickEvent');
+                            event.stopImmediatePropagation();
+                            return false;
+                        }
+                    });
 
             this.started = false;
         },

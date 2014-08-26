@@ -5,6 +5,7 @@
 #-------------------------------------------------------------------#
 
 class Session {
+
     //Tempo de vida padrao (em minutos)
 
     const DEFAULT_LIFETIME = 30;

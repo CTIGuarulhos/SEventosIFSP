@@ -94,9 +94,9 @@ if (isset($_POST['codigo'])) {
         <center>
             <br/><b>Não Consigo Acessar</b><br/>
 
-            <? echo $erro['OK'] ? $erro['MSG'] : "\n"; ?><br/>
+            <?php echo $erro['OK'] ? $erro['MSG'] : "\n"; ?><br/>
 
-            <form name="sendmail" method="post" action="<?= $Esta_Pagina ?>">
+            <form name="sendmail" method="post" action="<?php echo $Esta_Pagina ?>">
                 <table border="0" cellpadding="1" cellspacing="2">
                     <tr>
                         <td>E-Mail:</td>
@@ -109,7 +109,7 @@ if (isset($_POST['codigo'])) {
                     </tr>
 
                     <tr>
-                        <td align="center"><img name="codigo" src="includes/gdimg.php?letrasgd=<?php echo $_SESSION['letrasgd'];?>" alt="codigo" /></td>
+                        <td align="center"><img name="codigo" src="includes/gdimg.php?letrasgd=<?php echo $_SESSION['letrasgd']; ?>" alt="codigo" /></td>
                         <td align="center"><input type="submit" id="enviar" value="Enviar" /></td>
                     </tr>
                 </table>
@@ -159,14 +159,14 @@ function email_enviado($email) {
                 <div id="OK">
                     <b><font color="white" size="3">Mensagem enviada com sucesso.
                             <br/>
-                            Siga as informações que foram enviadas para o e-mail <b><?= $email ?></b>.
+                            Siga as informações que foram enviadas para o e-mail <b><?php echo $email ?></b>.
                         </font></b>
                 </div>
                 <br/><br/>
                 <input type="button" value="Fechar" onClick="javascript:window.close();" />
             </center>
         </body></html>
-    <?
+    <?php
 }
 
 function logNovaSenha($cpf, $email) {

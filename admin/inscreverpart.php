@@ -30,7 +30,7 @@ if (tipoadmin(2, $USER->getCpf(), $SCT_ID)) {
     <p>
         Insira os dados abaixo<br><br>
         <?php if (isset($_GET['evento']) && ($_GET['evento'] != "")) { ?>
-            <?
+            <?php
             $query = "SELECT * FROM eventos WHERE id='{$_GET['evento']}'";
             $dataevento = $DB->Query($query);
             if (@mysql_num_rows($dataevento) > 0):  //if 01
@@ -51,17 +51,17 @@ if (tipoadmin(2, $USER->getCpf(), $SCT_ID)) {
                 $result = $DB->Query($query);
                 $inscritos = mysql_num_rows($result);
                 ?>
-                Nome do evento: <? echo $titulo ?><br>
-                Inicio do evento: <? echo $ini_evento ?><br>
-                <? if (($vagas - $inscritos) > 0): ?>
-                    Vagas restantes: <? echo $vagas - $inscritos ?><br>
-                <? endif ?>
+                Nome do evento: <?php echo $titulo ?><br>
+                Inicio do evento: <?php echo $ini_evento ?><br>
+                <?php if (($vagas - $inscritos) > 0): ?>
+                    Vagas restantes: <?php echo $vagas - $inscritos ?><br>
+                <?php endif ?>
                 <br>
 
 
 
-            <? endif; ?>
-        <? } ?>
+            <?php endif; ?>
+        <?php } ?>
 
     </p>
 
@@ -98,11 +98,11 @@ if (tipoadmin(2, $USER->getCpf(), $SCT_ID)) {
                             $erro['insert'] = "Participante já inscrito.";
                         }
                         ?>
-                    <? endif;
+                    <?php endif;
                     ?>
 
-                <? else: ?>
-                    <?
+                <?php else: ?>
+                    <?php
                     $query = "INSERT INTO participacoes(cpf_participante,id_evento,tipo,data_inscricao,presenca,data_visualizacao) ";
                     $query .= "VALUES('{$_POST['cpf']}','{$_GET['evento']}','P','NULL','0','NULL')";
                     //echo $query;
@@ -112,11 +112,11 @@ if (tipoadmin(2, $USER->getCpf(), $SCT_ID)) {
                         $erro['insert'] = "Erro ao inserir no banco de dados.";
                     }
                     ?>
-                <?
+                <?php
                 endif;
             }
             ?>
-            <?
+            <?php
         endif;
 #---------------------------------------------------------------------------#
 //$query = "SELECT * FROM `eventos` WHERE `id` = '$editevento'";
@@ -133,8 +133,8 @@ if (tipoadmin(2, $USER->getCpf(), $SCT_ID)) {
         ?>
 
 
-        <form class="forms" name="presenca_evento" method="post" action="<?= $Esta_Pagina ?>">
-            <? if (($vagas - $inscritos) > 0): ?>
+        <form class="forms" name="presenca_evento" method="post" action="<?php echo $Esta_Pagina ?>">
+            <?php if (($vagas - $inscritos) > 0): ?>
                 <input type="hidden" name="presenca_evento" value="false" />
 
                 <!--		<label for="id">
@@ -146,8 +146,8 @@ if (tipoadmin(2, $USER->getCpf(), $SCT_ID)) {
                 <input type="text" name="cpf" id="cpf" maxlength="15" size="35" />
                 <br/><br/>
                 <input type="submit" value="Inserir Inscrição" />
-                <br><br><? else: ?><i>Este Evento já está lotado.</i><br><br><? endif ?>
-            <input type="BUTTON" value="Selecionar outro evento" onclick="location.href = '<?php echo $CONFIG->URL_ROOT ?>/?pag=<?php echo $_GET['pag']; ?><?
+                <br><br><?php else: ?><i>Este Evento já está lotado.</i><br><br><?php endif ?>
+            <input type="BUTTON" value="Selecionar outro evento" onclick="location.href = '<?php echo $CONFIG->URL_ROOT ?>/?pag=<?php echo $_GET['pag']; ?><?php
             if (isset($_GET['SCT'])) {
                 echo '&SCT=' . $_GET['SCT'];
             }
@@ -158,10 +158,10 @@ if (tipoadmin(2, $USER->getCpf(), $SCT_ID)) {
         <script
             type = "text/javascript"
             language = "javascript" >
-                        document.getElementById("cpf").focus();
+                document.getElementById("cpf").focus();
         </script>
 
-        <?
+        <?php
         $query = "SELECT titulo FROM eventos WHERE id='{$_GET['evento']}'";
         $Revento = mysql_fetch_array($DB->Query($query));
         $query = "SELECT * FROM participantes p, participacoes t WHERE t.cpf_participante = p.cpf AND t.id_evento='{$_GET['evento']}' AND t.tipo='P' ";
@@ -173,37 +173,37 @@ if (tipoadmin(2, $USER->getCpf(), $SCT_ID)) {
             ?>
 
             <br/>
-            <h4>Participantes Inscritos (<?= mysql_num_rows($result) ?>)</h4>
+            <h4>Participantes Inscritos (<?php echo mysql_num_rows($result) ?>)</h4>
             <br/>
             <table width="100%" border="0">
                 <tr>
                     <th>NOME</th>
                     <th align="center">DOCUMENTO</th>
                 </tr>
-                <?
+                <?php
                 while ($x = mysql_fetch_array($result)):
                     $x['nome'] = str_replace($_arraySearch, $_arrayReplace, strtoupper($x['nome']));
                     ?>
 
                     <tr>
-                        <td align="center"><?= $x['nome'] ?></td>
-                        <td align="center"><? echo $x['cpf'] ?></td>
+                        <td align="center"><?php echo $x['nome'] ?></td>
+                        <td align="center"><?php echo $x['cpf'] ?></td>
                     </tr>
 
-                <? endwhile ?>
+                <?php endwhile ?>
 
             </table>
-        <? endif ?>
+        <?php endif ?>
 
         <br/><br/>
     <?php } else { ?>
-        <form class="forms" name="seleciona_evento" method="get" action="<?= $Esta_Pagina ?>">
+        <form class="forms" name="seleciona_evento" method="get" action="<?php echo $Esta_Pagina ?>">
             <INPUT TYPE="hidden" NAME="pag" VALUE="<?php echo $_GET['pag']; ?>">
             <label for="evento"><?php HTML_RequiredField() ?>Evento:</label>
 
 
             <select name="evento" style="width:650px; height: 20px">
-                <?
+                <?php
                 $query = "SELECT * FROM eventos WHERE tipo<>'0' AND semtec='{$SNCTID}' ORDER BY id";
                 $result = $DB->Query($query);
                 if (@mysql_num_rows($result) <= 0):
@@ -213,8 +213,8 @@ if (tipoadmin(2, $USER->getCpf(), $SCT_ID)) {
                     while ($x = mysql_fetch_array($result)):
                         ?>
 
-                        <option value="<?= $x['id'] ?>" <?= $evento_op2 == $x['id'] ? 'selected="selected"' : '' ?>><?= $x['id'] ?> - <?= $x['titulo'] ?></option>
-                        <?
+                        <option value="<?php echo $x['id'] ?>" <?php echo $evento_op2 == $x['id'] ? 'selected="selected"' : '' ?>><?php echo $x['id'] ?> - <?php echo $x['titulo'] ?></option>
+                        <?php
                     endwhile;
                 endif;
                 ?>
@@ -226,7 +226,7 @@ if (tipoadmin(2, $USER->getCpf(), $SCT_ID)) {
             <input type="submit" value="Selecionar Evento" />
         </form>
 
-        <?
+        <?php
     }
     ?>
-<? } ?>
+<?php } ?>

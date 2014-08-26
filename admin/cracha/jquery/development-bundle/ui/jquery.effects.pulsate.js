@@ -44,8 +44,8 @@
 
             elem
                     .queue('fx', function() {
-                elem.dequeue();
-            })
+                        elem.dequeue();
+                    })
                     .dequeue();
         });
     };

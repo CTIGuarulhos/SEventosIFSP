@@ -1,5 +1,5 @@
 <link href='http://fonts.googleapis.com/css?family=Fruktur' rel='stylesheet' type='text/css'>
-<?
+<?php
 switch ($EVENTO['MES']) {
 
     case 1: $mes = "Janeiro";
@@ -29,7 +29,7 @@ switch ($EVENTO['MES']) {
 }
 ?>
 <br>
-<center><font style="font-family: 'Fruktur', cursive; font-size: 40px; color: white;"><?= $EVENTO['NOME']; ?></font><br><br>
-    <font style="font-family: 'Fruktur', cursive; font-size: 30px; color: white;"><?= $EVENTO['DIA_INICIO'] . " a " . $EVENTO['DIA_FIM'] . " de " . $mes . " de " . $EVENTO['ANO'] . "."; ?></font></center>
+<center><font style="font-family: 'Fruktur', cursive; font-size: 40px; color: white;"><?php echo $EVENTO['NOME']; ?></font><br><br>
+    <font style="font-family: 'Fruktur', cursive; font-size: 30px; color: white;"><?php echo $EVENTO['DIA_INICIO'] . " a " . $EVENTO['DIA_FIM'] . " de " . $mes . " de " . $EVENTO['ANO'] . "."; ?></font></center>
 
 

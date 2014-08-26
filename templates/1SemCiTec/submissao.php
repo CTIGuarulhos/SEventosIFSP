@@ -161,7 +161,7 @@ if (isset($dadosOK) && $dadosOK === true) {
     <ol style="font-family: Arial;">
         <li>
             <p style="margin-bottom: 0cm; line-height: 150%;" align="justify">Os
-                trabalhos devem ser submetidos no formato de <b><a href="<?= $CONFIG->URL_ROOT . "/templates/" . $EVENTO['TEMPLATE'] ?>/docs/Modelo_Resumo.pdf">resumo
+                trabalhos devem ser submetidos no formato de <b><a href="<?php echo $CONFIG->URL_ROOT . "/templates/" . $EVENTO['TEMPLATE'] ?>/docs/Modelo_Resumo.pdf">resumo
                         expandido</a>,</b> estruturado com no <b>mínimo 3</b> e no <b>máximo 5
                     páginas</b>, incluindo as referências bibliográficas.</p>
         </li>
@@ -309,7 +309,7 @@ if (isset($dadosOK) && $dadosOK === true) {
                align="justify"> <font color="#111111">Conter no cabeçalho: título,
                 nomes dos autores, instituição de origem, endereços eletrônicos. E no
                 corpo: introdução, objetivos, metodologia, resultados e referências
-                bibliográficas conforme ABNT. Ver template: <a href="<?= $CONFIG->URL_ROOT . "/templates/" . $EVENTO['TEMPLATE'] ?>/docs/Template_Poster1.ppt">Template_Poster1.ppt</a></font>
+                bibliográficas conforme ABNT. Ver template: <a href="<?php echo $CONFIG->URL_ROOT . "/templates/" . $EVENTO['TEMPLATE'] ?>/docs/Template_Poster1.ppt">Template_Poster1.ppt</a></font>
         </li>
         <li>
             <p style="margin-top: 0.05cm; margin-bottom: 0.05cm;"
@@ -376,23 +376,23 @@ if (isset($dadosOK) && $dadosOK === true) {
         </li>
     </ol>
 
-    <form class="forms"  name="email" action="<?= $Esta_Pagina ?>" method="POST" enctype="multipart/form-data"/>
+    <form class="forms"  name="email" action="<?php echo $Esta_Pagina ?>" method="POST" enctype="multipart/form-data"/>
     <label for="eixo"><span class="required-field">*</span> Eixo tecnológico:</label><br />
     <select name="emaileixo" id="emaileixo">
         <option value = ""  selected> ** Selecione **
-        <option value = "FDEB" <? if ($emaileixo == "FDEB") echo selected ?> > Formação Docente para a Educação Básica
-        <option value = "SDES" <? if ($emaileixo == "SDES") echo selected ?> > Sustentabilidade e Desenvolvimento Econômico e Social
-        <option value = "PSDL" <? if ($emaileixo == "PSDL") echo selected ?> > Práticas Sustentáveis e desenvolvimento local
-        <option value = "INTE" <? if ($emaileixo == "INTE") echo selected ?> > Inovação Tecnológica
-        <!-- <option value = "TEST" <? if ($emaileixo == "TEST") echo selected ?> > TESTE DE ENVIO -->
+        <option value = "FDEB" <?php if ($emaileixo == "FDEB") echo selected ?> > Formação Docente para a Educação Básica
+        <option value = "SDES" <?php if ($emaileixo == "SDES") echo selected ?> > Sustentabilidade e Desenvolvimento Econômico e Social
+        <option value = "PSDL" <?php if ($emaileixo == "PSDL") echo selected ?> > Práticas Sustentáveis e desenvolvimento local
+        <option value = "INTE" <?php if ($emaileixo == "INTE") echo selected ?> > Inovação Tecnológica
+        <!-- <option value = "TEST" <?php if ($emaileixo == "TEST") echo selected ?> > TESTE DE ENVIO -->
     </select><br/><br/>
     <label for="nome"><?php HTML_RequiredField() ?>Nome:</label><br/>
-    <input type="text" value="<?= $nome ?>" name="nome" /><br /><br />
+    <input type="text" value="<?php echo $nome ?>" name="nome" /><br /><br />
     <label for="nome"><?php HTML_RequiredField() ?>E-mail:</label><br/>
-    <input type="text" value="<?= $email ?>" name="email" /><br /> <br />
+    <input type="text" value="<?php echo $email ?>" name="email" /><br /> <br />
     <label for="nome"><?php HTML_RequiredField() ?>Arquivo:</label><br/>
-    <input type="file" value="<?= $files ?>" name="files" /><br /><br />  
-    <td align="center"><img name="codigo" src="includes/gdimg.php?letrasgd=<?php echo $_SESSION['letrasgd'];?>" alt="codigo" /></td><br><br>
+    <input type="file" value="<?php echo $files ?>" name="files" /><br /><br />  
+    <td align="center"><img name="codigo" src="includes/gdimg.php?letrasgd=<?php echo $_SESSION['letrasgd']; ?>" alt="codigo" /></td><br><br>
     <label for="codigo"><?php HTML_RequiredField() ?>Código imagem:</label><br/>
     <input type="text" name="codigo" id="codigo" maxlength="5" size="13" />
     <br/><br>

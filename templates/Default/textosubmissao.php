@@ -190,7 +190,7 @@
             </li>
             <li>
                 <p>
-                    Clique <a href="<?= $CONFIG->URL_ROOT . "/templates/" . $EVENTO['TEMPLATE'] . "/docs/Template_Poster1.ppt" ?>"><strong><span style="color:#ff0000;">aqui</span></strong></a> para acessar o modelo padr&atilde;o do p&ocirc;ster.</p>
+                    Clique <a href="<?php echo $CONFIG->URL_ROOT . "/templates/" . $EVENTO['TEMPLATE'] . "/docs/Template_Poster1.ppt" ?>"><strong><span style="color:#ff0000;">aqui</span></strong></a> para acessar o modelo padr&atilde;o do p&ocirc;ster.</p>
             </li>
         </ol>
         <p>
@@ -238,11 +238,11 @@
         <ol>
             <li>
                 <p>
-                    Clique <a href="<?= $CONFIG->URL_ROOT . "/templates/" . $EVENTO['TEMPLATE'] . "/docs/NormasSubRelatos.doc" ?>"><strong><span style="color:#ff0000;">aqui</span></strong></a> para as orienta&ccedil;&otilde;es de elabora&ccedil;&atilde;o do resumo exapandido para a modalidade de Relato de Experi&ecirc;ncia.</p>
+                    Clique <a href="<?php echo $CONFIG->URL_ROOT . "/templates/" . $EVENTO['TEMPLATE'] . "/docs/NormasSubRelatos.doc" ?>"><strong><span style="color:#ff0000;">aqui</span></strong></a> para as orienta&ccedil;&otilde;es de elabora&ccedil;&atilde;o do resumo exapandido para a modalidade de Relato de Experi&ecirc;ncia.</p>
             </li>
             <li>
                 <p>
-                    Clique <a href="<?= $CONFIG->URL_ROOT . "/templates/" . $EVENTO['TEMPLATE'] . "/docs/NormasSubPesCie.doc" ?>"><strong><span style="color:#ff0000;">aqui</span></strong></a> para as orienta&ccedil;&otilde;es de elabora&ccedil;&atilde;o do resumo exapandido para a modalidade de Pesquisa Cient&iacute;fica.</p>
+                    Clique <a href="<?php echo $CONFIG->URL_ROOT . "/templates/" . $EVENTO['TEMPLATE'] . "/docs/NormasSubPesCie.doc" ?>"><strong><span style="color:#ff0000;">aqui</span></strong></a> para as orienta&ccedil;&otilde;es de elabora&ccedil;&atilde;o do resumo exapandido para a modalidade de Pesquisa Cient&iacute;fica.</p>
             </li>
         </ol>
         <p>

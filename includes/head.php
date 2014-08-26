@@ -1,4 +1,4 @@
-<meta http-equiv="Content-Type" content="text/html; charset=<?= $CONFIG->CHARSET ?>">
+<meta http-equiv="Content-Type" content="text/html; charset=<?php echo $CONFIG->CHARSET ?>">
 
 <meta property="og:title" content="<?php echo $EVENTO['NOME'] ?>" />
 <meta property="og:type" content="website" />

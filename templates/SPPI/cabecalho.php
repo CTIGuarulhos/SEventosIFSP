@@ -1,5 +1,5 @@
 <link href='http://fonts.googleapis.com/css?family=Scada' rel='stylesheet' type='text/css'>
-<?
+<?php
 switch ($EVENTO['MES']) {
     case 1: $mes = "Janeiro";
         break;
@@ -27,7 +27,7 @@ switch ($EVENTO['MES']) {
         break;
 }
 ?>
-<? $nomeevento = explode(",", $EVENTO['NOME']); ?>
+<?php $nomeevento = explode(",", $EVENTO['NOME']); ?>
 <br>
 <div style="width:100%; height: 100%; vertical-align: middle;">
     <div align=center style="width:13%; height: 100%; display: table-cell; vertical-align: middle;">
@@ -36,7 +36,7 @@ switch ($EVENTO['MES']) {
         <center>
             <div>
                 <div style="display: table-cell; vertical-align: middle;">
-                    <font style="font-family: 'Scada', sans-serif; font-size: 100px; color: #026d80;"><?= $evento[0]; ?></font>
+                    <font style="font-family: 'Scada', sans-serif; font-size: 100px; color: #026d80;"><?php echo $evento[0]; ?></font>
                 </div>
                 <div style="display: table-cell; vertical-align: middle;">
                     <font style="font-family: 'Scada', sans-serif; font-size: 36px; color: #026d80;"> <br><br></font>
@@ -46,15 +46,15 @@ switch ($EVENTO['MES']) {
     </div>
     <div align=center style="width:57%; height: 100%; display: table-cell; vertical-align: middle;">
         <center>
-            <font style="font-family: 'Scada', sans-serif; font-size: 35px; color: #026d80;"><?= trim(strtr(strtoupper($nomeevento[0]), "àáâãäåæçèéêëìíîïðñòóôõö÷øùüúþÿ", "ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÜÚÞß")); ?></font><br>
-            <font style="font-family: 'Scada', sans-serif; font-size: 25px; color: #026d80;"><?= trim(strtr(strtoupper($nomeevento[1]), "àáâãäåæçèéêëìíîïðñòóôõö÷øùüúþÿ", "ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÜÚÞß")); ?></font>
+            <font style="font-family: 'Scada', sans-serif; font-size: 35px; color: #026d80;"><?php echo trim(strtr(strtoupper($nomeevento[0]), "àáâãäåæçèéêëìíîïðñòóôõö÷øùüúþÿ", "ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÜÚÞß")); ?></font><br>
+            <font style="font-family: 'Scada', sans-serif; font-size: 25px; color: #026d80;"><?php echo trim(strtr(strtoupper($nomeevento[1]), "àáâãäåæçèéêëìíîïðñòóôõö÷øùüúþÿ", "ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÜÚÞß")); ?></font>
         </center>
     </div>
     <div align=center style="width:18%; height: 100%; display: table-cell;  vertical-align: middle;">
         <center>
-            <font style="font-family: 'Scada', sans-serif; font-size: 40px; color: #026d80;"><?= $EVENTO['DIA_INICIO']?></font><br>
-            <font style="font-family: 'Scada', sans-serif; font-size: 30px; color: #026d80;"><?= trim(strtolower($mes)); ?></font><br>
-            <font style="font-family: 'Scada', sans-serif; font-size: 30px; color: #026d80;"><?= $EVENTO['ANO']; ?></font>
+            <font style="font-family: 'Scada', sans-serif; font-size: 40px; color: #026d80;"><?php echo $EVENTO['DIA_INICIO'] ?></font><br>
+            <font style="font-family: 'Scada', sans-serif; font-size: 30px; color: #026d80;"><?php echo trim(strtolower($mes)); ?></font><br>
+            <font style="font-family: 'Scada', sans-serif; font-size: 30px; color: #026d80;"><?php echo $EVENTO['ANO']; ?></font>
         </center>
     </div>
 </div>

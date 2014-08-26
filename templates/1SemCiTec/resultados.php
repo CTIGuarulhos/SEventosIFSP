@@ -110,7 +110,7 @@ endif;
         style='line-height: 1.2em; outline-color: invert; outline-style: none; outline-width: medium; color: rgb(17, 17, 17);'>Conter
         no cabeçalho: título, nomes dos autores, instituição de origem,
         endereços eletrônicos. E no corpo:&nbsp; introdução, objetivos,
-        metodologia, resultados e referências bibliográficas conforme ABNT. Ver template: <a href="<?= $CONFIG->URL_ROOT . "/templates/" . $EVENTO['TEMPLATE'] ?>/docs/Template_Poster1.ppt">Template_Poster1.ppt</a></span></font></p>
+        metodologia, resultados e referências bibliográficas conforme ABNT. Ver template: <a href="<?php echo $CONFIG->URL_ROOT . "/templates/" . $EVENTO['TEMPLATE'] ?>/docs/Template_Poster1.ppt">Template_Poster1.ppt</a></span></font></p>
 <p
     style='margin: 1.4pt 0cm 1.4pt 54pt; padding: 0px; line-height: 15.9333px; text-align: justify; outline-color: invert; outline-style: none; outline-width: medium;'><font
         style='line-height: 1.2em; outline-color: invert; outline-style: none; outline-width: medium;'><span
@@ -163,6 +163,6 @@ endif;
     do evento.</p>
 
 
-<center><big><big><a href="<?= $CONFIG->URL_ROOT . "/templates/" . $EVENTO['TEMPLATE'] ?>/docs/resultado_final.pdf">Resultado Final</a></big></big></center>
+<center><big><big><a href="<?php echo $CONFIG->URL_ROOT . "/templates/" . $EVENTO['TEMPLATE'] ?>/docs/resultado_final.pdf">Resultado Final</a></big></big></center>
 
 

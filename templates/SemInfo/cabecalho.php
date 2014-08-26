@@ -1,5 +1,5 @@
 <link href='http://fonts.googleapis.com/css?family=Denk+One' rel='stylesheet' type='text/css'>
-<?
+<?php
 switch ($EVENTO['MES']) {
 
     case 1: $mes = "Janeiro";
@@ -28,7 +28,7 @@ switch ($EVENTO['MES']) {
         break;
 }
 ?><br>
-<center><font style="font-family: 'Denk One', sans-serif; font-size: 70px; color: black;" class="sombra"><?= $EVENTO['NOME']; ?></font><br><br>
-    <font style="font-family: 'Denk One', sans-serif; font-size: 30px; color: black;"><?= "De " . $EVENTO['DIA_INICIO'] . " a " . $EVENTO['DIA_FIM'] . " de " . $mes . " de " . $EVENTO['ANO'] . " no " . $EVENTO['NOME_INST_RED'] . "."; ?></font></center>
+<center><font style="font-family: 'Denk One', sans-serif; font-size: 70px; color: black;" class="sombra"><?php echo $EVENTO['NOME']; ?></font><br><br>
+    <font style="font-family: 'Denk One', sans-serif; font-size: 30px; color: black;"><?php echo "De " . $EVENTO['DIA_INICIO'] . " a " . $EVENTO['DIA_FIM'] . " de " . $mes . " de " . $EVENTO['ANO'] . " no " . $EVENTO['NOME_INST_RED'] . "."; ?></font></center>
 
 

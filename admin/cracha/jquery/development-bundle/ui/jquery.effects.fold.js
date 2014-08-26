@@ -46,14 +46,14 @@
             // Animate
             wrapper.animate(animation1, duration, o.options.easing)
                     .animate(animation2, duration, o.options.easing, function() {
-                if (mode == 'hide')
-                    el.hide(); // Hide
-                $.effects.restore(el, props);
-                $.effects.removeWrapper(el); // Restore
-                if (o.callback)
-                    o.callback.apply(el[0], arguments); // Callback
-                el.dequeue();
-            });
+                        if (mode == 'hide')
+                            el.hide(); // Hide
+                        $.effects.restore(el, props);
+                        $.effects.removeWrapper(el); // Restore
+                        if (o.callback)
+                            o.callback.apply(el[0], arguments); // Callback
+                        el.dequeue();
+                    });
 
         });
 

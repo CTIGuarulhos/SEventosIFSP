@@ -137,7 +137,7 @@ class MySQL_Connection {
 
     public function setHost($_host) {
         //if (filter_var($_host, FILTER_VALIDATE_IP)) {
-            $this->host = $_host;
+        $this->host = $_host;
         //} else {
         //    return false;
         //}

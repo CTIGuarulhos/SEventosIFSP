@@ -82,7 +82,7 @@ $lstTipoParticipante[$x++] = "Comissão Organizadora";
         </script>
 
     </head>
-    <body <?
+    <body <?php
     if ($_GET['print'] == 1) : echo "onload='printload()'";
     endif
     ?> >

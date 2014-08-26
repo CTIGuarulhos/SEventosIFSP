@@ -89,7 +89,7 @@ $lstTipoParticipante[$x++] = "Comissão Organizadora";
             }
         </script>
     </head>
-    <body <?
+    <body <?php
     if ($_GET['print'] == 1) : echo "onload='printload()'";
     endif
     ?> >
@@ -125,7 +125,7 @@ $lstTipoParticipante[$x++] = "Comissão Organizadora";
                             <option value=""></option>
                             <?php
                             foreach ($lstTipoParticipante as $key => $value) {
-                                ?> 
+                                ?>  
                                 <option value="<?php echo $value; ?>"><?php echo $value; ?></option>
                                 <?php
                             }

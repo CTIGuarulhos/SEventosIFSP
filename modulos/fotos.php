@@ -21,7 +21,7 @@ $diaSemana = array('Domingo', 'Segunda-feira', 'Terça-feira', 'Quarta-feira', '
 </p>
 
 
-<?
+<?php
 if (@mysql_num_rows($albuns) > 0):  //if 01
 
     while ($album = mysql_fetch_array($albuns)):
@@ -42,21 +42,21 @@ if (@mysql_num_rows($albuns) > 0):  //if 01
             ?>
 
             <div class="box-data">
-                <h1 class="evento-data"><?= $data_album . ' - ' . $diaSemana[date('w', $ts_album)] ?></h1>
-                <?
+                <h1 class="evento-data"><?php echo $data_album . ' - ' . $diaSemana[date('w', $ts_album)] ?></h1>
+                <?php
                 $data = $album['data'];
             }
             ?>
 
             <div class="evento">
-                <? exibir_fotos_picasa($album['usuario'], $album['album']); ?>
+                <?php exibir_fotos_picasa($album['usuario'], $album['album']); ?>
             </div>
 
-            <?
+            <?php
         endwhile;
         echo "</div>";
     else:  //if 01
         ?>
 
         <h3>Nenhum Album disponível</h3>
-                                                                                                    <? endif  //if 01 ?>
+                                                                                                                                    <?php endif  //if 01 ?>

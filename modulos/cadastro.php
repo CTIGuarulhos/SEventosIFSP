@@ -243,11 +243,11 @@ endif;
 
     <h1>Cadastro<span class="imgH1 geral"></span></h1>
     <div class="box">
-        <? if ($EVENTO['CADASTRO'] == "fechado"): ?>
+        <?php if ($EVENTO['CADASTRO'] == "fechado"): ?>
             <p>
                 O Cadastro da <?php echo $EVENTO['NOME'] ?> ainda não esta aberto.
             </p>
-        <? else: ?>
+        <?php else: ?>
 
             <p>
                 Ap&oacute;s cadastro, use seu e-mail e senha nos campos ao lado para inscrever-se nos eventos.
@@ -274,120 +274,120 @@ endif;
             <?php HTML_DocumentoMessage() ?>
 
 
-            <form class="forms" name="inscricao" method="post" action="<? echo $Esta_Pagina ?>">
+            <form class="forms" name="inscricao" method="post" action="<?php echo $Esta_Pagina ?>">
 
                 <label for="nome">
                     <?php HTML_RequiredField() ?>Nome Completo:
                 </label>
-                <input type="text" name="nome" id="nome" maxlength="50" size="35" value="<?= $nome ?>" <?= $erro['nome'] ? 'class="input-erro"' : "" ?>/>
+                <input type="text" name="nome" id="nome" maxlength="50" size="35" value="<?php echo $nome ?>" <?php echo $erro['nome'] ? 'class="input-erro"' : "" ?>/>
                 <br/><br/>
 
 
                 <label for="email">
                     <?php HTML_RequiredField() ?>E-mail:
                 </label>
-                <input type="text" name="email" onKeyPress="return disableCtrlModifer(event);" onKeyDown="return disableCtrlModifer(event);" onselectstart="return false" id="draggingDisabled" maxlength="50" size="35" value="<?= $email ?>" <?= $erro['email'] ? 'class="input-erro"' : "" ?>/>
+                <input type="text" name="email" onKeyPress="return disableCtrlModifer(event);" onKeyDown="return disableCtrlModifer(event);" onselectstart="return false" id="draggingDisabled" maxlength="50" size="35" value="<?php echo $email ?>" <?php echo $erro['email'] ? 'class="input-erro"' : "" ?>/>
                 <br/><br/>
 
                 <label for="cemail">
                     <?php HTML_RequiredField() ?>Confirma E-mail:
                 </label>
-                <input type="text" name="cemail" onKeyPress="return disableCtrlModifer(event);" onKeyDown="return disableCtrlModifer(event);" id="cemail" onselectstart="return false" maxlength="50" size="35" value="<?= $cemail ?>" <?= $erro['cemail'] ? 'class="input-erro"' : "" ?>/>
+                <input type="text" name="cemail" onKeyPress="return disableCtrlModifer(event);" onKeyDown="return disableCtrlModifer(event);" id="cemail" onselectstart="return false" maxlength="50" size="35" value="<?php echo $cemail ?>" <?php echo $erro['cemail'] ? 'class="input-erro"' : "" ?>/>
                 <br/><br/>
 
                 <label for="senha">
                     <?php HTML_RequiredField() ?>Senha:
                 </label>
-                <input type="password" name="senha" onKeyPress="return disableCtrlModifer(event);" onKeyDown="return disableCtrlModifer(event);" onselectstart="return false" id="senha" maxlength="30" size="35" <?= ($erro['senha'] || $erro['csenha']) ? 'class="input-erro"' : "" ?>/>
+                <input type="password" name="senha" onKeyPress="return disableCtrlModifer(event);" onKeyDown="return disableCtrlModifer(event);" onselectstart="return false" id="senha" maxlength="30" size="35" <?php echo ($erro['senha'] || $erro['csenha']) ? 'class="input-erro"' : "" ?>/>
                 <br/><br/>
 
                 <label for="csenha">
                     <?php HTML_RequiredField() ?>Confirma senha:
                 </label>
-                <input type="password" name="csenha" onKeyPress="return disableCtrlModifer(event);" onKeyDown="return disableCtrlModifer(event);" onselectstart="return false" id="csenha" maxlength="30" size="35" <?= ($erro['senha'] || $erro['csenha']) ? 'class="input-erro"' : "" ?>/>
+                <input type="password" name="csenha" onKeyPress="return disableCtrlModifer(event);" onKeyDown="return disableCtrlModifer(event);" onselectstart="return false" id="csenha" maxlength="30" size="35" <?php echo ($erro['senha'] || $erro['csenha']) ? 'class="input-erro"' : "" ?>/>
                 <br/><br/>
 
                 <label for="documento" style="margin-right:30px">
                     <?php HTML_RequiredField() ?><?php HTML_RequiredField() ?>Voc&ecirc; possui CPF?
                 </label>
-                <input type="radio" name="documento" id="documento" value="sim" <? if ($documento == "sim"): ?>checked='checked'<? endif ?>onclick="document.getElementById('cpf').style.display = 'block';
-                                document.getElementById('rg').style.display = 'none';" />SIM
-                <input type="radio" name="documento" value="nao" <? if ($documento == "nao"): ?>checked='checked'<? endif ?>style="margin-left:35px" onclick="document.getElementById('cpf').style.display = 'none';
-                                document.getElementById('rg').style.display = 'block';" />NÃO
+                <input type="radio" name="documento" id="documento" value="sim" <?php if ($documento == "sim"): ?>checked='checked'<?php endif ?>onclick="document.getElementById('cpf').style.display = 'block';
+                        document.getElementById('rg').style.display = 'none';" />SIM
+                <input type="radio" name="documento" value="nao" <?php if ($documento == "nao"): ?>checked='checked'<?php endif ?>style="margin-left:35px" onclick="document.getElementById('cpf').style.display = 'none';
+                        document.getElementById('rg').style.display = 'block';" />NÃO
                 <br/><br/> 
 
-                <span id="cpf" <? if ($documento == "sim"): ?>style="display:block;"<? else: ?>style="display:none;"<? endif ?>>
+                <span id="cpf" <?php if ($documento == "sim"): ?>style="display:block;"<?php else: ?>style="display:none;"<?php endif ?>>
                     <label for="CPF"><?php HTML_RequiredField() ?><?php HTML_RequiredField() ?>CPF</label>
-                    <input type="text" name="cpf" id="cpf" maxlength="11" size="35" value="<?= $cpf ?>" <?= ($erro['cpf'] || $erro['cpf_cadastrado']) ? 'class="input-erro"' : "" ?>/>
+                    <input type="text" name="cpf" id="cpf" maxlength="11" size="35" value="<?php echo $cpf ?>" <?php echo ($erro['cpf'] || $erro['cpf_cadastrado']) ? 'class="input-erro"' : "" ?>/>
                     <br/><br/>
                 </span>
 
-                <span id="rg" <? if ($documento == "nao"): ?>style="display:block;"<? else: ?>style="display:none;"<? endif ?>>
+                <span id="rg" <?php if ($documento == "nao"): ?>style="display:block;"<?php else: ?>style="display:none;"<?php endif ?>>
                     <label for="RG"><?php HTML_RequiredField() ?><?php HTML_RequiredField() ?>RG:</label>
-                    <input type="text" name="rg" id="rg" maxlength="15" size="35" value="<?= $rg ?>" <?= $erro['rg'] ? 'class="input-erro"' : "" ?>/>
+                    <input type="text" name="rg" id="rg" maxlength="15" size="35" value="<?php echo $rg ?>" <?php echo $erro['rg'] ? 'class="input-erro"' : "" ?>/>
                     <br/><br/>
                 </span>
 
 
                 <!--
                 <label for="rg"><?php HTML_RequiredField() ?>RG:</label>
-                <input type="text" name="rg" id="rg" maxlength="15" size="35" value="<?= $rg ?>" <?= $erro['rg'] ? 'class="input-erro"' : "" ?>/>
+                <input type="text" name="rg" id="rg" maxlength="15" size="35" value="<?php echo $rg ?>" <?php echo $erro['rg'] ? 'class="input-erro"' : "" ?>/>
                 <br/><br/>
                 
                 <label for="cpf">CPF: (apenas números)
                 </label>
-                <input type="text" name="cpf" id="cpf" maxlength="11" size="35" value="<?= $cpf ?>" <?= ($erro['cpf'] || $erro['cpf_cadastrado']) ? 'class="input-erro"' : "" ?>/>
+                <input type="text" name="cpf" id="cpf" maxlength="11" size="35" value="<?php echo $cpf ?>" <?php echo ($erro['cpf'] || $erro['cpf_cadastrado']) ? 'class="input-erro"' : "" ?>/>
                 <br/><br/> -->
 
                 <!--		<label for="aluno" style="margin-right:30px">
                 <?php HTML_RequiredField() ?>Voc&ecirc; &eacute; aluno do IFSP - Campus Guarulhos?
                 </label>
-                 <input type="radio" name="aluno" id="aluno" value="sim" CHECKED <? if ($aluno): ?>checked="checked" <? endif ?>onclick="document.getElementById('aluno_sim').style.display='block';document.getElementById('aluno_nao').style.display='none';" />SIM
-                <input type="radio" name="aluno" value="nao" <? if (!$aluno): ?>checked="checked" <? endif ?>style="margin-left:35px" onclick="document.getElementById('aluno_sim').style.display='none';document.getElementById('aluno_nao').style.display='block';" />NÃO
+                 <input type="radio" name="aluno" id="aluno" value="sim" CHECKED <?php if ($aluno): ?>checked="checked" <?php endif ?>onclick="document.getElementById('aluno_sim').style.display='block';document.getElementById('aluno_nao').style.display='none';" />SIM
+                <input type="radio" name="aluno" value="nao" <?php if (!$aluno): ?>checked="checked" <?php endif ?>style="margin-left:35px" onclick="document.getElementById('aluno_sim').style.display='none';document.getElementById('aluno_nao').style.display='block';" />NÃO
                 <br/><br/> 
 
-                <span id="aluno_sim" <? if ($aluno): ?>style="display:block;"<? else: ?>style="display:none;"<? endif ?>>
+                <span id="aluno_sim" <?php if ($aluno): ?>style="display:block;"<?php else: ?>style="display:none;"<?php endif ?>>
                         <label for="prontuario">
                 <?php HTML_RequiredField() ?>Prontu&aacute;rio: (apenas números e <b>X</b>, se houver)
                         </label>
-                        <input type="text" name="prontuario" id="prontuario" maxlength="7" size="35" value="<?= $prontuario ?>" <?= ($erro['prontuario'] || $erro['prontuario_cadastrado']) ? 'class="input-erro"' : "" ?>/>
+                        <input type="text" name="prontuario" id="prontuario" maxlength="7" size="35" value="<?php echo $prontuario ?>" <?php echo ($erro['prontuario'] || $erro['prontuario_cadastrado']) ? 'class="input-erro"' : "" ?>/>
                         <br/><br/>
                 </span>-->
 
-                <span id="aluno_nao" <? if ($aluno): ?>style="display:none;"<? else: ?>style="display:block;"<? endif ?>>
+                <span id="aluno_nao" <?php if ($aluno): ?>style="display:none;"<?php else: ?>style="display:block;"<?php endif ?>>
                     <label for="instituicao">Instituição ou Empresa:</label>
-                    <input type="text" name="instituicao" id="instituicao" maxlength="100" size="35" value="<?= $instituicao ?>" <?= $erro['instituicao'] ? 'class="input-erro"' : "" ?>/>
+                    <input type="text" name="instituicao" id="instituicao" maxlength="100" size="35" value="<?php echo $instituicao ?>" <?php echo $erro['instituicao'] ? 'class="input-erro"' : "" ?>/>
                     <br/><br/>
                 </span>
 
 
                 <label for="endereco">Endereço: (rua, avenida, etc.)</label>
-                <input type="text" name="endereco" id="endereco" maxlength="50" size="35" value="<?= $endereco ?>" <?= $erro['endereco'] ? 'class="input-erro"' : "" ?>/>
+                <input type="text" name="endereco" id="endereco" maxlength="50" size="35" value="<?php echo $endereco ?>" <?php echo $erro['endereco'] ? 'class="input-erro"' : "" ?>/>
                 <br/><br/>
 
                 <label for="numero">N&ordm;:</label>
-                <input type="text" name="numero" id="numero" maxlength="5" size="35" value="<?= $numero == 'NULL' ? "" : $numero ?>" <?= $erro['numero'] ? 'class="input-erro"' : "" ?>/>
+                <input type="text" name="numero" id="numero" maxlength="5" size="35" value="<?php echo $numero == 'NULL' ? "" : $numero ?>" <?php echo $erro['numero'] ? 'class="input-erro"' : "" ?>/>
                 <br/><br/>
 
                 <label for="complemento">Complemento:</label>
-                <input type="text" name="complemento" id="complemento" maxlength="30" size="35" value="<?= $complemento ?>" <?= $erro['complemento'] ? 'class="input-erro"' : "" ?>/>
+                <input type="text" name="complemento" id="complemento" maxlength="30" size="35" value="<?php echo $complemento ?>" <?php echo $erro['complemento'] ? 'class="input-erro"' : "" ?>/>
                 <br/><br/>
 
                 <label for="cep">CEP: (apenas números)</label>
-                <input type="text" name="cep" id="cep" maxlength="8" size="35" value="<?= $cep ?>" <?= $erro['cep'] ? 'class="input-erro"' : "" ?>/>
+                <input type="text" name="cep" id="cep" maxlength="8" size="35" value="<?php echo $cep ?>" <?php echo $erro['cep'] ? 'class="input-erro"' : "" ?>/>
                 <br/><br/>
 
                 <label for="bairro">Bairro:</label>
-                <input type="text" name="bairro" id="bairro" maxlength="50" size="35" value="<?= $bairro ?>" <?= $erro['bairro'] ? 'class="input-erro"' : "" ?>/>
+                <input type="text" name="bairro" id="bairro" maxlength="50" size="35" value="<?php echo $bairro ?>" <?php echo $erro['bairro'] ? 'class="input-erro"' : "" ?>/>
                 <br/><br/>
-                <? $cidade = Guarulhos ?>
+                <?php $cidade = Guarulhos ?>
                 <label for="cidade">Cidade:</label>
-                <input type="text" name="cidade" id="cidade" maxlength="50" size="35" value="<?= $cidade ?>" <?= $erro['cidade'] ? 'class="input-erro"' : "" ?>/>
+                <input type="text" name="cidade" id="cidade" maxlength="50" size="35" value="<?php echo $cidade ?>" <?php echo $erro['cidade'] ? 'class="input-erro"' : "" ?>/>
                 <br/><br/>
 
                 <label for="uf">UF:</label>
                 <select name="uf" id="uf">
-                    <?
+                    <?php
                     $uf = SP;
                     $estado = array('', 'AC', 'AL', 'AM', 'AP', 'BA', 'CE', 'DF', 'ES', 'GO', 'MA', 'MG',
                         'MS', 'MT', 'PA', 'PB', 'PE', 'PI', 'PR', 'RJ', 'RN', 'RO', 'RR', 'RS', 'SC', 'SE', 'SP', 'TO');
@@ -402,20 +402,20 @@ endif;
                 <br/><br/>
 
                 <label for="pais">País:</label>
-                <input type="text" name="pais" id="pais" maxlength="30" size="35" value="<?= empty($pais) ? 'Brasil' : $pais ?>" <?= $erro['pais'] ? 'class="input-erro"' : "" ?>/>
+                <input type="text" name="pais" id="pais" maxlength="30" size="35" value="<?php echo empty($pais) ? 'Brasil' : $pais ?>" <?php echo $erro['pais'] ? 'class="input-erro"' : "" ?>/>
                 <br/><br/>
 
                 <label for="tel">Telefone: (xx) xxxxx-xxxx</label>
-                <input type="text" name="tel" id="tel" maxlength="15" size="35" value="<?= $tel ?>" <?= $erro['tel'] ? 'class="input-erro"' : "" ?>/>
+                <input type="text" name="tel" id="tel" maxlength="15" size="35" value="<?php echo $tel ?>" <?php echo $erro['tel'] ? 'class="input-erro"' : "" ?>/>
                 <br/><br/>
 
                 <label for="cel">Celular: (xx) xxxxx-xxxx</label>
-                <input type="text" name="cel" id="cel" maxlength="15" size="35" value="<?= $cel ?>" <?= $erro['cel'] ? 'class="input-erro"' : "" ?>/>
+                <input type="text" name="cel" id="cel" maxlength="15" size="35" value="<?php echo $cel ?>" <?php echo $erro['cel'] ? 'class="input-erro"' : "" ?>/>
                 <br/><br/>
 
                 <input type="submit" value="Enviar" />
             </form>
-        <? endif ?>
+        <?php endif ?>
 
     </div>
 <?php endif ?>

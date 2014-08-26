@@ -35,7 +35,7 @@ if (tipoadmin(5, $USER->getCpf(), $SCT_ID)) {
     </p>
 
 
-    <?
+    <?php
     if (@mysql_num_rows($albuns) > 0):  //if 01
         while ($album = mysql_fetch_array($albuns)):
 
@@ -55,26 +55,26 @@ if (tipoadmin(5, $USER->getCpf(), $SCT_ID)) {
                 ?>
 
                 <div class="box-data">
-                    <h1 class="evento-data"><?= $data_album . ' - ' . $diaSemana[date('w', $ts_album)] ?></h1>
-                    <?
+                    <h1 class="evento-data"><?php echo $data_album . ' - ' . $diaSemana[date('w', $ts_album)] ?></h1>
+                    <?php
                     $data = $album['data'];
                 }
                 ?> 
 
-                <div class="evento"><form method="post" action="<?= $Esta_Pagina ?>">
-                        <input type="hidden" name="deletaralbum" value="<?= $album['id'] ?>" />
-                        <? exibir_fotos_picasa($album['usuario'], $album['album']); ?>
-                        <div class="right"><a href="<?php echo $CONFIG->URL_ROOT ?>?pag=admalbumedit&id=<?= $album['id'] ?>"><img src="<?php echo $CONFIG->URL_ROOT ?>/includes/imgs/view.png" name="EDITAR" ALT="EDITAR" VALUE="EDITAR" title="EDITAR"></a>&nbsp;&nbsp;<input type="image" src="<?php echo $CONFIG->URL_ROOT ?>/includes/imgs/cancel.png" name="DELETAR" ALT="DELETAR" VALUE="DELETAR" title="DELETAR" onclick="alert('Você está excluindo o album <?= $album['id'] ?> - <?= $album['album'] ?>')">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div><br>
+                <div class="evento"><form method="post" action="<?php echo $Esta_Pagina ?>">
+                        <input type="hidden" name="deletaralbum" value="<?php echo $album['id'] ?>" />
+                        <?php exibir_fotos_picasa($album['usuario'], $album['album']); ?>
+                        <div class="right"><a href="<?php echo $CONFIG->URL_ROOT ?>?pag=admalbumedit&id=<?php echo $album['id'] ?>"><img src="<?php echo $CONFIG->URL_ROOT ?>/includes/imgs/view.png" name="EDITAR" ALT="EDITAR" VALUE="EDITAR" title="EDITAR"></a>&nbsp;&nbsp;<input type="image" src="<?php echo $CONFIG->URL_ROOT ?>/includes/imgs/cancel.png" name="DELETAR" ALT="DELETAR" VALUE="DELETAR" title="DELETAR" onclick="alert('Você está excluindo o album <?php echo $album['id'] ?> - <?php echo $album['album'] ?>')">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div><br>
 
 
                         </div>
-                        <?
+                        <?php
                     endwhile;
                     echo "</div>";
                 else:  //if 01
                     ?>
 
                     <h3>Nenhum album disponível</h3>
-                <? endif;  //if 01  ?>
-            <? } ?>
+                <?php endif;  //if 01  ?>
+            <?php } ?>
 

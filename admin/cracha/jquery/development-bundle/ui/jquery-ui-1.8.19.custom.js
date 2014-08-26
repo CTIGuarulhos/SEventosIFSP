@@ -62,14 +62,14 @@
         focus: function(delay, fn) {
             return typeof delay === "number" ?
                     this.each(function() {
-                var elem = this;
-                setTimeout(function() {
-                    $(elem).focus();
-                    if (fn) {
-                        fn.call(elem);
-                    }
-                }, delay);
-            }) :
+                        var elem = this;
+                        setTimeout(function() {
+                            $(elem).focus();
+                            if (fn) {
+                                fn.call(elem);
+                            }
+                        }, delay);
+                    }) :
                     this._focus.apply(this, arguments);
         },
         scrollParent: function() {
@@ -117,8 +117,8 @@
         disableSelection: function() {
             return this.bind(($.support.selectstart ? "selectstart" : "mousedown") +
                     ".ui-disableSelection", function(event) {
-                event.preventDefault();
-            });
+                        event.preventDefault();
+                    });
         },
         enableSelection: function() {
             return this.unbind(".ui-disableSelection");
@@ -129,11 +129,11 @@
         var side = name === "Width" ? ["Left", "Right"] : ["Top", "Bottom"],
                 type = name.toLowerCase(),
                 orig = {
-            innerWidth: $.fn.innerWidth,
-            innerHeight: $.fn.innerHeight,
-            outerWidth: $.fn.outerWidth,
-            outerHeight: $.fn.outerHeight
-        };
+                    innerWidth: $.fn.innerWidth,
+                    innerHeight: $.fn.innerHeight,
+                    outerWidth: $.fn.outerWidth,
+                    outerHeight: $.fn.outerHeight
+                };
 
         function reduce(elem, size, border, margin) {
             $.each(side, function() {
@@ -492,8 +492,8 @@
                     .unbind("." + this.widgetName)
                     .removeAttr("aria-disabled")
                     .removeClass(
-                    this.widgetBaseClass + "-disabled " +
-                    "ui-state-disabled");
+                            this.widgetBaseClass + "-disabled " +
+                            "ui-state-disabled");
         },
         widget: function() {
             return this.element;
@@ -607,15 +607,15 @@
 
             this.element
                     .bind('mousedown.' + this.widgetName, function(event) {
-                return self._mouseDown(event);
-            })
+                        return self._mouseDown(event);
+                    })
                     .bind('click.' + this.widgetName, function(event) {
-                if (true === $.data(event.target, self.widgetName + '.preventClickEvent')) {
-                    $.removeData(event.target, self.widgetName + '.preventClickEvent');
-                    event.stopImmediatePropagation();
-                    return false;
-                }
-            });
+                        if (true === $.data(event.target, self.widgetName + '.preventClickEvent')) {
+                            $.removeData(event.target, self.widgetName + '.preventClickEvent');
+                            event.stopImmediatePropagation();
+                            return false;
+                        }
+                    });
 
             this.started = false;
         },
@@ -973,9 +973,9 @@
                     curTop = parseInt($.curCSS(elem, "top", true), 10) || 0,
                     curLeft = parseInt($.curCSS(elem, "left", true), 10) || 0,
                     props = {
-                top: (options.top - curOffset.top) + curTop,
-                left: (options.left - curOffset.left) + curLeft
-            };
+                        top: (options.top - curOffset.top) + curTop,
+                        left: (options.left - curOffset.left) + curLeft
+                    };
 
             if ('using' in options) {
                 options.using.call(elem, props);
@@ -1104,8 +1104,8 @@
                     .removeData("draggable")
                     .unbind(".draggable")
                     .removeClass("ui-draggable"
-                    + " ui-draggable-dragging"
-                    + " ui-draggable-disabled");
+                            + " ui-draggable-dragging"
+                            + " ui-draggable-disabled");
             this._mouseDestroy();
 
             return this;
@@ -1127,9 +1127,9 @@
                 $(o.iframeFix === true ? "iframe" : o.iframeFix).each(function() {
                     $('<div class="ui-draggable-iframeFix" style="background: #fff;"></div>')
                             .css({
-                        width: this.offsetWidth + "px", height: this.offsetHeight + "px",
-                        position: "absolute", opacity: "0.001", zIndex: 1000
-                    })
+                                width: this.offsetWidth + "px", height: this.offsetHeight + "px",
+                                position: "absolute", opacity: "0.001", zIndex: 1000
+                            })
                             .css($(this).offset())
                             .appendTo("body");
                 });
@@ -1302,9 +1302,9 @@
                     .find("*")
                     .andSelf()
                     .each(function() {
-                if (this == event.target)
-                    handle = true;
-            });
+                        if (this == event.target)
+                            handle = true;
+                    });
 
             return handle;
 
@@ -2390,19 +2390,19 @@
                 $(this.element)
                         .addClass("ui-resizable-autohide")
                         .hover(function() {
-                    if (o.disabled)
-                        return;
-                    $(this).removeClass("ui-resizable-autohide");
-                    self._handles.show();
-                },
-                        function() {
                             if (o.disabled)
                                 return;
-                            if (!self.resizing) {
-                                $(this).addClass("ui-resizable-autohide");
-                                self._handles.hide();
-                            }
-                        });
+                            $(this).removeClass("ui-resizable-autohide");
+                            self._handles.show();
+                        },
+                                function() {
+                                    if (o.disabled)
+                                        return;
+                                    if (!self.resizing) {
+                                        $(this).addClass("ui-resizable-autohide");
+                                        self._handles.hide();
+                                    }
+                                });
             }
 
             //Initialize the mouse interaction
@@ -2424,12 +2424,12 @@
                 var wrapper = this.element;
                 wrapper.after(
                         this.originalElement.css({
-                    position: wrapper.css('position'),
-                    width: wrapper.outerWidth(),
-                    height: wrapper.outerHeight(),
-                    top: wrapper.css('top'),
-                    left: wrapper.css('left')
-                })
+                            position: wrapper.css('position'),
+                            width: wrapper.outerWidth(),
+                            height: wrapper.outerHeight(),
+                            top: wrapper.css('top'),
+                            left: wrapper.css('left')
+                        })
                         ).remove();
             }
 
@@ -4511,29 +4511,29 @@
             self.headers = self.element.find(options.header)
                     .addClass("ui-accordion-header ui-helper-reset ui-state-default ui-corner-all")
                     .bind("mouseenter.accordion", function() {
-                if (options.disabled) {
-                    return;
-                }
-                $(this).addClass("ui-state-hover");
-            })
+                        if (options.disabled) {
+                            return;
+                        }
+                        $(this).addClass("ui-state-hover");
+                    })
                     .bind("mouseleave.accordion", function() {
-                if (options.disabled) {
-                    return;
-                }
-                $(this).removeClass("ui-state-hover");
-            })
+                        if (options.disabled) {
+                            return;
+                        }
+                        $(this).removeClass("ui-state-hover");
+                    })
                     .bind("focus.accordion", function() {
-                if (options.disabled) {
-                    return;
-                }
-                $(this).addClass("ui-state-focus");
-            })
+                        if (options.disabled) {
+                            return;
+                        }
+                        $(this).addClass("ui-state-focus");
+                    })
                     .bind("blur.accordion", function() {
-                if (options.disabled) {
-                    return;
-                }
-                $(this).removeClass("ui-state-focus");
-            });
+                        if (options.disabled) {
+                            return;
+                        }
+                        $(this).removeClass("ui-state-focus");
+                    });
 
             self.headers.next()
                     .addClass("ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom");
@@ -4567,18 +4567,18 @@
             self.headers
                     .attr("role", "tab")
                     .bind("keydown.accordion", function(event) {
-                return self._keydown(event);
-            })
+                        return self._keydown(event);
+                    })
                     .next()
                     .attr("role", "tabpanel");
 
             self.headers
                     .not(self.active || "")
                     .attr({
-                "aria-expanded": "false",
-                "aria-selected": "false",
-                tabIndex: -1
-            })
+                        "aria-expanded": "false",
+                        "aria-selected": "false",
+                        tabIndex: -1
+                    })
                     .next()
                     .hide();
 
@@ -4588,10 +4588,10 @@
             } else {
                 self.active
                         .attr({
-                    "aria-expanded": "true",
-                    "aria-selected": "true",
-                    tabIndex: 0
-                });
+                            "aria-expanded": "true",
+                            "aria-selected": "true",
+                            tabIndex: 0
+                        });
             }
 
             // only need links in tab order for Safari
@@ -4723,16 +4723,16 @@
 
                 this.headers.next()
                         .each(function() {
-                    $(this).height(Math.max(0, maxHeight -
-                            $(this).innerHeight() + $(this).height()));
-                })
+                            $(this).height(Math.max(0, maxHeight -
+                                    $(this).innerHeight() + $(this).height()));
+                        })
                         .css("overflow", "auto");
             } else if (options.autoHeight) {
                 maxHeight = 0;
                 this.headers.next()
                         .each(function() {
-                    maxHeight = Math.max(maxHeight, $(this).height("").height());
-                })
+                            maxHeight = Math.max(maxHeight, $(this).height("").height());
+                        })
                         .height(maxHeight);
             }
 
@@ -4777,12 +4777,12 @@
                 this.active.next().addClass("ui-accordion-content-active");
                 var toHide = this.active.next(),
                         data = {
-                    options: options,
-                    newHeader: $([]),
-                    oldHeader: options.active,
-                    newContent: $([]),
-                    oldContent: toHide
-                },
+                            options: options,
+                            newHeader: $([]),
+                            oldHeader: options.active,
+                            newContent: $([]),
+                            oldContent: toHide
+                        },
                 toShow = (this.active = $([]));
                 this._toggle(toShow, toHide, data);
                 return;
@@ -4808,12 +4808,12 @@
                     toShow = clicked.next(),
                     toHide = this.active.next(),
                     data = {
-                options: options,
-                newHeader: clickedIsActive && options.collapsible ? $([]) : clicked,
-                oldHeader: this.active,
-                newContent: clickedIsActive && options.collapsible ? $([]) : toShow,
-                oldContent: toHide
-            },
+                        options: options,
+                        newHeader: clickedIsActive && options.collapsible ? $([]) : clicked,
+                        oldHeader: this.active,
+                        newContent: clickedIsActive && options.collapsible ? $([]) : toShow,
+                        oldContent: toHide
+                    },
             down = this.headers.index(this.active[0]) > this.headers.index(clicked[0]);
 
             // when the call to ._toggle() comes after the class changes
@@ -4931,17 +4931,17 @@
             // TODO assert that the blur and focus triggers are really necessary, remove otherwise
             toHide.prev()
                     .attr({
-                "aria-expanded": "false",
-                "aria-selected": "false",
-                tabIndex: -1
-            })
+                        "aria-expanded": "false",
+                        "aria-selected": "false",
+                        tabIndex: -1
+                    })
                     .blur();
             toShow.prev()
                     .attr({
-                "aria-expanded": "true",
-                "aria-selected": "true",
-                tabIndex: 0
-            })
+                        "aria-expanded": "true",
+                        "aria-selected": "true",
+                        tabIndex: 0
+                    })
                     .focus();
         },
         _completed: function(cancel) {
@@ -5023,32 +5023,32 @@
                         .end()
                         .filter(":visible")
                         .animate(hideProps, {
-                    step: function(now, settings) {
-                        // only calculate the percent when animating height
-                        // IE gets very inconsistent results when animating elements
-                        // with small values, which is common for padding
-                        if (settings.prop == "height") {
-                            percentDone = (settings.end - settings.start === 0) ? 0 :
-                                    (settings.now - settings.start) / (settings.end - settings.start);
-                        }
+                            step: function(now, settings) {
+                                // only calculate the percent when animating height
+                                // IE gets very inconsistent results when animating elements
+                                // with small values, which is common for padding
+                                if (settings.prop == "height") {
+                                    percentDone = (settings.end - settings.start === 0) ? 0 :
+                                            (settings.now - settings.start) / (settings.end - settings.start);
+                                }
 
-                        options.toShow[ 0 ].style[ settings.prop ] =
-                                (percentDone * showProps[ settings.prop ].value)
-                                + showProps[ settings.prop ].unit;
-                    },
-                    duration: options.duration,
-                    easing: options.easing,
-                    complete: function() {
-                        if (!options.autoHeight) {
-                            options.toShow.css("height", "");
-                        }
-                        options.toShow.css({
-                            width: originalWidth,
-                            overflow: overflow
+                                options.toShow[ 0 ].style[ settings.prop ] =
+                                        (percentDone * showProps[ settings.prop ].value)
+                                        + showProps[ settings.prop ].unit;
+                            },
+                            duration: options.duration,
+                            easing: options.easing,
+                            complete: function() {
+                                if (!options.autoHeight) {
+                                    options.toShow.css("height", "");
+                                }
+                                options.toShow.css({
+                                    width: originalWidth,
+                                    overflow: overflow
+                                });
+                                options.complete();
+                            }
                         });
-                        options.complete();
-                    }
-                });
             },
             bounceslide: function(options) {
                 this.slide(options, {
@@ -5104,163 +5104,163 @@
                     .attr("autocomplete", "off")
                     // TODO verify these actually work as intended
                     .attr({
-                role: "textbox",
-                "aria-autocomplete": "list",
-                "aria-haspopup": "true"
-            })
+                        role: "textbox",
+                        "aria-autocomplete": "list",
+                        "aria-haspopup": "true"
+                    })
                     .bind("keydown.autocomplete", function(event) {
-                if (self.options.disabled || self.element.propAttr("readOnly")) {
-                    return;
-                }
-
-                suppressKeyPress = false;
-                var keyCode = $.ui.keyCode;
-                switch (event.keyCode) {
-                    case keyCode.PAGE_UP:
-                        self._move("previousPage", event);
-                        break;
-                    case keyCode.PAGE_DOWN:
-                        self._move("nextPage", event);
-                        break;
-                    case keyCode.UP:
-                        self._keyEvent("previous", event);
-                        break;
-                    case keyCode.DOWN:
-                        self._keyEvent("next", event);
-                        break;
-                    case keyCode.ENTER:
-                    case keyCode.NUMPAD_ENTER:
-                        // when menu is open and has focus
-                        if (self.menu.active) {
-                            // #6055 - Opera still allows the keypress to occur
-                            // which causes forms to submit
-                            suppressKeyPress = true;
-                            event.preventDefault();
-                        }
-                        //passthrough - ENTER and TAB both select the current element
-                    case keyCode.TAB:
-                        if (!self.menu.active) {
+                        if (self.options.disabled || self.element.propAttr("readOnly")) {
                             return;
                         }
-                        self.menu.select(event);
-                        break;
-                    case keyCode.ESCAPE:
-                        self.element.val(self.term);
-                        self.close(event);
-                        break;
-                    default:
-                        // keypress is triggered before the input value is changed
-                        clearTimeout(self.searching);
-                        self.searching = setTimeout(function() {
-                            // only search if the value has changed
-                            if (self.term != self.element.val()) {
-                                self.selectedItem = null;
-                                self.search(null, event);
-                            }
-                        }, self.options.delay);
-                        break;
-                }
-            })
+
+                        suppressKeyPress = false;
+                        var keyCode = $.ui.keyCode;
+                        switch (event.keyCode) {
+                            case keyCode.PAGE_UP:
+                                self._move("previousPage", event);
+                                break;
+                            case keyCode.PAGE_DOWN:
+                                self._move("nextPage", event);
+                                break;
+                            case keyCode.UP:
+                                self._keyEvent("previous", event);
+                                break;
+                            case keyCode.DOWN:
+                                self._keyEvent("next", event);
+                                break;
+                            case keyCode.ENTER:
+                            case keyCode.NUMPAD_ENTER:
+                                // when menu is open and has focus
+                                if (self.menu.active) {
+                                    // #6055 - Opera still allows the keypress to occur
+                                    // which causes forms to submit
+                                    suppressKeyPress = true;
+                                    event.preventDefault();
+                                }
+                                //passthrough - ENTER and TAB both select the current element
+                            case keyCode.TAB:
+                                if (!self.menu.active) {
+                                    return;
+                                }
+                                self.menu.select(event);
+                                break;
+                            case keyCode.ESCAPE:
+                                self.element.val(self.term);
+                                self.close(event);
+                                break;
+                            default:
+                                // keypress is triggered before the input value is changed
+                                clearTimeout(self.searching);
+                                self.searching = setTimeout(function() {
+                                    // only search if the value has changed
+                                    if (self.term != self.element.val()) {
+                                        self.selectedItem = null;
+                                        self.search(null, event);
+                                    }
+                                }, self.options.delay);
+                                break;
+                        }
+                    })
                     .bind("keypress.autocomplete", function(event) {
-                if (suppressKeyPress) {
-                    suppressKeyPress = false;
-                    event.preventDefault();
-                }
-            })
+                        if (suppressKeyPress) {
+                            suppressKeyPress = false;
+                            event.preventDefault();
+                        }
+                    })
                     .bind("focus.autocomplete", function() {
-                if (self.options.disabled) {
-                    return;
-                }
+                        if (self.options.disabled) {
+                            return;
+                        }
 
-                self.selectedItem = null;
-                self.previous = self.element.val();
-            })
+                        self.selectedItem = null;
+                        self.previous = self.element.val();
+                    })
                     .bind("blur.autocomplete", function(event) {
-                if (self.options.disabled) {
-                    return;
-                }
+                        if (self.options.disabled) {
+                            return;
+                        }
 
-                clearTimeout(self.searching);
-                // clicks on the menu (or a button to trigger a search) will cause a blur event
-                self.closing = setTimeout(function() {
-                    self.close(event);
-                    self._change(event);
-                }, 150);
-            });
+                        clearTimeout(self.searching);
+                        // clicks on the menu (or a button to trigger a search) will cause a blur event
+                        self.closing = setTimeout(function() {
+                            self.close(event);
+                            self._change(event);
+                        }, 150);
+                    });
             this._initSource();
             this.menu = $("<ul></ul>")
                     .addClass("ui-autocomplete")
                     .appendTo($(this.options.appendTo || "body", doc)[0])
                     // prevent the close-on-blur in case of a "slow" click on the menu (long mousedown)
                     .mousedown(function(event) {
-                // clicking on the scrollbar causes focus to shift to the body
-                // but we can't detect a mouseup or a click immediately afterward
-                // so we have to track the next mousedown and close the menu if
-                // the user clicks somewhere outside of the autocomplete
-                var menuElement = self.menu.element[ 0 ];
-                if (!$(event.target).closest(".ui-menu-item").length) {
-                    setTimeout(function() {
-                        $(document).one('mousedown', function(event) {
-                            if (event.target !== self.element[ 0 ] &&
-                                    event.target !== menuElement &&
-                                    !$.ui.contains(menuElement, event.target)) {
-                                self.close();
-                            }
-                        });
-                    }, 1);
-                }
-
-                // use another timeout to make sure the blur-event-handler on the input was already triggered
-                setTimeout(function() {
-                    clearTimeout(self.closing);
-                }, 13);
-            })
-                    .menu({
-                focus: function(event, ui) {
-                    var item = ui.item.data("item.autocomplete");
-                    if (false !== self._trigger("focus", event, {item: item})) {
-                        // use value to match what will end up in the input, if it was a key event
-                        if (/^key/.test(event.originalEvent.type)) {
-                            self.element.val(item.value);
+                        // clicking on the scrollbar causes focus to shift to the body
+                        // but we can't detect a mouseup or a click immediately afterward
+                        // so we have to track the next mousedown and close the menu if
+                        // the user clicks somewhere outside of the autocomplete
+                        var menuElement = self.menu.element[ 0 ];
+                        if (!$(event.target).closest(".ui-menu-item").length) {
+                            setTimeout(function() {
+                                $(document).one('mousedown', function(event) {
+                                    if (event.target !== self.element[ 0 ] &&
+                                            event.target !== menuElement &&
+                                            !$.ui.contains(menuElement, event.target)) {
+                                        self.close();
+                                    }
+                                });
+                            }, 1);
                         }
-                    }
-                },
-                selected: function(event, ui) {
-                    var item = ui.item.data("item.autocomplete"),
-                            previous = self.previous;
 
-                    // only trigger when focus was lost (click on menu)
-                    if (self.element[0] !== doc.activeElement) {
-                        self.element.focus();
-                        self.previous = previous;
-                        // #6109 - IE triggers two focus events and the second
-                        // is asynchronous, so we need to reset the previous
-                        // term synchronously and asynchronously :-(
+                        // use another timeout to make sure the blur-event-handler on the input was already triggered
                         setTimeout(function() {
-                            self.previous = previous;
+                            clearTimeout(self.closing);
+                        }, 13);
+                    })
+                    .menu({
+                        focus: function(event, ui) {
+                            var item = ui.item.data("item.autocomplete");
+                            if (false !== self._trigger("focus", event, {item: item})) {
+                                // use value to match what will end up in the input, if it was a key event
+                                if (/^key/.test(event.originalEvent.type)) {
+                                    self.element.val(item.value);
+                                }
+                            }
+                        },
+                        selected: function(event, ui) {
+                            var item = ui.item.data("item.autocomplete"),
+                                    previous = self.previous;
+
+                            // only trigger when focus was lost (click on menu)
+                            if (self.element[0] !== doc.activeElement) {
+                                self.element.focus();
+                                self.previous = previous;
+                                // #6109 - IE triggers two focus events and the second
+                                // is asynchronous, so we need to reset the previous
+                                // term synchronously and asynchronously :-(
+                                setTimeout(function() {
+                                    self.previous = previous;
+                                    self.selectedItem = item;
+                                }, 1);
+                            }
+
+                            if (false !== self._trigger("select", event, {item: item})) {
+                                self.element.val(item.value);
+                            }
+                            // reset the term after the select event
+                            // this allows custom select handling to work properly
+                            self.term = self.element.val();
+
+                            self.close(event);
                             self.selectedItem = item;
-                        }, 1);
-                    }
-
-                    if (false !== self._trigger("select", event, {item: item})) {
-                        self.element.val(item.value);
-                    }
-                    // reset the term after the select event
-                    // this allows custom select handling to work properly
-                    self.term = self.element.val();
-
-                    self.close(event);
-                    self.selectedItem = item;
-                },
-                blur: function(event, ui) {
-                    // don't set the value of the text field if it's already correct
-                    // this prevents moving the cursor unnecessarily
-                    if (self.menu.element.is(":visible") &&
-                            (self.element.val() !== self.term)) {
-                        self.element.val(self.term);
-                    }
-                }
-            })
+                        },
+                        blur: function(event, ui) {
+                            // don't set the value of the text field if it's already correct
+                            // this prevents moving the cursor unnecessarily
+                            if (self.menu.element.is(":visible") &&
+                                    (self.element.val() !== self.term)) {
+                                self.element.val(self.term);
+                            }
+                        }
+                    })
                     .zIndex(this.element.zIndex() + 1)
                     // workaround for jQuery bug #5781 http://dev.jquery.com/ticket/5781
                     .css({top: 0, left: 0})
@@ -5515,17 +5515,17 @@
             this.element
                     .addClass("ui-menu ui-widget ui-widget-content ui-corner-all")
                     .attr({
-                role: "listbox",
-                "aria-activedescendant": "ui-active-menuitem"
-            })
+                        role: "listbox",
+                        "aria-activedescendant": "ui-active-menuitem"
+                    })
                     .click(function(event) {
-                if (!$(event.target).closest(".ui-menu-item a").length) {
-                    return;
-                }
-                // temporary
-                event.preventDefault();
-                self.select(event);
-            });
+                        if (!$(event.target).closest(".ui-menu-item a").length) {
+                            return;
+                        }
+                        // temporary
+                        event.preventDefault();
+                        self.select(event);
+                    });
             this.refresh();
         },
         refresh: function() {
@@ -5541,11 +5541,11 @@
                     .attr("tabindex", -1)
                     // mouseenter doesn't work with event delegation
                     .mouseenter(function(event) {
-                self.activate(event, $(this).parent());
-            })
+                        self.activate(event, $(this).parent());
+                    })
                     .mouseleave(function() {
-                self.deactivate();
-            });
+                        self.deactivate();
+                    });
         },
         activate: function(event, item) {
             this.deactivate();
@@ -5683,27 +5683,27 @@
             stateClasses = "ui-state-hover ui-state-active ",
             typeClasses = "ui-button-icons-only ui-button-icon-only ui-button-text-icons ui-button-text-icon-primary ui-button-text-icon-secondary ui-button-text-only",
             formResetHandler = function() {
-        var buttons = $(this).find(":ui-button");
-        setTimeout(function() {
-            buttons.button("refresh");
-        }, 1);
-    },
+                var buttons = $(this).find(":ui-button");
+                setTimeout(function() {
+                    buttons.button("refresh");
+                }, 1);
+            },
             radioGroup = function(radio) {
-        var name = radio.name,
-                form = radio.form,
-                radios = $([]);
-        if (name) {
-            if (form) {
-                radios = $(form).find("[name='" + name + "']");
-            } else {
-                radios = $("[name='" + name + "']", radio.ownerDocument)
-                        .filter(function() {
-                    return !this.form;
-                });
-            }
-        }
-        return radios;
-    };
+                var name = radio.name,
+                        form = radio.form,
+                        radios = $([]);
+                if (name) {
+                    if (form) {
+                        radios = $(form).find("[name='" + name + "']");
+                    } else {
+                        radios = $("[name='" + name + "']", radio.ownerDocument)
+                                .filter(function() {
+                                    return !this.form;
+                                });
+                    }
+                }
+                return radios;
+            };
 
     $.widget("ui.button", {
         options: {
@@ -5743,35 +5743,35 @@
                     .addClass(baseClasses)
                     .attr("role", "button")
                     .bind("mouseenter.button", function() {
-                if (options.disabled) {
-                    return;
-                }
-                $(this).addClass("ui-state-hover");
-                if (this === lastActive) {
-                    $(this).addClass("ui-state-active");
-                }
-            })
+                        if (options.disabled) {
+                            return;
+                        }
+                        $(this).addClass("ui-state-hover");
+                        if (this === lastActive) {
+                            $(this).addClass("ui-state-active");
+                        }
+                    })
                     .bind("mouseleave.button", function() {
-                if (options.disabled) {
-                    return;
-                }
-                $(this).removeClass(hoverClass);
-            })
+                        if (options.disabled) {
+                            return;
+                        }
+                        $(this).removeClass(hoverClass);
+                    })
                     .bind("click.button", function(event) {
-                if (options.disabled) {
-                    event.preventDefault();
-                    event.stopImmediatePropagation();
-                }
-            });
+                        if (options.disabled) {
+                            event.preventDefault();
+                            event.stopImmediatePropagation();
+                        }
+                    });
 
             this.element
                     .bind("focus.button", function() {
-                // no need to check disabled, focus won't be triggered anyway
-                self.buttonElement.addClass(focusClass);
-            })
+                        // no need to check disabled, focus won't be triggered anyway
+                        self.buttonElement.addClass(focusClass);
+                    })
                     .bind("blur.button", function() {
-                self.buttonElement.removeClass(focusClass);
-            });
+                        self.buttonElement.removeClass(focusClass);
+                    });
 
             if (toggleButton) {
                 this.element.bind("change.button", function() {
@@ -5785,21 +5785,21 @@
                 // does not in Firefox (see ticket #6970)
                 this.buttonElement
                         .bind("mousedown.button", function(event) {
-                    if (options.disabled) {
-                        return;
-                    }
-                    clickDragged = false;
-                    startXPos = event.pageX;
-                    startYPos = event.pageY;
-                })
+                            if (options.disabled) {
+                                return;
+                            }
+                            clickDragged = false;
+                            startXPos = event.pageX;
+                            startYPos = event.pageY;
+                        })
                         .bind("mouseup.button", function(event) {
-                    if (options.disabled) {
-                        return;
-                    }
-                    if (startXPos !== event.pageX || startYPos !== event.pageY) {
-                        clickDragged = true;
-                    }
-                });
+                            if (options.disabled) {
+                                return;
+                            }
+                            if (startXPos !== event.pageX || startYPos !== event.pageY) {
+                                clickDragged = true;
+                            }
+                        });
             }
 
             if (this.type === "checkbox") {
@@ -5822,40 +5822,40 @@
                     radioGroup(radio)
                             .not(radio)
                             .map(function() {
-                        return $(this).button("widget")[ 0 ];
-                    })
+                                return $(this).button("widget")[ 0 ];
+                            })
                             .removeClass("ui-state-active")
                             .attr("aria-pressed", "false");
                 });
             } else {
                 this.buttonElement
                         .bind("mousedown.button", function() {
-                    if (options.disabled) {
-                        return false;
-                    }
-                    $(this).addClass("ui-state-active");
-                    lastActive = this;
-                    $(document).one("mouseup", function() {
-                        lastActive = null;
-                    });
-                })
+                            if (options.disabled) {
+                                return false;
+                            }
+                            $(this).addClass("ui-state-active");
+                            lastActive = this;
+                            $(document).one("mouseup", function() {
+                                lastActive = null;
+                            });
+                        })
                         .bind("mouseup.button", function() {
-                    if (options.disabled) {
-                        return false;
-                    }
-                    $(this).removeClass("ui-state-active");
-                })
+                            if (options.disabled) {
+                                return false;
+                            }
+                            $(this).removeClass("ui-state-active");
+                        })
                         .bind("keydown.button", function(event) {
-                    if (options.disabled) {
-                        return false;
-                    }
-                    if (event.keyCode == $.ui.keyCode.SPACE || event.keyCode == $.ui.keyCode.ENTER) {
-                        $(this).addClass("ui-state-active");
-                    }
-                })
+                            if (options.disabled) {
+                                return false;
+                            }
+                            if (event.keyCode == $.ui.keyCode.SPACE || event.keyCode == $.ui.keyCode.ENTER) {
+                                $(this).addClass("ui-state-active");
+                            }
+                        })
                         .bind("keyup.button", function() {
-                    $(this).removeClass("ui-state-active");
-                });
+                            $(this).removeClass("ui-state-active");
+                        });
 
                 if (this.buttonElement.is("a")) {
                     this.buttonElement.keyup(function(event) {
@@ -6040,8 +6040,8 @@
                     .button()
                     .end()
                     .map(function() {
-                return $(this).button("widget")[ 0 ];
-            })
+                        return $(this).button("widget")[ 0 ];
+                    })
                     .removeClass("ui-corner-all ui-corner-left ui-corner-right")
                     .filter(":first")
                     .addClass(rtl ? "ui-corner-right" : "ui-corner-left")
@@ -6055,8 +6055,8 @@
             this.element.removeClass("ui-buttonset");
             this.buttons
                     .map(function() {
-                return $(this).button("widget")[ 0 ];
-            })
+                        return $(this).button("widget")[ 0 ];
+                    })
                     .removeClass("ui-corner-left ui-corner-right")
                     .end()
                     .button("destroy");
@@ -6092,14 +6092,14 @@
             'ui-widget-content ' +
             'ui-corner-all ',
             sizeRelatedOptions = {
-        buttons: true,
-        height: true,
-        maxHeight: true,
-        maxWidth: true,
-        minHeight: true,
-        minWidth: true,
-        width: true
-    },
+                buttons: true,
+                height: true,
+                maxHeight: true,
+                maxWidth: true,
+                minHeight: true,
+                minWidth: true,
+                width: true
+            },
     resizableRelatedOptions = {
         maxHeight: true,
         maxWidth: true,
@@ -6170,8 +6170,8 @@
                     .hide()
                     .addClass(uiDialogClasses + options.dialogClass)
                     .css({
-                zIndex: options.zIndex
-            })
+                        zIndex: options.zIndex
+                    })
                     // setting tabIndex makes the div focusable
                     // setting outline to 0 prevents a border on focus in Mozilla
                     .attr('tabIndex', -1).css('outline', 0).keydown(function(event) {
@@ -6183,57 +6183,57 @@
                 }
             })
                     .attr({
-                role: 'dialog',
-                'aria-labelledby': titleId
-            })
+                        role: 'dialog',
+                        'aria-labelledby': titleId
+                    })
                     .mousedown(function(event) {
-                self.moveToTop(false, event);
-            }),
+                        self.moveToTop(false, event);
+                    }),
                     uiDialogContent = self.element
                     .show()
                     .removeAttr('title')
                     .addClass(
-                    'ui-dialog-content ' +
-                    'ui-widget-content')
+                            'ui-dialog-content ' +
+                            'ui-widget-content')
                     .appendTo(uiDialog),
                     uiDialogTitlebar = (self.uiDialogTitlebar = $('<div></div>'))
                     .addClass(
-                    'ui-dialog-titlebar ' +
-                    'ui-widget-header ' +
-                    'ui-corner-all ' +
-                    'ui-helper-clearfix'
-                    )
+                            'ui-dialog-titlebar ' +
+                            'ui-widget-header ' +
+                            'ui-corner-all ' +
+                            'ui-helper-clearfix'
+                            )
                     .prependTo(uiDialog),
                     uiDialogTitlebarClose = $('<a href="#"></a>')
                     .addClass(
-                    'ui-dialog-titlebar-close ' +
-                    'ui-corner-all'
-                    )
+                            'ui-dialog-titlebar-close ' +
+                            'ui-corner-all'
+                            )
                     .attr('role', 'button')
                     .hover(
-                    function() {
-                        uiDialogTitlebarClose.addClass('ui-state-hover');
-                    },
-                    function() {
-                        uiDialogTitlebarClose.removeClass('ui-state-hover');
-                    }
-            )
+                            function() {
+                                uiDialogTitlebarClose.addClass('ui-state-hover');
+                            },
+                            function() {
+                                uiDialogTitlebarClose.removeClass('ui-state-hover');
+                            }
+                    )
                     .focus(function() {
-                uiDialogTitlebarClose.addClass('ui-state-focus');
-            })
+                        uiDialogTitlebarClose.addClass('ui-state-focus');
+                    })
                     .blur(function() {
-                uiDialogTitlebarClose.removeClass('ui-state-focus');
-            })
+                        uiDialogTitlebarClose.removeClass('ui-state-focus');
+                    })
                     .click(function(event) {
-                self.close(event);
-                return false;
-            })
+                        self.close(event);
+                        return false;
+                    })
                     .appendTo(uiDialogTitlebar),
                     uiDialogTitlebarCloseText = (self.uiDialogTitlebarCloseText = $('<span></span>'))
                     .addClass(
-                    'ui-icon ' +
-                    'ui-icon-closethick'
-                    )
+                            'ui-icon ' +
+                            'ui-icon-closethick'
+                            )
                     .text(options.closeText)
                     .appendTo(uiDialogTitlebarClose),
                     uiDialogTitle = $('<span></span>')
@@ -6420,10 +6420,10 @@
                     hasButtons = false,
                     uiDialogButtonPane = $('<div></div>')
                     .addClass(
-                    'ui-dialog-buttonpane ' +
-                    'ui-widget-content ' +
-                    'ui-helper-clearfix'
-                    ),
+                            'ui-dialog-buttonpane ' +
+                            'ui-widget-content ' +
+                            'ui-helper-clearfix'
+                            ),
                     uiButtonSet = $("<div></div>")
                     .addClass("ui-dialog-buttonset")
                     .appendTo(uiDialogButtonPane);
@@ -6443,8 +6443,8 @@
                             props;
                     var button = $('<button type="button"></button>')
                             .click(function() {
-                        props.click.apply(self.element[0], arguments);
-                    })
+                                props.click.apply(self.element[0], arguments);
+                            })
                             .appendTo(uiButtonSet);
                     // can't use .attr( props, true ) with jQuery 1.3.2.
                     $.each(props, function(key, value) {
@@ -6506,9 +6506,9 @@
                     // but dialogs have to use absolute or fixed positioning
                     position = self.uiDialog.css('position'),
                     resizeHandles = (typeof handles === 'string' ?
-                    handles :
-                    'n,e,s,w,se,sw,ne,nw'
-                    );
+                            handles :
+                            'n,e,s,w,se,sw,ne,nw'
+                            );
 
             function filteredUi(ui) {
                 return {
@@ -6809,9 +6809,9 @@
             var $el = (this.oldInstances.pop() || $('<div></div>').addClass('ui-widget-overlay'))
                     .appendTo(document.body)
                     .css({
-                width: this.width(),
-                height: this.height()
-            });
+                        width: this.width(),
+                        height: this.height()
+                    });
 
             if ($.fn.bgiframe) {
                 $el.bgiframe();
@@ -6968,11 +6968,11 @@
 
             this.element
                     .addClass("ui-slider" +
-                    " ui-slider-" + this.orientation +
-                    " ui-widget" +
-                    " ui-widget-content" +
-                    " ui-corner-all" +
-                    (o.disabled ? " ui-slider-disabled ui-disabled" : ""));
+                            " ui-slider-" + this.orientation +
+                            " ui-widget" +
+                            " ui-widget-content" +
+                            " ui-corner-all" +
+                            (o.disabled ? " ui-slider-disabled ui-disabled" : ""));
 
             this.range = $([]);
 
@@ -6989,10 +6989,10 @@
                 this.range = $("<div></div>")
                         .appendTo(this.element)
                         .addClass("ui-slider-range" +
-                        // note: this isn't the most fittingly semantic framework class for this element,
-                        // but worked best visually with a variety of themes
-                        " ui-widget-header" +
-                        ((o.range === "min" || o.range === "max") ? " ui-slider-range-" + o.range : ""));
+                                // note: this isn't the most fittingly semantic framework class for this element,
+                                // but worked best visually with a variety of themes
+                                " ui-widget-header" +
+                                ((o.range === "min" || o.range === "max") ? " ui-slider-range-" + o.range : ""));
             }
 
             for (var i = existingHandles.length; i < handleCount; i += 1) {
@@ -7005,26 +7005,26 @@
 
             this.handles.add(this.range).filter("a")
                     .click(function(event) {
-                event.preventDefault();
-            })
+                        event.preventDefault();
+                    })
                     .hover(function() {
-                if (!o.disabled) {
-                    $(this).addClass("ui-state-hover");
-                }
-            }, function() {
-                $(this).removeClass("ui-state-hover");
-            })
+                        if (!o.disabled) {
+                            $(this).addClass("ui-state-hover");
+                        }
+                    }, function() {
+                        $(this).removeClass("ui-state-hover");
+                    })
                     .focus(function() {
-                if (!o.disabled) {
-                    $(".ui-slider .ui-state-focus").removeClass("ui-state-focus");
-                    $(this).addClass("ui-state-focus");
-                } else {
-                    $(this).blur();
-                }
-            })
+                        if (!o.disabled) {
+                            $(".ui-slider .ui-state-focus").removeClass("ui-state-focus");
+                            $(this).addClass("ui-state-focus");
+                        } else {
+                            $(this).blur();
+                        }
+                    })
                     .blur(function() {
-                $(this).removeClass("ui-state-focus");
-            });
+                        $(this).removeClass("ui-state-focus");
+                    });
 
             this.handles.each(function(i) {
                 $(this).data("index.ui-slider-handle", i);
@@ -7032,86 +7032,86 @@
 
             this.handles
                     .keydown(function(event) {
-                var index = $(this).data("index.ui-slider-handle"),
-                        allowed,
-                        curVal,
-                        newVal,
-                        step;
+                        var index = $(this).data("index.ui-slider-handle"),
+                                allowed,
+                                curVal,
+                                newVal,
+                                step;
 
-                if (self.options.disabled) {
-                    return;
-                }
-
-                switch (event.keyCode) {
-                    case $.ui.keyCode.HOME:
-                    case $.ui.keyCode.END:
-                    case $.ui.keyCode.PAGE_UP:
-                    case $.ui.keyCode.PAGE_DOWN:
-                    case $.ui.keyCode.UP:
-                    case $.ui.keyCode.RIGHT:
-                    case $.ui.keyCode.DOWN:
-                    case $.ui.keyCode.LEFT:
-                        event.preventDefault();
-                        if (!self._keySliding) {
-                            self._keySliding = true;
-                            $(this).addClass("ui-state-active");
-                            allowed = self._start(event, index);
-                            if (allowed === false) {
-                                return;
-                            }
-                        }
-                        break;
-                }
-
-                step = self.options.step;
-                if (self.options.values && self.options.values.length) {
-                    curVal = newVal = self.values(index);
-                } else {
-                    curVal = newVal = self.value();
-                }
-
-                switch (event.keyCode) {
-                    case $.ui.keyCode.HOME:
-                        newVal = self._valueMin();
-                        break;
-                    case $.ui.keyCode.END:
-                        newVal = self._valueMax();
-                        break;
-                    case $.ui.keyCode.PAGE_UP:
-                        newVal = self._trimAlignValue(curVal + ((self._valueMax() - self._valueMin()) / numPages));
-                        break;
-                    case $.ui.keyCode.PAGE_DOWN:
-                        newVal = self._trimAlignValue(curVal - ((self._valueMax() - self._valueMin()) / numPages));
-                        break;
-                    case $.ui.keyCode.UP:
-                    case $.ui.keyCode.RIGHT:
-                        if (curVal === self._valueMax()) {
+                        if (self.options.disabled) {
                             return;
                         }
-                        newVal = self._trimAlignValue(curVal + step);
-                        break;
-                    case $.ui.keyCode.DOWN:
-                    case $.ui.keyCode.LEFT:
-                        if (curVal === self._valueMin()) {
-                            return;
-                        }
-                        newVal = self._trimAlignValue(curVal - step);
-                        break;
-                }
 
-                self._slide(event, index, newVal);
-            })
+                        switch (event.keyCode) {
+                            case $.ui.keyCode.HOME:
+                            case $.ui.keyCode.END:
+                            case $.ui.keyCode.PAGE_UP:
+                            case $.ui.keyCode.PAGE_DOWN:
+                            case $.ui.keyCode.UP:
+                            case $.ui.keyCode.RIGHT:
+                            case $.ui.keyCode.DOWN:
+                            case $.ui.keyCode.LEFT:
+                                event.preventDefault();
+                                if (!self._keySliding) {
+                                    self._keySliding = true;
+                                    $(this).addClass("ui-state-active");
+                                    allowed = self._start(event, index);
+                                    if (allowed === false) {
+                                        return;
+                                    }
+                                }
+                                break;
+                        }
+
+                        step = self.options.step;
+                        if (self.options.values && self.options.values.length) {
+                            curVal = newVal = self.values(index);
+                        } else {
+                            curVal = newVal = self.value();
+                        }
+
+                        switch (event.keyCode) {
+                            case $.ui.keyCode.HOME:
+                                newVal = self._valueMin();
+                                break;
+                            case $.ui.keyCode.END:
+                                newVal = self._valueMax();
+                                break;
+                            case $.ui.keyCode.PAGE_UP:
+                                newVal = self._trimAlignValue(curVal + ((self._valueMax() - self._valueMin()) / numPages));
+                                break;
+                            case $.ui.keyCode.PAGE_DOWN:
+                                newVal = self._trimAlignValue(curVal - ((self._valueMax() - self._valueMin()) / numPages));
+                                break;
+                            case $.ui.keyCode.UP:
+                            case $.ui.keyCode.RIGHT:
+                                if (curVal === self._valueMax()) {
+                                    return;
+                                }
+                                newVal = self._trimAlignValue(curVal + step);
+                                break;
+                            case $.ui.keyCode.DOWN:
+                            case $.ui.keyCode.LEFT:
+                                if (curVal === self._valueMin()) {
+                                    return;
+                                }
+                                newVal = self._trimAlignValue(curVal - step);
+                                break;
+                        }
+
+                        self._slide(event, index, newVal);
+                    })
                     .keyup(function(event) {
-                var index = $(this).data("index.ui-slider-handle");
+                        var index = $(this).data("index.ui-slider-handle");
 
-                if (self._keySliding) {
-                    self._keySliding = false;
-                    self._stop(event, index);
-                    self._change(event, index);
-                    $(this).removeClass("ui-state-active");
-                }
+                        if (self._keySliding) {
+                            self._keySliding = false;
+                            self._stop(event, index);
+                            self._change(event, index);
+                            $(this).removeClass("ui-state-active");
+                        }
 
-            });
+                    });
 
             this._refreshValue();
 
@@ -7123,12 +7123,12 @@
 
             this.element
                     .removeClass("ui-slider" +
-                    " ui-slider-horizontal" +
-                    " ui-slider-vertical" +
-                    " ui-slider-disabled" +
-                    " ui-widget" +
-                    " ui-widget-content" +
-                    " ui-corner-all")
+                            " ui-slider-horizontal" +
+                            " ui-slider-vertical" +
+                            " ui-slider-disabled" +
+                            " ui-widget" +
+                            " ui-widget-content" +
+                            " ui-corner-all")
                     .removeData("slider")
                     .unbind(".slider");
 
@@ -7644,9 +7644,9 @@
                     .removeClass("ui-state-processing")
                     .find("span:data(label.tabs)")
                     .each(function() {
-                var el = $(this);
-                el.html(el.data("label.tabs")).removeData("label.tabs");
-            });
+                        var el = $(this);
+                        el.html(el.data("label.tabs")).removeData("label.tabs");
+                    });
         },
         _tabify: function(init) {
             var self = this,
@@ -7748,8 +7748,8 @@
                 // A selected tab cannot become disabled.
                 o.disabled = $.unique(o.disabled.concat(
                         $.map(this.lis.filter(".ui-state-disabled"), function(n, i) {
-                    return self.lis.index(n);
-                })
+                            return self.lis.index(n);
+                        })
                         )).sort();
 
                 if ($.inArray(o.selected, o.disabled) != -1) {
@@ -7854,13 +7854,13 @@
             // Show a tab...
             var showTab = showFx
                     ? function(clicked, $show) {
-                $(clicked).closest("li").addClass("ui-tabs-selected ui-state-active");
-                $show.hide().removeClass("ui-tabs-hide") // avoid flicker that way
-                        .animate(showFx, showFx.duration || "normal", function() {
-                    resetStyle($show, showFx);
-                    self._trigger("show", null, self._ui(clicked, $show[ 0 ]));
-                });
-            }
+                        $(clicked).closest("li").addClass("ui-tabs-selected ui-state-active");
+                        $show.hide().removeClass("ui-tabs-hide") // avoid flicker that way
+                                .animate(showFx, showFx.duration || "normal", function() {
+                                    resetStyle($show, showFx);
+                                    self._trigger("show", null, self._ui(clicked, $show[ 0 ]));
+                                });
+                    }
             : function(clicked, $show) {
                 $(clicked).closest("li").addClass("ui-tabs-selected ui-state-active");
                 $show.removeClass("ui-tabs-hide");
@@ -7870,13 +7870,13 @@
             // Hide a tab, $show is optional...
             var hideTab = hideFx
                     ? function(clicked, $hide) {
-                $hide.animate(hideFx, hideFx.duration || "normal", function() {
-                    self.lis.removeClass("ui-tabs-selected ui-state-active");
-                    $hide.addClass("ui-tabs-hide");
-                    resetStyle($hide, hideFx);
-                    self.element.dequeue("tabs");
-                });
-            }
+                        $hide.animate(hideFx, hideFx.duration || "normal", function() {
+                            self.lis.removeClass("ui-tabs-selected ui-state-active");
+                            $hide.addClass("ui-tabs-hide");
+                            resetStyle($hide, hideFx);
+                            self.element.dequeue("tabs");
+                        });
+                    }
             : function(clicked, $hide, $show) {
                 self.lis.removeClass("ui-tabs-selected ui-state-active");
                 $hide.addClass("ui-tabs-hide");
@@ -8094,8 +8094,8 @@
 
             o.disabled = $.map(
                     $.grep(o.disabled, function(n, i) {
-                return n != index;
-            }),
+                        return n != index;
+                    }),
                     function(n, i) {
                         return n >= index ? --n : n;
                     });
@@ -8270,10 +8270,10 @@
 
             var stop = self._unrotate || (self._unrotate = !continuing
                     ? function(e) {
-                if (e.clientX) { // in case of a true click
-                    self.rotate(null);
-                }
-            }
+                        if (e.clientX) { // in case of a true click
+                            self.rotate(null);
+                        }
+                    }
             : function(e) {
                 rotate();
             });
@@ -8484,8 +8484,8 @@
             input.addClass(this.markerClassName).keydown(this._doKeyDown).
                     keypress(this._doKeyPress).keyup(this._doKeyUp).
                     bind("setData.datepicker", function(event, key, value) {
-                inst.settings[key] = value;
-            }).bind("getData.datepicker", function(event, key) {
+                        inst.settings[key] = value;
+                    }).bind("getData.datepicker", function(event, key) {
                 return this._get(inst, key);
             });
             this._autoSize(inst);
@@ -8519,7 +8519,7 @@
                         attr({src: buttonImage, alt: buttonText, title: buttonText}) :
                         $('<button type="button"></button>').addClass(this._triggerClass).
                         html(buttonImage == '' ? buttonText : $('<img/>').attr(
-                        {src: buttonImage, alt: buttonText, title: buttonText})));
+                                {src: buttonImage, alt: buttonText, title: buttonText})));
                 input[isRTL ? 'before' : 'after'](inst.trigger);
                 inst.trigger.click(function() {
                     if ($.datepicker._datepickerShowing && $.datepicker._lastInput == input[0])
@@ -8565,8 +8565,8 @@
                 return;
             divSpan.addClass(this.markerClassName).append(inst.dpDiv).
                     bind("setData.datepicker", function(event, key, value) {
-                inst.settings[key] = value;
-            }).bind("getData.datepicker", function(event, key) {
+                        inst.settings[key] = value;
+                    }).bind("getData.datepicker", function(event, key) {
                 return this._get(inst, key);
             });
             $.data(target, PROP_NAME, inst);
@@ -8662,8 +8662,8 @@
                 target.disabled = false;
                 inst.trigger.filter('button').
                         each(function() {
-                    this.disabled = false;
-                }).end().
+                            this.disabled = false;
+                        }).end().
                         filter('img').css({opacity: '1.0', cursor: ''});
             }
             else if (nodeName == 'div' || nodeName == 'span') {
@@ -8690,8 +8690,8 @@
                 target.disabled = true;
                 inst.trigger.filter('button').
                         each(function() {
-                    this.disabled = true;
-                }).end().
+                            this.disabled = true;
+                        }).end().
                         filter('img').css({opacity: '0.5', cursor: 'default'});
             }
             else if (nodeName == 'div' || nodeName == 'span') {
@@ -9686,7 +9686,7 @@
         _getDate: function(inst) {
             var startDate = (!inst.currentYear || (inst.input && inst.input.val() == '') ? null :
                     this._daylightSavingAdjust(new Date(
-                    inst.currentYear, inst.currentMonth, inst.currentDay)));
+                            inst.currentYear, inst.currentMonth, inst.currentDay)));
             return startDate;
         },
         /* Generate the HTML for the current state of the date picker. */
@@ -9798,7 +9798,7 @@
                             (/all|left/.test(cornerClass) && row == 0 ? (isRTL ? next : prev) : '') +
                             (/all|right/.test(cornerClass) && row == 0 ? (isRTL ? prev : next) : '') +
                             this._generateMonthYearHeader(inst, drawMonth, drawYear, minDate, maxDate,
-                            row > 0 || col > 0, monthNames, monthNamesShort) + // draw month headers
+                                    row > 0 || col > 0, monthNames, monthNamesShort) + // draw month headers
                             '</div><table class="ui-datepicker-calendar"><thead>' +
                             '<tr>';
                     var thead = (showWeek ? '<th class="ui-datepicker-week-col">' + this._get(inst, 'weekHeader') + '</th>' : '');
@@ -10034,18 +10034,18 @@
             elem.removeClass("ui-state-hover ui-datepicker-prev-hover ui-datepicker-next-hover");
         })
                 .bind('mouseover', function(event) {
-            var elem = $(event.target).closest(selector);
-            if ($.datepicker._isDisabledDatepicker(instActive.inline ? dpDiv.parent()[0] : instActive.input[0]) ||
-                    !elem.length) {
-                return;
-            }
-            elem.parents('.ui-datepicker-calendar').find('a').removeClass('ui-state-hover');
-            elem.addClass('ui-state-hover');
-            if (elem.hasClass('ui-datepicker-prev'))
-                elem.addClass('ui-datepicker-prev-hover');
-            if (elem.hasClass('ui-datepicker-next'))
-                elem.addClass('ui-datepicker-next-hover');
-        });
+                    var elem = $(event.target).closest(selector);
+                    if ($.datepicker._isDisabledDatepicker(instActive.inline ? dpDiv.parent()[0] : instActive.input[0]) ||
+                            !elem.length) {
+                        return;
+                    }
+                    elem.parents('.ui-datepicker-calendar').find('a').removeClass('ui-state-hover');
+                    elem.addClass('ui-state-hover');
+                    if (elem.hasClass('ui-datepicker-prev'))
+                        elem.addClass('ui-datepicker-prev-hover');
+                    if (elem.hasClass('ui-datepicker-next'))
+                        elem.addClass('ui-datepicker-next-hover');
+                });
     }
 
     /* jQuery extend now ignores nulls! */
@@ -10133,11 +10133,11 @@
             this.element
                     .addClass("ui-progressbar ui-widget ui-widget-content ui-corner-all")
                     .attr({
-                role: "progressbar",
-                "aria-valuemin": this.min,
-                "aria-valuemax": this.options.max,
-                "aria-valuenow": this._value()
-            });
+                        role: "progressbar",
+                        "aria-valuemin": this.min,
+                        "aria-valuemax": this.options.max,
+                        "aria-valuenow": this._value()
+                    });
 
             this.valueDiv = $("<div class='ui-progressbar-value ui-widget-header ui-corner-left'></div>")
                     .appendTo(this.element);
@@ -10359,16 +10359,16 @@ jQuery.effects || (function($, undefined) {
 
     var classAnimationActions = ['add', 'remove', 'toggle'],
             shorthandStyles = {
-        border: 1,
-        borderBottom: 1,
-        borderColor: 1,
-        borderLeft: 1,
-        borderRight: 1,
-        borderTop: 1,
-        borderWidth: 1,
-        margin: 1,
-        padding: 1
-    };
+                border: 1,
+                borderBottom: 1,
+                borderColor: 1,
+                borderLeft: 1,
+                borderRight: 1,
+                borderTop: 1,
+                borderWidth: 1,
+                margin: 1,
+                padding: 1
+            };
 
     function getElementStyles() {
         var style = document.defaultView
@@ -10589,13 +10589,13 @@ jQuery.effects || (function($, undefined) {
                     wrapper = $('<div></div>')
                             .addClass('ui-effects-wrapper')
                             .css({
-                        fontSize: '100%',
-                        background: 'transparent',
-                        border: 'none',
-                        margin: 0,
-                        padding: 0
-                    }),
-                    active = document.activeElement;
+                                fontSize: '100%',
+                                background: 'transparent',
+                                border: 'none',
+                                margin: 0,
+                                padding: 0
+                            }),
+                            active = document.activeElement;
 
                     element.wrap(wrapper);
 
@@ -10706,10 +10706,10 @@ jQuery.effects || (function($, undefined) {
                     var args = _normalizeArguments.apply(this, arguments),
                             // TODO: make effects take actual parameters instead of a hash
                             args2 = {
-                        options: args[1],
-                        duration: args[2],
-                        callback: args[3]
-                    },
+                                options: args[1],
+                                duration: args[2],
+                                callback: args[3]
+                            },
                     mode = args2.options.mode,
                             effectMethod = $.effects[effect];
 
@@ -11331,22 +11331,22 @@ jQuery.effects || (function($, undefined) {
                             .appendTo('body')
                             .wrap('<div></div>')
                             .css({
-                        position: 'absolute',
-                        visibility: 'visible',
-                        left: -j * (width / cells),
-                        top: -i * (height / rows)
-                    })
+                                position: 'absolute',
+                                visibility: 'visible',
+                                left: -j * (width / cells),
+                                top: -i * (height / rows)
+                            })
                             .parent()
                             .addClass('ui-effects-explode')
                             .css({
-                        position: 'absolute',
-                        overflow: 'hidden',
-                        width: width / cells,
-                        height: height / rows,
-                        left: offset.left + j * (width / cells) + (o.options.mode == 'show' ? (j - Math.floor(cells / 2)) * (width / cells) : 0),
-                        top: offset.top + i * (height / rows) + (o.options.mode == 'show' ? (i - Math.floor(rows / 2)) * (height / rows) : 0),
-                        opacity: o.options.mode == 'show' ? 0 : 1
-                    }).animate({
+                                position: 'absolute',
+                                overflow: 'hidden',
+                                width: width / cells,
+                                height: height / rows,
+                                left: offset.left + j * (width / cells) + (o.options.mode == 'show' ? (j - Math.floor(cells / 2)) * (width / cells) : 0),
+                                top: offset.top + i * (height / rows) + (o.options.mode == 'show' ? (i - Math.floor(rows / 2)) * (height / rows) : 0),
+                                opacity: o.options.mode == 'show' ? 0 : 1
+                            }).animate({
                         left: offset.left + j * (width / cells) + (o.options.mode == 'show' ? 0 : (j - Math.floor(cells / 2)) * (width / cells)),
                         top: offset.top + i * (height / rows) + (o.options.mode == 'show' ? 0 : (i - Math.floor(rows / 2)) * (height / rows)),
                         opacity: o.options.mode == 'show' ? 1 : 0
@@ -11452,14 +11452,14 @@ jQuery.effects || (function($, undefined) {
             // Animate
             wrapper.animate(animation1, duration, o.options.easing)
                     .animate(animation2, duration, o.options.easing, function() {
-                if (mode == 'hide')
-                    el.hide(); // Hide
-                $.effects.restore(el, props);
-                $.effects.removeWrapper(el); // Restore
-                if (o.callback)
-                    o.callback.apply(el[0], arguments); // Callback
-                el.dequeue();
-            });
+                        if (mode == 'hide')
+                            el.hide(); // Hide
+                        $.effects.restore(el, props);
+                        $.effects.removeWrapper(el); // Restore
+                        if (o.callback)
+                            o.callback.apply(el[0], arguments); // Callback
+                        el.dequeue();
+                    });
 
         });
 
@@ -11486,8 +11486,8 @@ jQuery.effects || (function($, undefined) {
                     props = ['backgroundImage', 'backgroundColor', 'opacity'],
                     mode = $.effects.setMode(elem, o.options.mode || 'show'),
                     animation = {
-                backgroundColor: elem.css('backgroundColor')
-            };
+                        backgroundColor: elem.css('backgroundColor')
+                    };
 
             if (mode == 'hide') {
                 animation.opacity = 0;
@@ -11497,21 +11497,21 @@ jQuery.effects || (function($, undefined) {
             elem
                     .show()
                     .css({
-                backgroundImage: 'none',
-                backgroundColor: o.options.color || '#ffff99'
-            })
+                        backgroundImage: 'none',
+                        backgroundColor: o.options.color || '#ffff99'
+                    })
                     .animate(animation, {
-                queue: false,
-                duration: o.duration,
-                easing: o.options.easing,
-                complete: function() {
-                    (mode == 'hide' && elem.hide());
-                    $.effects.restore(elem, props);
-                    (mode == 'show' && !$.support.opacity && this.style.removeAttribute('filter'));
-                    (o.callback && o.callback.apply(this, arguments));
-                    elem.dequeue();
-                }
-            });
+                        queue: false,
+                        duration: o.duration,
+                        easing: o.options.easing,
+                        complete: function() {
+                            (mode == 'hide' && elem.hide());
+                            $.effects.restore(elem, props);
+                            (mode == 'show' && !$.support.opacity && this.style.removeAttribute('filter'));
+                            (o.callback && o.callback.apply(this, arguments));
+                            elem.dequeue();
+                        }
+                    });
         });
     };
 
@@ -11562,8 +11562,8 @@ jQuery.effects || (function($, undefined) {
 
             elem
                     .queue('fx', function() {
-                elem.dequeue();
-            })
+                        elem.dequeue();
+                    })
                     .dequeue();
         });
     };
@@ -11598,9 +11598,9 @@ jQuery.effects || (function($, undefined) {
                 from: mode == 'hide'
                         ? original
                         : {
-                    height: original.height * factor,
-                    width: original.width * factor
-                }
+                            height: original.height * factor,
+                            width: original.width * factor
+                        }
             });
 
             elem.effect('scale', o.options, o.duration, o.callback);
@@ -11822,11 +11822,11 @@ jQuery.effects || (function($, undefined) {
             ;
             el.animate(animation1, speed, o.options.easing).
                     animate(animation, speed / 2, o.options.easing, function() { // Last shake
-                $.effects.restore(el, props);
-                $.effects.removeWrapper(el); // Restore
-                if (o.callback)
-                    o.callback.apply(this, arguments); // Callback
-            });
+                        $.effects.restore(el, props);
+                        $.effects.removeWrapper(el); // Restore
+                        if (o.callback)
+                            o.callback.apply(this, arguments); // Callback
+                    });
             el.queue('fx', function() {
                 el.dequeue();
             });
@@ -11911,27 +11911,27 @@ jQuery.effects || (function($, undefined) {
                     target = $(o.options.to),
                     endPosition = target.offset(),
                     animation = {
-                top: endPosition.top,
-                left: endPosition.left,
-                height: target.innerHeight(),
-                width: target.innerWidth()
-            },
+                        top: endPosition.top,
+                        left: endPosition.left,
+                        height: target.innerHeight(),
+                        width: target.innerWidth()
+                    },
             startPosition = elem.offset(),
                     transfer = $('<div class="ui-effects-transfer"></div>')
                     .appendTo(document.body)
                     .addClass(o.options.className)
                     .css({
-                top: startPosition.top,
-                left: startPosition.left,
-                height: elem.innerHeight(),
-                width: elem.innerWidth(),
-                position: 'absolute'
-            })
+                        top: startPosition.top,
+                        left: startPosition.left,
+                        height: elem.innerHeight(),
+                        width: elem.innerWidth(),
+                        position: 'absolute'
+                    })
                     .animate(animation, o.duration, o.options.easing, function() {
-                transfer.remove();
-                (o.callback && o.callback.apply(elem[0], arguments));
-                elem.dequeue();
-            });
+                        transfer.remove();
+                        (o.callback && o.callback.apply(elem[0], arguments));
+                        elem.dequeue();
+                    });
         });
     };
 

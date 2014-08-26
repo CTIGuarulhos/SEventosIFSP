@@ -185,8 +185,8 @@
             input.addClass(this.markerClassName).keydown(this._doKeyDown).
                     keypress(this._doKeyPress).keyup(this._doKeyUp).
                     bind("setData.datepicker", function(event, key, value) {
-                inst.settings[key] = value;
-            }).bind("getData.datepicker", function(event, key) {
+                        inst.settings[key] = value;
+                    }).bind("getData.datepicker", function(event, key) {
                 return this._get(inst, key);
             });
             this._autoSize(inst);
@@ -220,7 +220,7 @@
                         attr({src: buttonImage, alt: buttonText, title: buttonText}) :
                         $('<button type="button"></button>').addClass(this._triggerClass).
                         html(buttonImage == '' ? buttonText : $('<img/>').attr(
-                        {src: buttonImage, alt: buttonText, title: buttonText})));
+                                {src: buttonImage, alt: buttonText, title: buttonText})));
                 input[isRTL ? 'before' : 'after'](inst.trigger);
                 inst.trigger.click(function() {
                     if ($.datepicker._datepickerShowing && $.datepicker._lastInput == input[0])
@@ -266,8 +266,8 @@
                 return;
             divSpan.addClass(this.markerClassName).append(inst.dpDiv).
                     bind("setData.datepicker", function(event, key, value) {
-                inst.settings[key] = value;
-            }).bind("getData.datepicker", function(event, key) {
+                        inst.settings[key] = value;
+                    }).bind("getData.datepicker", function(event, key) {
                 return this._get(inst, key);
             });
             $.data(target, PROP_NAME, inst);
@@ -363,8 +363,8 @@
                 target.disabled = false;
                 inst.trigger.filter('button').
                         each(function() {
-                    this.disabled = false;
-                }).end().
+                            this.disabled = false;
+                        }).end().
                         filter('img').css({opacity: '1.0', cursor: ''});
             }
             else if (nodeName == 'div' || nodeName == 'span') {
@@ -391,8 +391,8 @@
                 target.disabled = true;
                 inst.trigger.filter('button').
                         each(function() {
-                    this.disabled = true;
-                }).end().
+                            this.disabled = true;
+                        }).end().
                         filter('img').css({opacity: '0.5', cursor: 'default'});
             }
             else if (nodeName == 'div' || nodeName == 'span') {
@@ -1389,7 +1389,7 @@
         _getDate: function(inst) {
             var startDate = (!inst.currentYear || (inst.input && inst.input.val() == '') ? null :
                     this._daylightSavingAdjust(new Date(
-                    inst.currentYear, inst.currentMonth, inst.currentDay)));
+                            inst.currentYear, inst.currentMonth, inst.currentDay)));
             return startDate;
         },
         /* Generate the HTML for the current state of the date picker. */
@@ -1501,7 +1501,7 @@
                             (/all|left/.test(cornerClass) && row == 0 ? (isRTL ? next : prev) : '') +
                             (/all|right/.test(cornerClass) && row == 0 ? (isRTL ? prev : next) : '') +
                             this._generateMonthYearHeader(inst, drawMonth, drawYear, minDate, maxDate,
-                            row > 0 || col > 0, monthNames, monthNamesShort) + // draw month headers
+                                    row > 0 || col > 0, monthNames, monthNamesShort) + // draw month headers
                             '</div><table class="ui-datepicker-calendar"><thead>' +
                             '<tr>';
                     var thead = (showWeek ? '<th class="ui-datepicker-week-col">' + this._get(inst, 'weekHeader') + '</th>' : '');
@@ -1737,18 +1737,18 @@
             elem.removeClass("ui-state-hover ui-datepicker-prev-hover ui-datepicker-next-hover");
         })
                 .bind('mouseover', function(event) {
-            var elem = $(event.target).closest(selector);
-            if ($.datepicker._isDisabledDatepicker(instActive.inline ? dpDiv.parent()[0] : instActive.input[0]) ||
-                    !elem.length) {
-                return;
-            }
-            elem.parents('.ui-datepicker-calendar').find('a').removeClass('ui-state-hover');
-            elem.addClass('ui-state-hover');
-            if (elem.hasClass('ui-datepicker-prev'))
-                elem.addClass('ui-datepicker-prev-hover');
-            if (elem.hasClass('ui-datepicker-next'))
-                elem.addClass('ui-datepicker-next-hover');
-        });
+                    var elem = $(event.target).closest(selector);
+                    if ($.datepicker._isDisabledDatepicker(instActive.inline ? dpDiv.parent()[0] : instActive.input[0]) ||
+                            !elem.length) {
+                        return;
+                    }
+                    elem.parents('.ui-datepicker-calendar').find('a').removeClass('ui-state-hover');
+                    elem.addClass('ui-state-hover');
+                    if (elem.hasClass('ui-datepicker-prev'))
+                        elem.addClass('ui-datepicker-prev-hover');
+                    if (elem.hasClass('ui-datepicker-next'))
+                        elem.addClass('ui-datepicker-next-hover');
+                });
     }
 
     /* jQuery extend now ignores nulls! */

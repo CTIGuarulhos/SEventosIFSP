@@ -23,7 +23,7 @@ if (tipoadmin(5, $USER->getCpf(), $SCT_ID)) {
 
 #--------------------------- ALTERA��O DADOS -------------------------------#
     if (isset($_POST['alterar_dados'])):
-	$eventos = $_POST['eventos'];
+        $eventos = $_POST['eventos'];
         //Escapa as vari�veis
         $_POST = safe_sql($_POST);
 
@@ -301,16 +301,16 @@ if (tipoadmin(5, $USER->getCpf(), $SCT_ID)) {
 
     <?php HTML_RequiredMessage() ?>
 
-    <form class="forms" name="alt_dados" method="post" action="<? echo $Esta_Pagina; ?>">
+    <form class="forms" name="alt_dados" method="post" action="<?php echo $Esta_Pagina; ?>">
 
         <input type="hidden" name="alterar_dados" value="false" />
-        <? if ($result['documento'] == "sim"): ?>
+        <?php if ($result['documento'] == "sim"): ?>
             <label for="rg"><?php HTML_RequiredField() ?>CPF:</label>
             <input type="text" name="cpf" id="rg" maxlength="15" size="35" value="<?php echo $result['cpf'] ?>" disabled />
-        <? else: ?>
+        <?php else: ?>
             <label for="rg"><?php HTML_RequiredField() ?>RG:</label>
             <input type="text" name="cpf" id="rg" maxlength="15" size="35" value="<?php echo $result['cpf'] ?>" disabled />
-        <? endif ?><br/><br/>
+        <?php endif ?><br/><br/>
 
 
         <label for="nome">
@@ -328,11 +328,11 @@ if (tipoadmin(5, $USER->getCpf(), $SCT_ID)) {
         <label for="aluno" style="margin-right:30px">
         <?php HTML_RequiredField() ?>Você é aluno do IFSP - <i>Campus</i> Guarulhos?
         </label>
-        <input type="radio" name="aluno" id="aluno" value="sim" <? if ($aluno): ?>checked="checked" <? endif ?>onclick="document.getElementById('aluno_sim').style.display='block';document.getElementById('aluno_nao').style.display='none';" />SIM
-        <input type="radio" name="aluno" value="nao" <? if (!$aluno): ?>checked="checked" <? endif ?>style="margin-left:35px" onclick="document.getElementById('aluno_sim').style.display='none';document.getElementById('aluno_nao').style.display='block';" />NÃO
+        <input type="radio" name="aluno" id="aluno" value="sim" <?php if ($aluno): ?>checked="checked" <?php endif ?>onclick="document.getElementById('aluno_sim').style.display='block';document.getElementById('aluno_nao').style.display='none';" />SIM
+        <input type="radio" name="aluno" value="nao" <?php if (!$aluno): ?>checked="checked" <?php endif ?>style="margin-left:35px" onclick="document.getElementById('aluno_sim').style.display='none';document.getElementById('aluno_nao').style.display='block';" />NÃO
         <br/><br/> -->
 
-        <span id="aluno_sim" <? if ($aluno): ?>style="display:block;"<? else: ?>style="display:none;"<? endif ?>>
+        <span id="aluno_sim" <?php if ($aluno): ?>style="display:block;"<?php else: ?>style="display:none;"<?php endif ?>>
             <label for="prontuario">
                 <?php HTML_RequiredField() ?>Prontu&aacute;rio: (apenas números e <b>X</b>, se houver)
             </label>
@@ -340,7 +340,7 @@ if (tipoadmin(5, $USER->getCpf(), $SCT_ID)) {
             <br/><br/>
         </span>
 
-        <span id="aluno_nao" <? if ($aluno): ?>style="display:none;"<? else: ?>style="display:block;"<? endif ?>>
+        <span id="aluno_nao" <?php if ($aluno): ?>style="display:none;"<?php else: ?>style="display:block;"<?php endif ?>>
             <label for="instituicao">Instituição ou Empresa:</label>
             <input type="text" name="instituicao" id="instituicao" maxlength="100" size="35" value="<?php echo $result['inst_empresa'] ?>" />
             <br/><br/>
@@ -372,7 +372,7 @@ if (tipoadmin(5, $USER->getCpf(), $SCT_ID)) {
 
         <label for="uf">UF:</label>
         <select name="uf" id="uf">
-            <?
+            <?php
             $estado = array('', 'AC', 'AL', 'AM', 'AP', 'BA', 'CE', 'DF', 'ES', 'GO', 'MA', 'MG',
                 'MS', 'MT', 'PA', 'PB', 'PE', 'PI', 'PR', 'RJ', 'RN', 'RO', 'RR', 'RS', 'SC', 'SE', 'SP', 'TO');
             foreach ($estado as $sigla) {
@@ -396,49 +396,49 @@ if (tipoadmin(5, $USER->getCpf(), $SCT_ID)) {
         <label for="cel">Celular: (xx) xxxxx-xxxx</label>
         <input type="text" name="cel" id="cel" maxlength="15" size="35" value="<?php echo $result['tel_celular'] ?>" />
         <br/><br/>
-        <?
+        <?php
         $admin = "SELECT admin FROM participantes WHERE cpf='{$USER->getCpf()}'";
         $admin = mysql_fetch_array($DB->Query($admin));
         ?>
-        <? if (tipoadmin(8, $USER->getCpf(), $SCT_ID, 0)): ?>
+        <?php if (tipoadmin(8, $USER->getCpf(), $SCT_ID, 0)): ?>
 
             <label for="admin">Tipo:</label>
             <select name="admin" id="admin">
-                <option value = "0" <?
+                <option value = "0" <?php
                 if ($result['admin'] == 0) {
                     echo " selected";
                 }
                 ?>>Usuario Comum
-                <option value = "1" <?
+                <option value = "1" <?php
                 if ($result['admin'] == 1) {
                     echo " selected";
                 }
                 ?>>Visualiza Relatórios
-                <option value = "2" <?
+                <option value = "2" <?php
                 if ($result['admin'] == 2) {
                     echo " selected";
                 }
                 ?>>Lista de Presença
-                <option value = "5" <?
+                <option value = "5" <?php
                 if ($result['admin'] == 5) {
                     echo " selected";
                 }
                 ?>> Administrador de atividades
-                <option value = "7" <?
+                <option value = "7" <?php
                 if ($result['admin'] == 7) {
                     echo " selected";
                 }
                 ?>>Administrador do Evento
-                            <? if (tipoadmin(8, $USER->getCpf(), $SCT_ID, 0)): ?>
-                    <option value = "8" <?
+                            <?php if (tipoadmin(8, $USER->getCpf(), $SCT_ID, 0)): ?>
+                    <option value = "8" <?php
                     if ($result['admin'] == 8) {
                         echo " selected";
                     }
-                    ?>>Administrador do Sistema <? endif; ?>
+                    ?>>Administrador do Sistema <?php endif; ?>
             </select>    
             <br><br>
-        <? endif; ?>
-        <?
+        <?php endif; ?>
+        <?php
         if (tipoadmin(8, $USER->getCpf(), $SCT_ID, 0)) {
             $query = "SELECT SEMTEC, NOME FROM edicao ORDER BY SEMTEC";
             $alleventos = $DB->Query($query);
@@ -447,15 +447,15 @@ if (tipoadmin(5, $USER->getCpf(), $SCT_ID)) {
             else:
                 ?>
                 <label for="eventos">Permissão nos eventos:</label><br>
-                <? while ($x = mysql_fetch_array($alleventos)):
+                <?php while ($x = mysql_fetch_array($alleventos)):
                     ?>
-                    <input type="checkbox" name="eventos[]" id="eventos[]"  value="<?= $x['SEMTEC'] ?>" <?= strpos($result['eventos'], $x['SEMTEC']) !== false ? 'checked' : '' ?>/> <?= $x['NOME'] ?><br>
-                    <?
+                    <input type="checkbox" name="eventos[]" id="eventos[]"  value="<?php echo $x['SEMTEC'] ?>" <?php echo strpos($result['eventos'], $x['SEMTEC']) !== false ? 'checked' : '' ?>/> <?php echo $x['NOME'] ?><br>
+                    <?php
                 endwhile;
             endif;
             ?>
             <br/><br/>
-        <? } ?>
+        <?php } ?>
 
         <input type="submit" value="Atualizar dados" />
     </form>
@@ -467,11 +467,11 @@ if (tipoadmin(5, $USER->getCpf(), $SCT_ID)) {
         Alterar seu e-mail.
     </h3>
 
-    <form class="forms" name="alt_email" method="post" action="<? echo $Esta_Pagina; ?>">
+    <form class="forms" name="alt_email" method="post" action="<?php echo $Esta_Pagina; ?>">
         <input type="hidden" name="cpf" id="cpf" maxlength="11" size="35" value="<?php echo substr($result['cpf'], 0, 3) . "." . substr($result['cpf'], 3, 3) . "." . substr($result['cpf'], 6, 3) . "-" . substr($result['cpf'], 9, 2) ?>" disabled="disabled" />
         <input type="hidden" name="nome" id="nome" maxlength="50" size="35" value="<?php echo $result['nome'] ?>" />
 
-        <label for="emailatual">E-mail atual :</label>  <?php echo $result['email'] ?><? if ($result['confirmado'] == 0): ?><font color="red"> Não Confirmado</font><? endif; ?><br><br>
+        <label for="emailatual">E-mail atual :</label>  <?php echo $result['email'] ?><?php if ($result['confirmado'] == 0): ?><font color="red"> Não Confirmado</font><?php endif; ?><br><br>
         <label for="email">
             <?php HTML_RequiredField() ?>Novo E-mail:
         </label>
@@ -491,7 +491,7 @@ if (tipoadmin(5, $USER->getCpf(), $SCT_ID)) {
     <h3 style="background:url('') top left no-repeat;">
         Reset de senha de acesso.
     </h3>
-    <?
+    <?php
 
     function novaSenha() {
         $var = "";
@@ -500,15 +500,15 @@ if (tipoadmin(5, $USER->getCpf(), $SCT_ID)) {
         return str_shuffle($var);
     }
     ?>
-    <form class="forms" name="alt_senha" method="post" action="<? echo $Esta_Pagina; ?>">
+    <form class="forms" name="alt_senha" method="post" action="<?php echo $Esta_Pagina; ?>">
         <label for="senha">Nova senha:</label>
-        <? $novasenhaauto = novaSenha(); ?>
-        <input type="text" name="exibirsenha" id="exibirsenha" maxlength="30" value="<?= $novasenhaauto ?>" readonly /><br>
-        <input type="hidden" name="senha" id="senha" maxlength="30" value="<?= $novasenhaauto ?>" />
-        <input type="hidden" name="csenha" id="csenha" maxlength="30" value="<?= $novasenhaauto ?>"/>
+        <?php $novasenhaauto = novaSenha(); ?>
+        <input type="text" name="exibirsenha" id="exibirsenha" maxlength="30" value="<?php echo $novasenhaauto ?>" readonly /><br>
+        <input type="hidden" name="senha" id="senha" maxlength="30" value="<?php echo $novasenhaauto ?>" />
+        <input type="hidden" name="csenha" id="csenha" maxlength="30" value="<?php echo $novasenhaauto ?>"/>
         <br/><br/>
 
         <input type="submit" value="Resetar Senha" />
     </form>
 
-<? } ?>
+<?php } ?>

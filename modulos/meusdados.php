@@ -286,16 +286,16 @@ if ($_SESSION['temp']['cadastro_ok']) {
 
 <?php HTML_RequiredMessage() ?>
 
-<form class="forms" name="alt_dados" method="post" action="<? echo $Esta_Pagina; ?>">
+<form class="forms" name="alt_dados" method="post" action="<?php echo $Esta_Pagina; ?>">
 
     <input type="hidden" name="alterar_dados" value="false" />
-    <? if ($result['documento'] == "sim"): ?>
+    <?php if ($result['documento'] == "sim"): ?>
         <label for="rg"><?php HTML_RequiredField() ?>CPF:</label>
         <input type="text" name="cpf" id="rg" maxlength="15" size="35" value="<?php echo $result['cpf'] ?>" disabled />
-    <? else: ?>
+    <?php else: ?>
         <label for="rg"><?php HTML_RequiredField() ?>RG:</label>
         <input type="text" name="cpf" id="rg" maxlength="15" size="35" value="<?php echo $result['cpf'] ?>" disabled />
-    <? endif ?><br/><br/>
+    <?php endif ?><br/><br/>
 
 
     <label for="nome">
@@ -313,11 +313,11 @@ if ($_SESSION['temp']['cadastro_ok']) {
     <label for="aluno" style="margin-right:30px">
     <?php HTML_RequiredField() ?>Você é aluno do IFSP - <i>Campus</i> Guarulhos?
     </label>
-    <input type="radio" name="aluno" id="aluno" value="sim" <? if ($aluno): ?>checked="checked" <? endif ?>onclick="document.getElementById('aluno_sim').style.display='block';document.getElementById('aluno_nao').style.display='none';" />SIM
-    <input type="radio" name="aluno" value="nao" <? if (!$aluno): ?>checked="checked" <? endif ?>style="margin-left:35px" onclick="document.getElementById('aluno_sim').style.display='none';document.getElementById('aluno_nao').style.display='block';" />NÃO
+    <input type="radio" name="aluno" id="aluno" value="sim" <?php if ($aluno): ?>checked="checked" <?php endif ?>onclick="document.getElementById('aluno_sim').style.display='block';document.getElementById('aluno_nao').style.display='none';" />SIM
+    <input type="radio" name="aluno" value="nao" <?php if (!$aluno): ?>checked="checked" <?php endif ?>style="margin-left:35px" onclick="document.getElementById('aluno_sim').style.display='none';document.getElementById('aluno_nao').style.display='block';" />NÃO
     <br/><br/> -->
 
-    <span id="aluno_sim" <? if ($aluno): ?>style="display:block;"<? else: ?>style="display:none;"<? endif ?>>
+    <span id="aluno_sim" <?php if ($aluno): ?>style="display:block;"<?php else: ?>style="display:none;"<?php endif ?>>
         <label for="prontuario">
             <?php HTML_RequiredField() ?>Prontu&aacute;rio: (apenas números e <b>X</b>, se houver)
         </label>
@@ -325,7 +325,7 @@ if ($_SESSION['temp']['cadastro_ok']) {
         <br/><br/>
     </span>
 
-    <span id="aluno_nao" <? if ($aluno): ?>style="display:none;"<? else: ?>style="display:block;"<? endif ?>>
+    <span id="aluno_nao" <?php if ($aluno): ?>style="display:none;"<?php else: ?>style="display:block;"<?php endif ?>>
         <label for="instituicao">Instituição ou Empresa:</label>
         <input type="text" name="instituicao" id="instituicao" maxlength="100" size="35" value="<?php echo $result['inst_empresa'] ?>" />
         <br/><br/>
@@ -357,7 +357,7 @@ if ($_SESSION['temp']['cadastro_ok']) {
 
     <label for="uf">UF:</label>
     <select name="uf" id="uf">
-        <?
+        <?php
         $estado = array('', 'AC', 'AL', 'AM', 'AP', 'BA', 'CE', 'DF', 'ES', 'GO', 'MA', 'MG',
             'MS', 'MT', 'PA', 'PB', 'PE', 'PI', 'PR', 'RJ', 'RN', 'RO', 'RR', 'RS', 'SC', 'SE', 'SP', 'TO');
         foreach ($estado as $sigla) {
@@ -392,11 +392,11 @@ if ($_SESSION['temp']['cadastro_ok']) {
     Alterar seu e-mail.
 </h3>
 
-<form class="forms" name="alt_email" method="post" action="<? echo $Esta_Pagina; ?>">
+<form class="forms" name="alt_email" method="post" action="<?php echo $Esta_Pagina; ?>">
     <input type="hidden" name="cpf" id="cpf" maxlength="11" size="35" value="<?php echo substr($result['cpf'], 0, 3) . "." . substr($result['cpf'], 3, 3) . "." . substr($result['cpf'], 6, 3) . "-" . substr($result['cpf'], 9, 2) ?>" disabled="disabled" />
     <input type="hidden" name="nome" id="nome" maxlength="50" size="35" value="<?php echo $result['nome'] ?>" />
 
-    <label for="emailatual">E-mail atual :</label>  <?php echo $result['email'] ?><? if ($result['confirmado'] == 0): ?><font color="red"> Não Confirmado</font><? endif; ?><br><br>
+    <label for="emailatual">E-mail atual :</label>  <?php echo $result['email'] ?><?php if ($result['confirmado'] == 0): ?><font color="red"> Não Confirmado</font><?php endif; ?><br><br>
     <label for="email">
         <?php HTML_RequiredField() ?>Novo E-mail:
     </label>
@@ -417,7 +417,7 @@ if ($_SESSION['temp']['cadastro_ok']) {
     Alterar sua senha de acesso.
 </h3>
 
-<form class="forms" name="alt_senha" method="post" action="<? echo $Esta_Pagina; ?>">
+<form class="forms" name="alt_senha" method="post" action="<?php echo $Esta_Pagina; ?>">
     <label for="senha">Nova senha:</label>
     <input type="password" name="senha" id="senha" maxlength="30" />
     <br/><br/>

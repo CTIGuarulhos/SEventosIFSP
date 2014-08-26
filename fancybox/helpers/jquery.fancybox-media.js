@@ -67,22 +67,22 @@
     //Shortcut for fancyBox object
     var F = $.fancybox,
             format = function(url, rez, params) {
-        params = params || '';
+                params = params || '';
 
-        if ($.type(params) === "object") {
-            params = $.param(params, true);
-        }
+                if ($.type(params) === "object") {
+                    params = $.param(params, true);
+                }
 
-        $.each(rez, function(key, value) {
-            url = url.replace('$' + key, value || '');
-        });
+                $.each(rez, function(key, value) {
+                    url = url.replace('$' + key, value || '');
+                });
 
-        if (params.length) {
-            url += (url.indexOf('?') > 0 ? '&' : '?') + params;
-        }
+                if (params.length) {
+                    url += (url.indexOf('?') > 0 ? '&' : '?') + params;
+                }
 
-        return url;
-    };
+                return url;
+            };
 
     //Add helper object
     F.helpers.media = {

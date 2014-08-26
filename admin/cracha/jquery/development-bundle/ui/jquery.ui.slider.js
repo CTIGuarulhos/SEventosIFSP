@@ -48,11 +48,11 @@
 
             this.element
                     .addClass("ui-slider" +
-                    " ui-slider-" + this.orientation +
-                    " ui-widget" +
-                    " ui-widget-content" +
-                    " ui-corner-all" +
-                    (o.disabled ? " ui-slider-disabled ui-disabled" : ""));
+                            " ui-slider-" + this.orientation +
+                            " ui-widget" +
+                            " ui-widget-content" +
+                            " ui-corner-all" +
+                            (o.disabled ? " ui-slider-disabled ui-disabled" : ""));
 
             this.range = $([]);
 
@@ -69,10 +69,10 @@
                 this.range = $("<div></div>")
                         .appendTo(this.element)
                         .addClass("ui-slider-range" +
-                        // note: this isn't the most fittingly semantic framework class for this element,
-                        // but worked best visually with a variety of themes
-                        " ui-widget-header" +
-                        ((o.range === "min" || o.range === "max") ? " ui-slider-range-" + o.range : ""));
+                                // note: this isn't the most fittingly semantic framework class for this element,
+                                // but worked best visually with a variety of themes
+                                " ui-widget-header" +
+                                ((o.range === "min" || o.range === "max") ? " ui-slider-range-" + o.range : ""));
             }
 
             for (var i = existingHandles.length; i < handleCount; i += 1) {
@@ -85,26 +85,26 @@
 
             this.handles.add(this.range).filter("a")
                     .click(function(event) {
-                event.preventDefault();
-            })
+                        event.preventDefault();
+                    })
                     .hover(function() {
-                if (!o.disabled) {
-                    $(this).addClass("ui-state-hover");
-                }
-            }, function() {
-                $(this).removeClass("ui-state-hover");
-            })
+                        if (!o.disabled) {
+                            $(this).addClass("ui-state-hover");
+                        }
+                    }, function() {
+                        $(this).removeClass("ui-state-hover");
+                    })
                     .focus(function() {
-                if (!o.disabled) {
-                    $(".ui-slider .ui-state-focus").removeClass("ui-state-focus");
-                    $(this).addClass("ui-state-focus");
-                } else {
-                    $(this).blur();
-                }
-            })
+                        if (!o.disabled) {
+                            $(".ui-slider .ui-state-focus").removeClass("ui-state-focus");
+                            $(this).addClass("ui-state-focus");
+                        } else {
+                            $(this).blur();
+                        }
+                    })
                     .blur(function() {
-                $(this).removeClass("ui-state-focus");
-            });
+                        $(this).removeClass("ui-state-focus");
+                    });
 
             this.handles.each(function(i) {
                 $(this).data("index.ui-slider-handle", i);
@@ -112,86 +112,86 @@
 
             this.handles
                     .keydown(function(event) {
-                var index = $(this).data("index.ui-slider-handle"),
-                        allowed,
-                        curVal,
-                        newVal,
-                        step;
+                        var index = $(this).data("index.ui-slider-handle"),
+                                allowed,
+                                curVal,
+                                newVal,
+                                step;
 
-                if (self.options.disabled) {
-                    return;
-                }
-
-                switch (event.keyCode) {
-                    case $.ui.keyCode.HOME:
-                    case $.ui.keyCode.END:
-                    case $.ui.keyCode.PAGE_UP:
-                    case $.ui.keyCode.PAGE_DOWN:
-                    case $.ui.keyCode.UP:
-                    case $.ui.keyCode.RIGHT:
-                    case $.ui.keyCode.DOWN:
-                    case $.ui.keyCode.LEFT:
-                        event.preventDefault();
-                        if (!self._keySliding) {
-                            self._keySliding = true;
-                            $(this).addClass("ui-state-active");
-                            allowed = self._start(event, index);
-                            if (allowed === false) {
-                                return;
-                            }
-                        }
-                        break;
-                }
-
-                step = self.options.step;
-                if (self.options.values && self.options.values.length) {
-                    curVal = newVal = self.values(index);
-                } else {
-                    curVal = newVal = self.value();
-                }
-
-                switch (event.keyCode) {
-                    case $.ui.keyCode.HOME:
-                        newVal = self._valueMin();
-                        break;
-                    case $.ui.keyCode.END:
-                        newVal = self._valueMax();
-                        break;
-                    case $.ui.keyCode.PAGE_UP:
-                        newVal = self._trimAlignValue(curVal + ((self._valueMax() - self._valueMin()) / numPages));
-                        break;
-                    case $.ui.keyCode.PAGE_DOWN:
-                        newVal = self._trimAlignValue(curVal - ((self._valueMax() - self._valueMin()) / numPages));
-                        break;
-                    case $.ui.keyCode.UP:
-                    case $.ui.keyCode.RIGHT:
-                        if (curVal === self._valueMax()) {
+                        if (self.options.disabled) {
                             return;
                         }
-                        newVal = self._trimAlignValue(curVal + step);
-                        break;
-                    case $.ui.keyCode.DOWN:
-                    case $.ui.keyCode.LEFT:
-                        if (curVal === self._valueMin()) {
-                            return;
-                        }
-                        newVal = self._trimAlignValue(curVal - step);
-                        break;
-                }
 
-                self._slide(event, index, newVal);
-            })
+                        switch (event.keyCode) {
+                            case $.ui.keyCode.HOME:
+                            case $.ui.keyCode.END:
+                            case $.ui.keyCode.PAGE_UP:
+                            case $.ui.keyCode.PAGE_DOWN:
+                            case $.ui.keyCode.UP:
+                            case $.ui.keyCode.RIGHT:
+                            case $.ui.keyCode.DOWN:
+                            case $.ui.keyCode.LEFT:
+                                event.preventDefault();
+                                if (!self._keySliding) {
+                                    self._keySliding = true;
+                                    $(this).addClass("ui-state-active");
+                                    allowed = self._start(event, index);
+                                    if (allowed === false) {
+                                        return;
+                                    }
+                                }
+                                break;
+                        }
+
+                        step = self.options.step;
+                        if (self.options.values && self.options.values.length) {
+                            curVal = newVal = self.values(index);
+                        } else {
+                            curVal = newVal = self.value();
+                        }
+
+                        switch (event.keyCode) {
+                            case $.ui.keyCode.HOME:
+                                newVal = self._valueMin();
+                                break;
+                            case $.ui.keyCode.END:
+                                newVal = self._valueMax();
+                                break;
+                            case $.ui.keyCode.PAGE_UP:
+                                newVal = self._trimAlignValue(curVal + ((self._valueMax() - self._valueMin()) / numPages));
+                                break;
+                            case $.ui.keyCode.PAGE_DOWN:
+                                newVal = self._trimAlignValue(curVal - ((self._valueMax() - self._valueMin()) / numPages));
+                                break;
+                            case $.ui.keyCode.UP:
+                            case $.ui.keyCode.RIGHT:
+                                if (curVal === self._valueMax()) {
+                                    return;
+                                }
+                                newVal = self._trimAlignValue(curVal + step);
+                                break;
+                            case $.ui.keyCode.DOWN:
+                            case $.ui.keyCode.LEFT:
+                                if (curVal === self._valueMin()) {
+                                    return;
+                                }
+                                newVal = self._trimAlignValue(curVal - step);
+                                break;
+                        }
+
+                        self._slide(event, index, newVal);
+                    })
                     .keyup(function(event) {
-                var index = $(this).data("index.ui-slider-handle");
+                        var index = $(this).data("index.ui-slider-handle");
 
-                if (self._keySliding) {
-                    self._keySliding = false;
-                    self._stop(event, index);
-                    self._change(event, index);
-                    $(this).removeClass("ui-state-active");
-                }
+                        if (self._keySliding) {
+                            self._keySliding = false;
+                            self._stop(event, index);
+                            self._change(event, index);
+                            $(this).removeClass("ui-state-active");
+                        }
 
-            });
+                    });
 
             this._refreshValue();
 
@@ -203,12 +203,12 @@
 
             this.element
                     .removeClass("ui-slider" +
-                    " ui-slider-horizontal" +
-                    " ui-slider-vertical" +
-                    " ui-slider-disabled" +
-                    " ui-widget" +
-                    " ui-widget-content" +
-                    " ui-corner-all")
+                            " ui-slider-horizontal" +
+                            " ui-slider-vertical" +
+                            " ui-slider-disabled" +
+                            " ui-widget" +
+                            " ui-widget-content" +
+                            " ui-corner-all")
                     .removeData("slider")
                     .unbind(".slider");
 

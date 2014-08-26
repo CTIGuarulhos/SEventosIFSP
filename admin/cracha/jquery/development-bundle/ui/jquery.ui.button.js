@@ -18,27 +18,27 @@
             stateClasses = "ui-state-hover ui-state-active ",
             typeClasses = "ui-button-icons-only ui-button-icon-only ui-button-text-icons ui-button-text-icon-primary ui-button-text-icon-secondary ui-button-text-only",
             formResetHandler = function() {
-        var buttons = $(this).find(":ui-button");
-        setTimeout(function() {
-            buttons.button("refresh");
-        }, 1);
-    },
+                var buttons = $(this).find(":ui-button");
+                setTimeout(function() {
+                    buttons.button("refresh");
+                }, 1);
+            },
             radioGroup = function(radio) {
-        var name = radio.name,
-                form = radio.form,
-                radios = $([]);
-        if (name) {
-            if (form) {
-                radios = $(form).find("[name='" + name + "']");
-            } else {
-                radios = $("[name='" + name + "']", radio.ownerDocument)
-                        .filter(function() {
-                    return !this.form;
-                });
-            }
-        }
-        return radios;
-    };
+                var name = radio.name,
+                        form = radio.form,
+                        radios = $([]);
+                if (name) {
+                    if (form) {
+                        radios = $(form).find("[name='" + name + "']");
+                    } else {
+                        radios = $("[name='" + name + "']", radio.ownerDocument)
+                                .filter(function() {
+                                    return !this.form;
+                                });
+                    }
+                }
+                return radios;
+            };
 
     $.widget("ui.button", {
         options: {
@@ -78,35 +78,35 @@
                     .addClass(baseClasses)
                     .attr("role", "button")
                     .bind("mouseenter.button", function() {
-                if (options.disabled) {
-                    return;
-                }
-                $(this).addClass("ui-state-hover");
-                if (this === lastActive) {
-                    $(this).addClass("ui-state-active");
-                }
-            })
+                        if (options.disabled) {
+                            return;
+                        }
+                        $(this).addClass("ui-state-hover");
+                        if (this === lastActive) {
+                            $(this).addClass("ui-state-active");
+                        }
+                    })
                     .bind("mouseleave.button", function() {
-                if (options.disabled) {
-                    return;
-                }
-                $(this).removeClass(hoverClass);
-            })
+                        if (options.disabled) {
+                            return;
+                        }
+                        $(this).removeClass(hoverClass);
+                    })
                     .bind("click.button", function(event) {
-                if (options.disabled) {
-                    event.preventDefault();
-                    event.stopImmediatePropagation();
-                }
-            });
+                        if (options.disabled) {
+                            event.preventDefault();
+                            event.stopImmediatePropagation();
+                        }
+                    });
 
             this.element
                     .bind("focus.button", function() {
-                // no need to check disabled, focus won't be triggered anyway
-                self.buttonElement.addClass(focusClass);
-            })
+                        // no need to check disabled, focus won't be triggered anyway
+                        self.buttonElement.addClass(focusClass);
+                    })
                     .bind("blur.button", function() {
-                self.buttonElement.removeClass(focusClass);
-            });
+                        self.buttonElement.removeClass(focusClass);
+                    });
 
             if (toggleButton) {
                 this.element.bind("change.button", function() {
@@ -120,21 +120,21 @@
                 // does not in Firefox (see ticket #6970)
                 this.buttonElement
                         .bind("mousedown.button", function(event) {
-                    if (options.disabled) {
-                        return;
-                    }
-                    clickDragged = false;
-                    startXPos = event.pageX;
-                    startYPos = event.pageY;
-                })
+                            if (options.disabled) {
+                                return;
+                            }
+                            clickDragged = false;
+                            startXPos = event.pageX;
+                            startYPos = event.pageY;
+                        })
                         .bind("mouseup.button", function(event) {
-                    if (options.disabled) {
-                        return;
-                    }
-                    if (startXPos !== event.pageX || startYPos !== event.pageY) {
-                        clickDragged = true;
-                    }
-                });
+                            if (options.disabled) {
+                                return;
+                            }
+                            if (startXPos !== event.pageX || startYPos !== event.pageY) {
+                                clickDragged = true;
+                            }
+                        });
             }
 
             if (this.type === "checkbox") {
@@ -157,40 +157,40 @@
                     radioGroup(radio)
                             .not(radio)
                             .map(function() {
-                        return $(this).button("widget")[ 0 ];
-                    })
+                                return $(this).button("widget")[ 0 ];
+                            })
                             .removeClass("ui-state-active")
                             .attr("aria-pressed", "false");
                 });
             } else {
                 this.buttonElement
                         .bind("mousedown.button", function() {
-                    if (options.disabled) {
-                        return false;
-                    }
-                    $(this).addClass("ui-state-active");
-                    lastActive = this;
-                    $(document).one("mouseup", function() {
-                        lastActive = null;
-                    });
-                })
+                            if (options.disabled) {
+                                return false;
+                            }
+                            $(this).addClass("ui-state-active");
+                            lastActive = this;
+                            $(document).one("mouseup", function() {
+                                lastActive = null;
+                            });
+                        })
                         .bind("mouseup.button", function() {
-                    if (options.disabled) {
-                        return false;
-                    }
-                    $(this).removeClass("ui-state-active");
-                })
+                            if (options.disabled) {
+                                return false;
+                            }
+                            $(this).removeClass("ui-state-active");
+                        })
                         .bind("keydown.button", function(event) {
-                    if (options.disabled) {
-                        return false;
-                    }
-                    if (event.keyCode == $.ui.keyCode.SPACE || event.keyCode == $.ui.keyCode.ENTER) {
-                        $(this).addClass("ui-state-active");
-                    }
-                })
+                            if (options.disabled) {
+                                return false;
+                            }
+                            if (event.keyCode == $.ui.keyCode.SPACE || event.keyCode == $.ui.keyCode.ENTER) {
+                                $(this).addClass("ui-state-active");
+                            }
+                        })
                         .bind("keyup.button", function() {
-                    $(this).removeClass("ui-state-active");
-                });
+                            $(this).removeClass("ui-state-active");
+                        });
 
                 if (this.buttonElement.is("a")) {
                     this.buttonElement.keyup(function(event) {
@@ -375,8 +375,8 @@
                     .button()
                     .end()
                     .map(function() {
-                return $(this).button("widget")[ 0 ];
-            })
+                        return $(this).button("widget")[ 0 ];
+                    })
                     .removeClass("ui-corner-all ui-corner-left ui-corner-right")
                     .filter(":first")
                     .addClass(rtl ? "ui-corner-right" : "ui-corner-left")
@@ -390,8 +390,8 @@
             this.element.removeClass("ui-buttonset");
             this.buttons
                     .map(function() {
-                return $(this).button("widget")[ 0 ];
-            })
+                        return $(this).button("widget")[ 0 ];
+                    })
                     .removeClass("ui-corner-left ui-corner-right")
                     .end()
                     .button("destroy");
