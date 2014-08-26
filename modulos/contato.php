@@ -97,7 +97,7 @@ if (isset($dadosOK) && $dadosOK === true) {
     <textarea name="msg" id="msg"><?php echo $msg ?></textarea>
     <br/><br/>
 
-    <td align="center"><img name="codigo" src="includes/gdimg.php?letrasgd=<?php echo $_SESSION['letrasgd']; ?>" alt="codigo" /></td><br><br>
+    <td align="center"><img name="codigo" src="includes/gdimg.php" alt="codigo" /></td><br><br>
 
 
     <label for="codigo"><?php HTML_RequiredField() ?>Código imagem:</label><br/>

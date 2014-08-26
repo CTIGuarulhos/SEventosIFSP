@@ -392,7 +392,7 @@ if (isset($dadosOK) && $dadosOK === true) {
     <input type="text" value="<?php echo $email ?>" name="email" /><br /> <br />
     <label for="nome"><?php HTML_RequiredField() ?>Arquivo:</label><br/>
     <input type="file" value="<?php echo $files ?>" name="files" /><br /><br />  
-    <td align="center"><img name="codigo" src="includes/gdimg.php?letrasgd=<?php echo $_SESSION['letrasgd']; ?>" alt="codigo" /></td><br><br>
+    <td align="center"><img name="codigo" src="includes/gdimg.php" alt="codigo" /></td><br><br>
     <label for="codigo"><?php HTML_RequiredField() ?>Código imagem:</label><br/>
     <input type="text" name="codigo" id="codigo" maxlength="5" size="13" />
     <br/><br>

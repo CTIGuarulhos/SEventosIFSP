@@ -1,6 +1,6 @@
 <?php
 
-//require('../initialize.php');
+require('../initialize.php');
 /*
   echo "<pre>'";
   print_r($_SESSION);
@@ -9,8 +9,8 @@
 $imagem = ImageCreate(80, 40); //dimensao da imagem
 $fundo = ImageColorAllocate($imagem, 174, 160, 160); //cor de fundo
 $fonte = ImageColorAllocate($imagem, 132, 3, 2); //cor letras
-$array = str_split($_GET['letrasgd']);
-//$array = str_split($_SESSION['letrasgd']);
+//$array = str_split($_GET['letrasgd']);
+$array = str_split($_SESSION['letrasgd']);
 $letras = "";
 
 foreach ($array as $letra)

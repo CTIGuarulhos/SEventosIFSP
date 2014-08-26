@@ -125,7 +125,7 @@ if (isset($dadosOK) && $dadosOK === true) {
             <option value = "NOITE" <?php if ($emaileixo == "NOITE") echo selected ?> > Noite
         </select><br/><br/>
         <div style="border:2px solid; border-radius:25px;"><br>
-            &nbsp;&nbsp;&nbsp;<img name="codigo" src="includes/gdimg.php?letrasgd=<?php echo $_SESSION['letrasgd']; ?>" alt="codigo" /><br><br>
+            &nbsp;&nbsp;&nbsp;<img name="codigo" src="includes/gdimg.php" alt="codigo" /><br><br>
             &nbsp;&nbsp;&nbsp;<label for="codigo"><?php HTML_RequiredField() ?>Código imagem:</label><br/>
             &nbsp;&nbsp;&nbsp;<input type="text" name="codigo" id="codigo" maxlength="5" size="13" />
             <br/><br>

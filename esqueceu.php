@@ -109,7 +109,7 @@ if (isset($_POST['codigo'])) {
                     </tr>
 
                     <tr>
-                        <td align="center"><img name="codigo" src="includes/gdimg.php?letrasgd=<?php echo $_SESSION['letrasgd']; ?>" alt="codigo" /></td>
+                        <td align="center"><img name="codigo" src="includes/gdimg.php" alt="codigo" /></td>
                         <td align="center"><input type="submit" id="enviar" value="Enviar" /></td>
                     </tr>
                 </table>
