@@ -6,6 +6,8 @@ e modificado pela CTI do Instituto Federal de Educação, Ciência e Tecnologia 
 
 Para utilizar o Sistema:
 
+**O php.ini deve estar setado como short_open_tag = On**
+
 * 1º Você deve colocar o sistema em seu servidor web;
 * 2º Criar Usuário e Banco no MySQL;
 * 3º Renomear configuration-dist.php dentro da pasta includes para configuration.php;
