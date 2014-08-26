@@ -36,6 +36,7 @@ CREATE TABLE IF NOT EXISTS `album` (
 
 CREATE TABLE IF NOT EXISTS `edicao` (
   `SEMTEC` varchar(11) NOT NULL,
+  `GENERO` varchar(1) NOT NULL DEFAULT 'a',
   `NOME` varchar(100) NOT NULL,
   `CADASTRO` varchar(7) NOT NULL default 'fechado',
   `TEMPLATE` varchar(15) NOT NULL default 'Default',

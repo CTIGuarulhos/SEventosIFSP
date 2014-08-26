@@ -78,7 +78,7 @@ if (tipoadmin(5, $USER->getCpf(), $SCT_ID)) {
 
     <?php HTML_RequiredMessage() ?>
 
-    <form class="forms" name="alt_evento" method="post" action="<?= $Esta_pagina ?>">
+    <form class="forms" name="alt_evento" method="post" action="<?= $Esta_Pagina ?>">
 
         <input type="hidden" name="alterar_evento" value="false" />
         <input type="hidden" name="id" value="<?php echo $editevento ?>" />

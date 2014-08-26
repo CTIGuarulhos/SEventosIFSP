@@ -73,7 +73,7 @@ if (tipoadmin(7, $USER->getCpf(), $SCT_ID)) {
 
     <?php HTML_RequiredMessage() ?>
 
-    <form class="forms" name="alt_edicao" method="post" action="<?= $Esta_pagina ?>">
+    <form class="forms" name="alt_edicao" method="post" action="<?= $Esta_Pagina ?>">
 
         <input type="hidden" name="alterar_edicao" value="false" />
         <input type="hidden" name="id" value="<?php echo $editedicao ?>" />

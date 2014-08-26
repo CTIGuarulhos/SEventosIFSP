@@ -89,14 +89,14 @@ if (tipoadmin(2, $USER->getCpf(), $SCT_ID)) {
     ?>
 
     <?php HTML_RequiredMessage() ?>
-    <form class="forms" name="buscar_palestrante" method="post" action="<?= $Esta_pagina ?>">
+    <form class="forms" name="buscar_palestrante" method="post" action="<?= $Esta_Pagina ?>">
         <label for="busca">Buscar Palestrante:</label>
         <input type="text" name="busca" id="busca" maxlength="35" size="35" value="<?= $busca ?>" />
         <br/><br/>
         <input type="submit" value="Buscar" />
     </form>
 
-    <form class="forms" name="alt_evento" method="post" action="<?= $Esta_pagina ?>">
+    <form class="forms" name="alt_evento" method="post" action="<?= $Esta_Pagina ?>">
         <input type="hidden" name="alterar_evento" value="false" />
         <label for="evento"><?php HTML_RequiredField() ?>Palestrante:</label>
 

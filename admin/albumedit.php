@@ -75,7 +75,7 @@ if (tipoadmin(5, $USER->getCpf(), $SCT_ID)) {
     <script language="javascript" type="text/javascript" src="<?php echo $CONFIG->URL_ROOT ?>/includes/js//datetimepicker.js"></script>
 
 
-    <form class="forms" name="alt_evento" method="post" action="<?= $Esta_pagina ?>">
+    <form class="forms" name="alt_evento" method="post" action="<?= $Esta_Pagina ?>">
 
         <input type="hidden" name="alterar_album" value="false" />
         <input type="hidden" name="id" value="<?php echo $editalbum ?>" />

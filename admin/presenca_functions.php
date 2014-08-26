@@ -27,7 +27,7 @@ function usuarios_por_evento($evento_id, $listar) {
         <b>EVENTO: <i><?= $Revento['titulo'] ?></i> (<?= mysql_num_rows($result) ?>)</b>
         <br/>
 
-        <form name="presenca" method="post" action="<?= $Esta_pagina ?>" onsubmit="document.getElementById('Psubmit').disabled = true;">
+        <form name="presenca" method="post" action="<?= $Esta_Pagina ?>" onsubmit="document.getElementById('Psubmit').disabled = true;">
             <input type="hidden" name="evento" value="<?= $evento_id ?>" />
             <input type="hidden" name="listar" value="<?= $listar ?>" />
 

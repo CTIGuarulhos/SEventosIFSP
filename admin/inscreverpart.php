@@ -133,7 +133,7 @@ if (tipoadmin(2, $USER->getCpf(), $SCT_ID)) {
         ?>
 
 
-        <form class="forms" name="presenca_evento" method="post" action="<?= $Esta_pagina ?>">
+        <form class="forms" name="presenca_evento" method="post" action="<?= $Esta_Pagina ?>">
             <? if (($vagas - $inscritos) > 0): ?>
                 <input type="hidden" name="presenca_evento" value="false" />
 
@@ -197,7 +197,7 @@ if (tipoadmin(2, $USER->getCpf(), $SCT_ID)) {
 
         <br/><br/>
     <?php } else { ?>
-        <form class="forms" name="seleciona_evento" method="get" action="<?= $Esta_pagina ?>">
+        <form class="forms" name="seleciona_evento" method="get" action="<?= $Esta_Pagina ?>">
             <INPUT TYPE="hidden" NAME="pag" VALUE="<?php echo $_GET['pag']; ?>">
             <label for="evento"><?php HTML_RequiredField() ?>Evento:</label>
 

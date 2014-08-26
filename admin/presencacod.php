@@ -139,7 +139,7 @@ if (tipoadmin(2, $USER->getCpf(), $SCT_ID)) {
             HTML_SuccessMessage("Seus dados foram inseridos com sucesso.");
         ?>
 
-        <form class="forms" name="presenca_evento" method="post" action="<?= $Esta_pagina ?>">
+        <form class="forms" name="presenca_evento" method="post" action="<?= $Esta_Pagina ?>">
 
             <input type="hidden" name="presenca_evento" value="false" />
 
@@ -202,7 +202,7 @@ if (tipoadmin(2, $USER->getCpf(), $SCT_ID)) {
 
         <br/><br/>
     <?php } else { ?>
-        <form class="forms" name="seleciona_evento" method="get" action="<?= $Esta_pagina ?>">
+        <form class="forms" name="seleciona_evento" method="get" action="<?= $Esta_Pagina ?>">
             <INPUT TYPE="hidden" NAME="pag" VALUE="<?php echo $_GET['pag']; ?>">
             <label for="evento"><?php HTML_RequiredField() ?>Evento:</label>
 
