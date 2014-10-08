@@ -147,6 +147,7 @@ $lstTipoParticipante[$x++] = "Comissão Organizadora";
                         <div id="divNome"><?php echo $nome; ?></font></div>                        
                         <div id="divInstituicao"><?php echo $instituicao; ?><br></div>
                         <div id="divTipoParticipante"><center><img alt="<?php echo $tipoParticipante; ?>" src="barcode/html/image.php?filetype=PNG&dpi=72&scale=2&rotation=0&font_family=0&font_size=13&thickness=10&start=NULL&code=BCGcode128&text=<?php echo $tipoParticipante; ?>" /><br><?php echo $tipoParticipante; ?></center></div>
+                        <!--<div id="divTipoParticipante"><center><img alt="<?php echo $tipoParticipante; ?>" src="barcodeOS.php?text=<?php echo $tipoParticipante; ?>" /><br><?php echo $tipoParticipante; ?></center></div>-->
                     </div>
                     <br /><br />
                     <div id="divImprimir">

@@ -204,6 +204,7 @@ if (tipoadmin(2, $USER->getCpf(), $SCT_ID)) {
     <?php } else { ?>
         <form class="forms" name="seleciona_evento" method="get" action="<?php echo $Esta_Pagina ?>">
             <INPUT TYPE="hidden" NAME="pag" VALUE="<?php echo $_GET['pag']; ?>">
+            <INPUT TYPE="hidden" NAME="SCT" VALUE="<?php echo $_GET['pag']; ?>">
             <label for="evento"><?php HTML_RequiredField() ?>Evento:</label>
 
 
